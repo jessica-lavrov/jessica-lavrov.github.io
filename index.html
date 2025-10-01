@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Jessica Lavrov — IT Specialist & Writer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no" />
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    html{-webkit-text-size-adjust:100%}
+    body{margin:0;font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;max-width:840px;margin:40px auto;padding:0 20px;color:#111;background:#fff}
+    @media(prefers-color-scheme:dark){body{background:#0c0d10;color:#eef1f7}}
+    h1{font-size:28px;margin:0 0 10px}
+    .sub{color:#555}@media(prefers-color-scheme:dark){.sub{color:#9aa3b2}}
+    .avatar{width:96px;height:96px;border-radius:50%;object-fit:cover;margin-bottom:10px}
+    .about{border:1px solid #e9e9e9;border-radius:12px;padding:14px;margin-top:20px;background:#f6f8ff}
+    @media(prefers-color-scheme:dark){.about{border-color:#1b1e24;background:#121826}}
+    .groups{margin-top:30px}
+    .group{margin-bottom:20px}
+    .group h2{font-size:14px;color:#555;text-transform:uppercase;margin-bottom:10px;letter-spacing:.3px}
+    @media(prefers-color-scheme:dark){.group h2{color:#9aa3b2}}
+
+    /* Equal card sizing across all groups */
+    .links{
+      list-style:none;
+      padding:0;
+      display:grid;
+      grid-template-columns:repeat(auto-fit, 200px);
+      justify-content:start;
+      gap:8px;
+    }
+    .links a{
+      display:block;
+      padding:8px 12px;
+      border-radius:8px;
+      text-decoration:none;
+      color:#111;
+      background:#f6f8ff;
+      border:1px solid #e9e9e9;
+      text-align:left;
+      white-space:nowrap;
+    }
+    .links a:hover{transform:translateY(-1px)}
+    @media(prefers-color-scheme:dark){
+      .links a{color:#fff;background:#121826;border-color:#1b1e24}
+    }
+
+    .jl-chat{margin:30px 0;border:1px solid #e9e9e9;border-radius:14px;background:inherit;overflow:hidden;position:relative}
+    .jl-chat-header{padding:12px 14px;border-bottom:1px solid #e9e9e9;font:600 14px system-ui;color:#555;text-transform:uppercase}
+    @media(prefers-color-scheme:dark){.jl-chat{border-color:#1b1e24}.jl-chat-header{color:#9aa3b2;border-color:#1b1e24}}
+
+    .jl-chat-body{
+      --inputH: 80px;
+      padding:12px 14px;
+      padding-bottom:calc(var(--inputH) + 8px);
+      max-height:60vh;
+      overflow:auto;
+      scroll-behavior:auto;
+      scroll-padding-bottom:var(--inputH);
+      -webkit-overflow-scrolling:touch;
+    }
+    .jl-msg{display:block;margin:10px 0 0 0;padding:8px 10px;border-radius:8px;max-width:100%;white-space:pre-wrap;word-wrap:break-word}
+    .jl-user{background:#eef2ff;color:#000}
+    .jl-bot{background:#f1f5f9;color:#000}
+    @media(prefers-color-scheme:dark){.jl-user{background:#334155;color:#fff}.jl-bot{background:#1e293b;color:#fff}}
+
+    .jl-typing{display:inline-block;width:0.9em;height:1em;border-right:2px solid currentColor;animation:jl-cursor .9s steps(1) infinite;vertical-align:bottom;margin-left:2px}
+    @keyframes jl-cursor{50%{border-right-color:transparent}}
+
+    .jl-chat-input{
+      position:sticky;bottom:0;left:0;right:0;
+      display:flex;gap:8px;padding:12px;
+      border-top:1px solid #e9e9e9;background:inherit;
+      padding-bottom:calc(12px + env(safe-area-inset-bottom));
+      z-index:1;
+    }
+    @media(prefers-color-scheme:dark){.jl-chat-input{border-color:#1b1e24}}
+    .jl-chat-input textarea{flex:1;min-height:44px;max-height:160px;padding:10px;border-radius:10px;border:1px solid #e9e9e9;font-size:16px;line-height:1.4}
+    @media(prefers-color-scheme:dark){.jl-chat-input textarea{border-color:#1b1e24;background:#0f1115;color:#fff}}
+    .jl-chat-input button{padding:10px 14px;border-radius:10px;border:1px solid #1f6feb;background:#1f6feb;color:#fff;font-weight:600;cursor:pointer;font-size:16px}
+
+    footer{margin-top:28px;font-size:14px;color:#555}
+    @media(prefers-color-scheme:dark){footer{color:#9aa3b2}}
+  </style>
+</head>
+<body>
+  <header>
+    <img class="avatar" src="https://jessica-lavrov.github.io/img/portrait.jpg" alt="Portrait of Jessica Lavrov" />
+    <h1>Jessica Lavrov</h1>
+    <p class="sub">IT specialist & writer exploring open protocols, privacy, and digital economies.</p>
+    <div class="about">
+      <strong>About</strong>
+      <p>Jessica writes practical notes and essays on resilient, human-scale technology — how open standards, privacy-preserving tools, and clear product thinking shape better digital life.</p>
+    </div>
+  </header>
+
+  <section class="groups">
+    <div class="group">
+      <h2>Main Platforms</h2>
+      <ul class="links">
+        <li><a href="https://jessicalavrov.wordpress.com/">🌐 Website</a></li>
+        <li><a href="https://jessicalavrov.substack.com">📰 Substack</a></li>
+        <li><a href="https://medium.com/@jessicalavrov">✍️ Medium</a></li>
+        <li><a href="https://jessica-lavrov.blogspot.com">📓 Blogspot</a></li>
+        <li><a href="https://about.me/jessica.lavrov/">🔗 about.me</a></li>
+      </ul>
+    </div>
+
+    <div class="group">
+      <h2>Social & Media</h2>
+      <ul class="links">
+        <li><a href="https://instagram.com/jessica.lavrov">📸 Instagram</a></li>
+        <li><a href="https://x.com/jessica_lavrov">✖️ X (Twitter)</a></li>
+        <li><a href="https://truthsocial.com/@jessica_lavrov">🦅 Truth Social</a></li>
+        <li><a href="https://www.youtube.com/@jessica_lavrov">▶️ YouTube</a></li>
+        <li><a href="https://www.producthunt.com/@jessica_lavrov">🚀 Product Hunt</a></li>
+        <li><a href="https://www.tiktok.com/@jessica.lavrov">🎵 TikTok</a></li>
+        <li><a href="https://www.tumblr.com/jessica-lavrov">📝 Tumblr</a></li>
+        <li><a href="https://pinterest.com/jessica_lavrov/">📌 Pinterest</a></li>
+      </ul>
+    </div>
+
+    <div class="group">
+      <h2>Professional & Technical</h2>
+      <ul class="links">
+        <li><a href="https://www.linkedin.com/in/jessica-lavrov/">💼 LinkedIn</a></li>
+        <li><a href="https://github.com/jessica-lavrov">💻 GitHub</a></li>
+        <li><a href="https://stackoverflow.com/users/31605603/jessica-lavrov">🧑‍💻 Stack Overflow</a></li>
+        <li><a href="https://www.quora.com/profile/Jessica-Lavrov">❓ Quora</a></li>
+        <li><a href="https://www.reddit.com/user/JessicaLavrov/">👾 Reddit</a></li>
+        <li><a href="https://news.ycombinator.com/user?id=jessica_lavrov">📰 Hacker News</a></li>
+        <li><a href="https://www.crunchbase.com/person/jessica-lavrov">📊 Crunchbase</a></li>
+        <li><a href="https://www.wikidata.org/wiki/Q136409297">📚 Wikidata</a></li>
+      </ul>
+    </div>
+
+    <div class="group">
+      <h2>Decentralized & Identity</h2>
+      <ul class="links">
+        <li><a href="https://jessica-lavrov.bsky.social">🌌 Bluesky</a></li>
+        <li><a href="https://mastodon.social/@jessica_lavrov">🐘 Mastodon</a></li>
+        <li><a href="https://gravatar.com/jessicalavrov">👤 Gravatar</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="jl-chat" aria-label="Chat with Jessica's assistant">
+    <div class="jl-chat-header">💬 Ask about Jessica</div>
+    <div class="jl-chat-body" id="jl-body"></div>
+    <form class="jl-chat-input" id="jl-form">
+      <textarea id="jl-input" placeholder="Ask about Jessica…" required></textarea>
+      <button type="submit" aria-label="Send message">Send</button>
+    </form>
+  </section>
+
+  <script>
+    const API="https://jessica-lavrov-chat-proxy.jessicalavrov.workers.dev";
+    const bodyEl=document.getElementById("jl-body");
+    const form=document.getElementById("jl-form");
+    const input=document.getElementById("jl-input");
+    const history=[];
+    let typingController=null;
+    let autolock=true;
+
+    function measureInputBar(){
+      const h=form.getBoundingClientRect().height;
+      bodyEl.style.setProperty("--inputH", h+"px");
+      bodyEl.style.paddingBottom = "calc(var(--inputH) + 8px)";
+    }
+    function atBottom(){
+      return bodyEl.scrollTop + bodyEl.clientHeight >= bodyEl.scrollHeight - 8;
+    }
+    function forceScroll(){
+      if(!autolock) return;
+      const target = bodyEl.scrollHeight - bodyEl.clientHeight;
+      if (target > 0) bodyEl.scrollTop = target;
+    }
+    function addBubble(text,who){
+      const div=document.createElement("div");
+      div.className="jl-msg "+(who==="user"?"jl-user":"jl-bot");
+      div.textContent=text||"";
+      bodyEl.appendChild(div);
+      forceScroll();
+      return div;
+    }
+    async function typeIntoBubble(div,fullText,cps=28){
+      const cursor=document.createElement("span");
+      cursor.className="jl-typing";
+      div.textContent="";
+      div.appendChild(cursor);
+      const controller={cancelled:false};
+      typingController=controller;
+      const stepMs=1000/cps;
+      let i=0,acc=0,last=performance.now();
+
+      return new Promise(resolve=>{
+        function frame(now){
+          if(controller.cancelled){ cursor.remove(); div.textContent=fullText; forceScroll(); return resolve() }
+          const dt=now-last; last=now; acc+=dt;
+          let wrote=false;
+          while(acc>=stepMs && i<fullText.length){
+            acc-=stepMs;
+            div.textContent+=fullText[i++];
+            div.appendChild(cursor);
+            wrote=true;
+          }
+          if(wrote) forceScroll();
+          if(i>=fullText.length){ cursor.remove(); forceScroll(); return resolve() }
+          requestAnimationFrame(frame)
+        }
+        requestAnimationFrame(frame)
+      })
+    }
+    async function sendToWorker(messages){
+      const r=await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({messages})});
+      const txt=await r.text();
+      let data=null; try{data=JSON.parse(txt)}catch{}
+      return{status:r.status,data,raw:txt}
+    }
+
+    bodyEl.addEventListener("scroll",()=>{ autolock = atBottom(); },{passive:true});
+    window.addEventListener("resize",()=>{ measureInputBar(); forceScroll(); });
+    input.addEventListener("focus",()=>{ setTimeout(()=>{ measureInputBar(); forceScroll(); },50); });
+
+    form.addEventListener("submit",async e=>{
+      e.preventDefault();
+      const text=input.value.trim();
+      if(!text)return;
+      if(typingController) typingController.cancelled=true;
+      input.blur();
+      input.value="";
+      addBubble(text,"user");
+      history.push({role:"user",content:text});
+      const botBubble=addBubble("","bot");
+      try{
+        const{status,data,raw}=await sendToWorker(history);
+        if(data&&data.reply){
+          history.push({role:"assistant",content:data.reply});
+          await typeIntoBubble(botBubble,data.reply,30);
+        }else if(data&&data.error){
+          const msg=(data.raw&&data.raw.error&&data.raw.error.message)?data.raw.error.message:data.error;
+          await typeIntoBubble(botBubble,"⚠️ "+msg,32);
+        }else{
+          await typeIntoBubble(botBubble,"Unexpected response ("+status+")",32);
+          console.log("raw:",raw);
+        }
+      }catch(err){
+        await typeIntoBubble(botBubble,"Network error. Please try again.",32);
+      }
+    });
+
+    input.addEventListener("keydown",e=>{
+      if(e.key==="Enter"&&!e.shiftKey){ e.preventDefault(); form.dispatchEvent(new Event("submit",{cancelable:true,bubbles:true})); }
+    });
+
+    measureInputBar();
+    addBubble("Hi! Ask me about Jessica’s work, writing, or where to follow her.","bot");
+  </script>
+</body>
+</html>
