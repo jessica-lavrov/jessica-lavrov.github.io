@@ -13,22 +13,18 @@
       --bg-grad-1-dark: radial-gradient(1200px 900px at -10% -10%, rgba(90,120,255,.20), transparent 60%),
                          radial-gradient(900px 900px at 110% 0%, rgba(255,120,200,.18), transparent 60%),
                          linear-gradient(180deg, #0b0d14 0%, #0f131b 100%);
-
       --glass-bg: rgba(255,255,255,.42);
       --glass-bg-dark: rgba(16,18,25,.46);
       --glass-border: rgba(255,255,255,.70);
       --glass-border-dark: rgba(255,255,255,.12);
       --glass-highlight: radial-gradient(120% 100% at 50% -20%, rgba(255,255,255,.65), transparent 55%);
       --glass-highlight-dark: radial-gradient(120% 100% at 50% -20%, rgba(255,255,255,.10), transparent 55%);
-
       --text: #0f1320;
       --text-sub: #5f6b80;
       --text-dark: #eaf0ff;
       --text-sub-dark: #9aa6bf;
-
       --card-radius: 18px;
       --card-blur: 22px;
-      --chip-gap: 12px;
     }
 
     html{-webkit-text-size-adjust:100%}
@@ -90,7 +86,7 @@
     .links{
       list-style:none; padding:0; margin:0;
       display:grid; grid-template-columns:repeat(auto-fit, 200px);
-      justify-content:start; gap:var(--chip-gap);
+      justify-content:start; gap:12px;
     }
     .links a{
       display:flex; align-items:center; gap:10px;
@@ -121,11 +117,10 @@
       max-height:60vh; overflow:auto; -webkit-overflow-scrolling:touch;
     }
 
-    /* message rows for avatar layout */
+    /* message rows with avatar */
     .jl-row{display:flex; gap:10px; margin-top:10px}
     .jl-row-user{justify-content:flex-end}
     .jl-row-bot{justify-content:flex-start}
-
     .jl-ava{
       width:28px; height:28px; border-radius:50%; flex:0 0 28px; object-fit:cover;
       box-shadow:0 2px 6px rgba(0,0,0,.15);
@@ -156,7 +151,7 @@
       flex:1; min-height:48px; max-height:160px; padding:12px; border-radius:14px;
       background:#fff; border:1px solid rgba(0,0,0,.08); color:#0f1320;
       font-size:16px; line-height:1.4; box-shadow:inset 0 2px 4px rgba(16,24,40,.06);
-      resize:vertical;
+      resize:none; overflow-y:auto; /* keep shape stable */
     }
     .jl-chat-input textarea::placeholder{color:#8a93a6; opacity:.95}
     .jl-chat-input textarea:focus{outline:none; border-color:#3b82f6; box-shadow:0 0 0 3px rgba(59,130,246,.18)}
@@ -261,7 +256,6 @@
     let typingController=null;
     let autolock=true;
 
-    // Measure input bar height for padding
     function measureInputBar(){
       const h=form.getBoundingClientRect().height;
       bodyEl.style.setProperty("--inputH", h+"px");
@@ -274,7 +268,15 @@
       if (target > 0) bodyEl.scrollTop = target;
     }
 
-    // Build message rows with optional avatar
+    // Auto-size textarea smoothly
+    function autosize(){
+      input.style.height = 'auto';
+      const next = Math.min(input.scrollHeight, 160);
+      input.style.height = next + 'px';
+      measureInputBar();
+    }
+
+    // Build message row with avatar for bot
     function addBubble(text, who){
       const row=document.createElement("div");
       row.className="jl-row "+(who==="user"?"jl-row-user":"jl-row-bot");
@@ -294,14 +296,14 @@
 
       bodyEl.appendChild(row);
       forceScroll();
-      return msg; // return the message element for typing effect
+      return msg;
     }
 
-    async function typeInto(element, fullText, cps=28){
+    async function typeInto(el, fullText, cps=28){
       const cursor=document.createElement("span");
       cursor.className="jl-typing";
-      element.textContent="";
-      element.appendChild(cursor);
+      el.textContent="";
+      el.appendChild(cursor);
       const controller={cancelled:false}; typingController=controller;
 
       const stepMs=1000/cps;
@@ -309,13 +311,13 @@
 
       return new Promise(resolve=>{
         function frame(now){
-          if(controller.cancelled){ cursor.remove(); element.textContent=fullText; forceScroll(); return resolve(); }
+          if(controller.cancelled){ cursor.remove(); el.textContent=fullText; forceScroll(); return resolve(); }
           const dt=now-last; last=now; acc+=dt;
           let wrote=false;
           while(acc>=stepMs && i<fullText.length){
             acc-=stepMs;
-            element.textContent+=fullText[i++];
-            element.appendChild(cursor);
+            el.textContent+=fullText[i++];
+            el.appendChild(cursor);
             wrote=true;
           }
           if(wrote) forceScroll();
@@ -333,7 +335,7 @@
       return{status:r.status,data,raw:txt}
     }
 
-    // Icon fallbacks (e.g., favicons)
+    // Icon fallbacks (favicons)
     document.querySelectorAll('img.icon').forEach(img=>{
       img.addEventListener('error',()=>{
         const fb=img.getAttribute('data-fallback');
@@ -341,14 +343,15 @@
       },{once:true});
     });
 
-    // Enter to send, Shift+Enter for newline, ignore IME composition
+    // Enter to send, Shift+Enter for newline, keep focus
     input.addEventListener("keydown", e=>{
-      if(e.isComposing) return;                 // respect IME
+      if(e.isComposing) return;
       if(e.key==="Enter" && !e.shiftKey){
         e.preventDefault();
         form.dispatchEvent(new Event("submit",{cancelable:true,bubbles:true}));
       }
     });
+    input.addEventListener("input", autosize);
 
     bodyEl.addEventListener("scroll",()=>{ autolock = atBottom(); },{passive:true});
     window.addEventListener("resize",()=>{ measureInputBar(); forceScroll(); });
@@ -360,8 +363,10 @@
       if(!text)return;
       if(typingController) typingController.cancelled=true;
 
-      input.blur();
+      // keep focus, clear input, reset height
       input.value="";
+      autosize();
+      input.focus();
 
       addBubble(text,"user");
       history.push({role:"user",content:text});
@@ -385,6 +390,7 @@
     });
 
     // initial layout + greeting
+    autosize();
     measureInputBar();
     (function greet(){
       const el = addBubble("", "bot");
