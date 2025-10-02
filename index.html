@@ -7,12 +7,8 @@
   <meta name="color-scheme" content="light dark" />
   <style>
     :root{
-      --bg-grad-1: radial-gradient(1200px 900px at 10% -10%, rgba(120,180,255,.35), transparent 60%),
-                   radial-gradient(900px 900px at 110% 10%, rgba(255,140,200,.30), transparent 60%),
-                   linear-gradient(180deg, #f6f9ff 0%, #eaf0ff 100%);
-      --bg-grad-1-dark: radial-gradient(1200px 900px at -10% -10%, rgba(90,120,255,.20), transparent 60%),
-                         radial-gradient(900px 900px at 110% 0%, rgba(255,120,200,.18), transparent 60%),
-                         linear-gradient(180deg, #0b0d14 0%, #0f131b 100%);
+      --bg-grad-1: radial-gradient(1200px 900px at 10% -10%, rgba(120,180,255,.35), transparent 60%), radial-gradient(900px 900px at 110% 10%, rgba(255,140,200,.30), transparent 60%), linear-gradient(180deg, #f6f9ff 0%, #eaf0ff 100%);
+      --bg-grad-1-dark: radial-gradient(1200px 900px at -10% -10%, rgba(90,120,255,.20), transparent 60%), radial-gradient(900px 900px at 110% 0%, rgba(255,120,200,.18), transparent 60%), linear-gradient(180deg, #0b0d14 0%, #0f131b 100%);
       --glass-bg: rgba(255,255,255,.42);
       --glass-bg-dark: rgba(16,18,25,.46);
       --glass-border: rgba(255,255,255,.70);
@@ -26,7 +22,6 @@
       --card-radius: 18px;
       --card-blur: 22px;
     }
-
     html{-webkit-text-size-adjust:100%}
     body{
       margin:0;
@@ -38,7 +33,6 @@
     @media(prefers-color-scheme:dark){
       body{color:var(--text-dark);background:var(--bg-grad-1-dark) fixed}
     }
-
     .blob{
       position:fixed; inset:auto auto 8% -10%;
       width:420px; height:420px; border-radius:50%;
@@ -46,9 +40,7 @@
       background:radial-gradient(circle at 30% 30%, rgba(255,200,150,.55), rgba(255,150,200,.28) 40%, transparent 70%);
     }
     .blob.b2{inset:10% -8% auto auto; background:radial-gradient(circle at 60% 40%, rgba(130,200,255,.52), rgba(140,160,255,.30) 40%, transparent 70%); width:500px; height:500px; opacity:.30}
-
     .container{max-width:900px; margin:44px auto; padding:0 20px; position:relative; z-index:1}
-
     .glass{
       position:relative;
       background:var(--glass-bg);
@@ -66,7 +58,6 @@
       .glass{background:var(--glass-bg-dark); border-color:var(--glass-border-dark); box-shadow:0 18px 44px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.06)}
       .glass::before{background:var(--glass-highlight-dark)}
     }
-
     header{display:grid; grid-template-columns:auto 1fr; gap:16px; align-items:center}
     .avatar{
       width:96px;height:96px;border-radius:24px;object-fit:cover;
@@ -75,14 +66,11 @@
     h1{font-size:28px; margin:0 0 6px 0}
     .sub{margin:0; color:var(--text-sub)}
     @media(prefers-color-scheme:dark){.sub{color:var(--text-sub-dark)}}
-
     .about{margin-top:20px; padding:18px 20px}
-
     .groups{margin-top:30px; display:grid; gap:16px}
     .group{padding:16px 16px}
     .group h2{font-size:12px; letter-spacing:.30px; color:var(--text-sub); margin:0 0 12px 2px; text-transform:uppercase}
     @media(prefers-color-scheme:dark){.group h2{color:var(--text-sub-dark)}}
-
     .links{
       list-style:none; padding:0; margin:0;
       display:grid; grid-template-columns:repeat(auto-fit, 200px);
@@ -104,20 +92,15 @@
     @media(prefers-color-scheme:dark){
       .icon[src*="/000000"], .icon[src*="/333333"], .icon[src*="/999999"]{filter:invert(1) brightness(1.25)}
     }
-
-    /* Chat */
     .jl-chat{margin:26px 0}
     .jl-chat-header{padding:12px 14px; font:700 12px ui-sans-serif; text-transform:uppercase; color:var(--text-sub)}
     @media(prefers-color-scheme:dark){.jl-chat-header{color:var(--text-sub-dark)}}
-
     .jl-chat-body{
       --inputH: 88px;
       padding:12px 14px;
       padding-bottom:calc(var(--inputH) + 12px);
       max-height:60vh; overflow:auto; -webkit-overflow-scrolling:touch;
     }
-
-    /* message rows with avatar */
     .jl-row{display:flex; gap:10px; margin-top:10px}
     .jl-row-user{justify-content:flex-end}
     .jl-row-bot{justify-content:flex-start}
@@ -126,7 +109,6 @@
       box-shadow:0 2px 6px rgba(0,0,0,.15);
       align-self:flex-start;
     }
-
     .jl-msg{
       padding:12px 14px; border-radius:14px; max-width:min(100%, 620px);
       border:1px solid rgba(255,255,255,.55);
@@ -139,10 +121,8 @@
       .jl-user{background:rgba(80,110,255,.20); border-color:rgba(255,255,255,.10)}
       .jl-bot{background:rgba(26,32,46,.60); border-color:rgba(255,255,255,.10)}
     }
-
     .jl-typing{display:inline-block;width:0.9em;height:1em;border-right:2px solid currentColor;animation:jl-cursor .9s steps(1) infinite;vertical-align:bottom;margin-left:2px}
     @keyframes jl-cursor{50%{border-right-color:transparent}}
-
     .jl-chat-input{
       position:sticky; bottom:0; left:0; right:0; display:flex; gap:8px; padding:12px;
       backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
@@ -151,7 +131,7 @@
       flex:1; min-height:48px; max-height:160px; padding:12px; border-radius:14px;
       background:#fff; border:1px solid rgba(0,0,0,.08); color:#0f1320;
       font-size:16px; line-height:1.4; box-shadow:inset 0 2px 4px rgba(16,24,40,.06);
-      resize:none; overflow-y:auto; /* keep shape stable */
+      resize:none; overflow-y:auto;
     }
     .jl-chat-input textarea::placeholder{color:#8a93a6; opacity:.95}
     .jl-chat-input textarea:focus{outline:none; border-color:#3b82f6; box-shadow:0 0 0 3px rgba(59,130,246,.18)}
@@ -163,7 +143,6 @@
       .jl-chat-input textarea{background:#12151d; color:#eaf0ff; border:1px solid rgba(255,255,255,.12)}
       .jl-chat-input textarea:focus{border-color:#60a5fa; box-shadow:0 0 0 3px rgba(96,165,250,.22)}
     }
-
     @media (prefers-reduced-motion:reduce){
       *{animation:none !important; transition:none !important}
     }
@@ -171,7 +150,6 @@
 </head>
 <body>
   <div class="blob"></div><div class="blob b2"></div>
-
   <div class="container">
     <header>
       <img class="avatar glass" src="https://jessica-lavrov.github.io/img/portrait.jpg" alt="Jessica avatar" />
@@ -180,12 +158,10 @@
         <p class="sub">IT specialist and writer focused on open protocols, privacy, and digital economies.</p>
       </div>
     </header>
-
     <div class="about glass">
       <strong>About</strong>
       <p>Hi, I am Jessica. I write practical notes and essays about resilient, human scale technology, I care about open standards, privacy friendly tools, and clear product thinking, I like pretty UI, and I still read RFCs for fun. Less drama, more clarity, and code that minds its manners.</p>
     </div>
-
     <section class="groups">
       <div class="group glass">
         <h2>Main Platforms</h2>
@@ -198,7 +174,6 @@
           <li><a href="https://www.patreon.com/cw/Jessica_Lavrov"><img class="icon" src="https://cdn.simpleicons.org/patreon/FF424D" alt=""> Patreon</a></li>
         </ul>
       </div>
-
       <div class="group glass">
         <h2>Social and Media</h2>
         <ul class="links">
@@ -213,7 +188,6 @@
           <li><a href="https://pinterest.com/jessica_lavrov/"><img class="icon" src="https://cdn.simpleicons.org/pinterest/BD081C" alt=""> Pinterest</a></li>
         </ul>
       </div>
-
       <div class="group glass">
         <h2>Professional and Technical</h2>
         <ul class="links">
@@ -226,7 +200,6 @@
           <li><a href="https://www.crunchbase.com/person/jessica-lavrov"><img class="icon" src="https://cdn.simpleicons.org/crunchbase/0288D1" alt=""> Crunchbase</a></li>
         </ul>
       </div>
-
       <div class="group glass">
         <h2>Decentralized and Identity</h2>
         <ul class="links">
@@ -236,7 +209,6 @@
         </ul>
       </div>
     </section>
-
     <section class="jl-chat glass" aria-label="Chat with Jessica's assistant">
       <div class="jl-chat-header">Ask about Jessica</div>
       <div class="jl-chat-body" id="jl-body"></div>
@@ -246,7 +218,6 @@
       </form>
     </section>
   </div>
-
   <script>
     const API="https://jessica-lavrov-chat-proxy.jessicalavrov.workers.dev";
     const bodyEl=document.getElementById("jl-body");
@@ -254,10 +225,7 @@
     const input=document.getElementById("jl-input");
     const history=[];
     let typingController=null;
-
-    // start unlocked so initial load never autoscrolls
     let autolock=false;
-
     function measureInputBar(){
       const h=form.getBoundingClientRect().height;
       bodyEl.style.setProperty("--inputH", h+"px");
@@ -269,20 +237,15 @@
       const target = bodyEl.scrollHeight - bodyEl.clientHeight;
       if (target > 0) bodyEl.scrollTop = target;
     }
-
-    // Auto-size textarea smoothly
     function autosize(){
       input.style.height = 'auto';
       const next = Math.min(input.scrollHeight, 160);
       input.style.height = next + 'px';
       measureInputBar();
     }
-
-    // Build message row with avatar for bot
     function addBubble(text, who){
       const row=document.createElement("div");
       row.className="jl-row "+(who==="user"?"jl-row-user":"jl-row-bot");
-
       if(who==="bot"){
         const ava=document.createElement("img");
         ava.className="jl-ava";
@@ -290,27 +253,22 @@
         ava.alt="Jessica";
         row.appendChild(ava);
       }
-
       const msg=document.createElement("div");
       msg.className="jl-msg "+(who==="user"?"jl-user":"jl-bot");
       msg.textContent=text||"";
       row.appendChild(msg);
-
       bodyEl.appendChild(row);
       forceScroll();
       return msg;
     }
-
     async function typeInto(el, fullText, cps=28){
       const cursor=document.createElement("span");
       cursor.className="jl-typing";
       el.textContent="";
       el.appendChild(cursor);
       const controller={cancelled:false}; typingController=controller;
-
       const stepMs=1000/cps;
       let i=0,acc=0,last=performance.now();
-
       return new Promise(resolve=>{
         function frame(now){
           if(controller.cancelled){ cursor.remove(); el.textContent=fullText; forceScroll(); return resolve(); }
@@ -329,23 +287,18 @@
         requestAnimationFrame(frame);
       });
     }
-
     async function sendToWorker(messages){
       const r=await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({messages})});
       const txt=await r.text();
       let data=null; try{data=JSON.parse(txt)}catch{}
       return{status:r.status,data,raw:txt}
     }
-
-    // Icon fallbacks (favicons)
     document.querySelectorAll('img.icon').forEach(img=>{
       img.addEventListener('error',()=>{
         const fb=img.getAttribute('data-fallback');
         if(fb && img.src!==fb){ img.src=fb; img.style.filter='none'; }
       },{once:true});
     });
-
-    // Enter to send, Shift+Enter for newline, keep focus
     input.addEventListener("keydown", e=>{
       if(e.isComposing) return;
       if(e.key==="Enter" && !e.shiftKey){
@@ -354,30 +307,20 @@
       }
     });
     input.addEventListener("input", autosize);
-
-    // user controls autoscroll: it locks only if they are at bottom
     bodyEl.addEventListener("scroll",()=>{ autolock = atBottom(); },{passive:true});
-    window.addEventListener("resize",()=>{ measureInputBar(); /* no forceScroll on resize */ });
-
-    input.addEventListener("focus",()=>{ setTimeout(()=>{ measureInputBar(); /* no forceScroll on focus */ },60); });
-
+    window.addEventListener("resize",()=>{ measureInputBar(); });
+    input.addEventListener("focus",()=>{ setTimeout(()=>{ measureInputBar(); },60); });
     form.addEventListener("submit",async e=>{
       e.preventDefault();
       const text=input.value.trim();
       if(!text)return;
       if(typingController) typingController.cancelled=true;
-
-      // keep focus, clear input, reset height
       input.value="";
       autosize();
       input.focus();
-
       addBubble(text,"user");
       history.push({role:"user",content:text});
-
-      // user just typed, assume they want to follow the conversation
       autolock = true;
-
       const botMsgEl = addBubble("", "bot");
       try{
         const{status,data,raw}=await sendToWorker(history);
@@ -395,8 +338,6 @@
         await typeInto(botMsgEl, "Network error. Please try again.", 32);
       }
     });
-
-    // initial layout, no greeting, no auto-scroll
     autosize();
     measureInputBar();
   </script>
