@@ -50,8 +50,22 @@
     @media(prefers-color-scheme:dark){
       .links a{color:#fff;background:#121826;border-color:#1b1e24}
     }
-    .icon{
-      width:18px;height:18px;display:inline-block;flex:0 0 18px
+
+    /* Brand icons */
+    .icon{width:18px;height:18px;display:inline-block;flex:0 0 18px;filter:none}
+
+    /* Brighten dark icons in dark mode */
+    @media(prefers-color-scheme:dark){
+      .icon[src*="/000000"],
+      .icon[src*="/111111"],
+      .icon[src*="/222222"],
+      .icon[src*="/333333"],
+      .icon[src*="/666666"],
+      .icon[src*="/777777"],
+      .icon[src*="/888888"],
+      .icon[src*="/999999"]{
+        filter:invert(1) brightness(1.2);
+      }
     }
 
     /* Chat assistant */
@@ -109,9 +123,9 @@
       <h2>Main Platforms</h2>
       <ul class="links">
         <li><a href="https://jessicalavrov.wordpress.com/"><img class="icon" src="https://cdn.simpleicons.org/wordpress/21759B" alt=""> WordPress</a></li>
-        <li><a href="https://jessica-lavrov.github.io"><img class="icon" src="https://cdn.simpleicons.org/githubpages/222" alt=""> GitHub Pages</a></li>
+        <li><a href="https://jessica-lavrov.github.io"><img class="icon" src="https://cdn.simpleicons.org/githubpages/222222" alt=""> GitHub Pages</a></li>
         <li><a href="https://jessicalavrov.substack.com"><img class="icon" src="https://cdn.simpleicons.org/substack/FF6719" alt=""> Substack</a></li>
-        <li><a href="https://medium.com/@jessicalavrov"><img class="icon" src="https://cdn.simpleicons.org/medium/000000" alt=""> Medium</a></li>
+        <li><a href="https://medium.com/@jessicalavrov"><img class="icon" src="https://cdn.simpleicons.org/medium/999999" alt=""> Medium</a></li>
         <li><a href="https://jessica-lavrov.blogspot.com/"><img class="icon" src="https://cdn.simpleicons.org/blogger/FF5722" alt=""> Blogspot</a></li>
         <li><a href="https://www.patreon.com/cw/Jessica_Lavrov"><img class="icon" src="https://cdn.simpleicons.org/patreon/FF424D" alt=""> Patreon</a></li>
       </ul>
@@ -121,12 +135,12 @@
       <h2>Social & Media</h2>
       <ul class="links">
         <li><a href="https://instagram.com/jessica.lavrov"><img class="icon" src="https://cdn.simpleicons.org/instagram/E4405F" alt=""> Instagram</a></li>
-        <li><a href="https://threads.net/@jessica.lavrov"><img class="icon" src="https://cdn.simpleicons.org/threads/000000" alt=""> Threads</a></li>
-        <li><a href="https://x.com/jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/x/000000" alt=""> X</a></li>
+        <li><a href="https://threads.net/@jessica.lavrov"><img class="icon" src="https://cdn.simpleicons.org/threads/999999" alt=""> Threads</a></li>
+        <li><a href="https://x.com/jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/x/999999" alt=""> X</a></li>
         <li><a href="https://truthsocial.com/@jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/truthsocial/5A2DFF" alt=""> Truth Social</a></li>
         <li><a href="https://www.youtube.com/@jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/youtube/FF0000" alt=""> YouTube</a></li>
         <li><a href="https://www.producthunt.com/@jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/producthunt/DA552F" alt=""> Product Hunt</a></li>
-        <li><a href="https://www.tiktok.com/@jessica.lavrov"><img class="icon" src="https://cdn.simpleicons.org/tiktok/000000" alt=""> TikTok</a></li>
+        <li><a href="https://www.tiktok.com/@jessica.lavrov"><img class="icon" src="https://cdn.simpleicons.org/tiktok/999999" alt=""> TikTok</a></li>
         <li><a href="https://www.tumblr.com/jessica-lavrov"><img class="icon" src="https://cdn.simpleicons.org/tumblr/36465D" alt=""> Tumblr</a></li>
         <li><a href="https://pinterest.com/jessica_lavrov/"><img class="icon" src="https://cdn.simpleicons.org/pinterest/BD081C" alt=""> Pinterest</a></li>
       </ul>
@@ -136,7 +150,7 @@
       <h2>Professional & Technical</h2>
       <ul class="links">
         <li><a href="https://www.linkedin.com/in/jessica-lavrov/"><img class="icon" src="https://cdn.simpleicons.org/linkedin/0A66C2" alt=""> LinkedIn</a></li>
-        <li><a href="https://github.com/jessica-lavrov"><img class="icon" src="https://cdn.simpleicons.org/github/181717" alt=""> GitHub</a></li>
+        <li><a href="https://github.com/jessica-lavrov"><img class="icon" src="https://cdn.simpleicons.org/github/333333" alt=""> GitHub</a></li>
         <li><a href="https://stackoverflow.com/users/31605603/jessica-lavrov"><img class="icon" src="https://cdn.simpleicons.org/stackoverflow/F58025" alt=""> Stack Overflow</a></li>
         <li><a href="https://www.quora.com/profile/Jessica-Lavrov"><img class="icon" src="https://cdn.simpleicons.org/quora/B92B27" alt=""> Quora</a></li>
         <li><a href="https://www.reddit.com/user/JessicaLavrov/"><img class="icon" src="https://cdn.simpleicons.org/reddit/FF4500" alt=""> Reddit</a></li>
@@ -229,6 +243,7 @@
       return{status:r.status,data,raw:txt}
     }
 
+    // maintain autoscroll lock when user is at the bottom
     bodyEl.addEventListener("scroll",()=>{ autolock = atBottom(); },{passive:true});
     window.addEventListener("resize",()=>{ measureInputBar(); forceScroll(); });
     input.addEventListener("focus",()=>{ setTimeout(()=>{ measureInputBar(); forceScroll(); },50); });
@@ -258,10 +273,6 @@
       }catch(err){
         await typeIntoBubble(botBubble,"Network error. Please try again.",32);
       }
-    });
-
-    input.addEventListener("keydown",e=>{
-      if(e.key==="Enter"&&!e.shiftKey){ e.preventDefault(); form.dispatchEvent(new Event("submit",{cancelable:true,bubbles:true})); }
     });
 
     measureInputBar();
