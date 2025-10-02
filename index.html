@@ -123,9 +123,9 @@
       <h2>Main Platforms</h2>
       <ul class="links">
         <li><a href="https://jessicalavrov.wordpress.com/"><img class="icon" src="https://cdn.simpleicons.org/wordpress/21759B" alt=""> WordPress</a></li>
-        <li><a href="https://jessica-lavrov.github.io"><img class="icon" src="https://cdn.simpleicons.org/githubpages/222222" alt=""> GitHub Pages</a></li>
+        <li><a href="https://jessica-lavrov.github.io"><img class="icon" src="https://github.githubassets.com/favicons/favicon.svg" alt="" data-fallback="https://github.githubassets.com/favicons/favicon.png"> GitHub Pages</a></li>
         <li><a href="https://jessicalavrov.substack.com"><img class="icon" src="https://cdn.simpleicons.org/substack/FF6719" alt=""> Substack</a></li>
-        <li><a href="https://medium.com/@jessicalavrov"><img class="icon" src="https://cdn.simpleicons.org/medium/999999" alt=""> Medium</a></li>
+        <li><a href="https://medium.com/@jessicalavrov"><img class="icon" src="https://medium.com/favicon.ico" alt=""> Medium</a></li>
         <li><a href="https://jessica-lavrov.blogspot.com/"><img class="icon" src="https://cdn.simpleicons.org/blogger/FF5722" alt=""> Blogspot</a></li>
         <li><a href="https://www.patreon.com/cw/Jessica_Lavrov"><img class="icon" src="https://cdn.simpleicons.org/patreon/FF424D" alt=""> Patreon</a></li>
       </ul>
@@ -243,7 +243,7 @@
       return{status:r.status,data,raw:txt}
     }
 
-    // Fallback for icons that fail to load (e.g., Truth Social, LinkedIn CDN hiccups)
+    // Fallback for icons that fail to load (e.g., Truth Social, LinkedIn, GitHub assets)
     document.querySelectorAll('img.icon').forEach(img=>{
       img.addEventListener('error',()=>{
         const fb=img.getAttribute('data-fallback');
