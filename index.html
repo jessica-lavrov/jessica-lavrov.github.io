@@ -13,21 +13,25 @@
       --bg-grad-1-dark: radial-gradient(1200px 900px at -10% -10%, rgba(90,120,255,.20), transparent 60%),
                          radial-gradient(900px 900px at 110% 0%, rgba(255,120,200,.18), transparent 60%),
                          linear-gradient(180deg, #0b0d14 0%, #0f131b 100%);
+
       --glass-bg: rgba(255,255,255,.42);
       --glass-bg-dark: rgba(16,18,25,.46);
       --glass-border: rgba(255,255,255,.70);
       --glass-border-dark: rgba(255,255,255,.12);
       --glass-highlight: radial-gradient(120% 100% at 50% -20%, rgba(255,255,255,.65), transparent 55%);
       --glass-highlight-dark: radial-gradient(120% 100% at 50% -20%, rgba(255,255,255,.10), transparent 55%);
+
       --text: #0f1320;
       --text-sub: #5f6b80;
       --text-dark: #eaf0ff;
       --text-sub-dark: #9aa6bf;
+
       --card-radius: 18px;
       --card-blur: 22px;
-      --card-shadow: 0 14px 40px rgba(16, 24, 40, .18), inset 0 1px 0 rgba(255,255,255,.45);
-      --card-shadow-dark: 0 18px 44px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.06);
+      --chip-gap: 12px;
     }
+
+    html{-webkit-text-size-adjust:100%}
     body{
       margin:0;
       font:16px/1.55 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
@@ -38,6 +42,7 @@
     @media(prefers-color-scheme:dark){
       body{color:var(--text-dark);background:var(--bg-grad-1-dark) fixed}
     }
+
     .blob{
       position:fixed; inset:auto auto 8% -10%;
       width:420px; height:420px; border-radius:50%;
@@ -45,7 +50,9 @@
       background:radial-gradient(circle at 30% 30%, rgba(255,200,150,.55), rgba(255,150,200,.28) 40%, transparent 70%);
     }
     .blob.b2{inset:10% -8% auto auto; background:radial-gradient(circle at 60% 40%, rgba(130,200,255,.52), rgba(140,160,255,.30) 40%, transparent 70%); width:500px; height:500px; opacity:.30}
+
     .container{max-width:900px; margin:44px auto; padding:0 20px; position:relative; z-index:1}
+
     .glass{
       position:relative;
       background:var(--glass-bg);
@@ -53,33 +60,45 @@
       -webkit-backdrop-filter:saturate(160%) blur(var(--card-blur));
       border:1px solid var(--glass-border);
       border-radius:var(--card-radius);
-      box-shadow:var(--card-shadow);
+      box-shadow:0 14px 40px rgba(16, 24, 40, .18), inset 0 1px 0 rgba(255,255,255,.45);
     }
     .glass::before{
       content:""; position:absolute; inset:0; border-radius:inherit;
       background:var(--glass-highlight); pointer-events:none; mix-blend-mode:soft-light;
     }
     @media(prefers-color-scheme:dark){
-      .glass{background:var(--glass-bg-dark); border-color:var(--glass-border-dark); box-shadow:var(--card-shadow-dark)}
+      .glass{background:var(--glass-bg-dark); border-color:var(--glass-border-dark); box-shadow:0 18px 44px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.06)}
       .glass::before{background:var(--glass-highlight-dark)}
     }
+
     header{display:grid; grid-template-columns:auto 1fr; gap:16px; align-items:center}
-    .avatar{width:96px;height:96px;border-radius:24px;object-fit:cover;box-shadow:0 12px 34px rgba(16,24,40,.22), inset 0 1px 0 rgba(255,255,255,.25)}
+    .avatar{
+      width:96px;height:96px;border-radius:24px;object-fit:cover;
+      box-shadow:0 12px 34px rgba(16,24,40,.22), inset 0 1px 0 rgba(255,255,255,.25)
+    }
     h1{font-size:28px; margin:0 0 6px 0}
     .sub{margin:0; color:var(--text-sub)}
     @media(prefers-color-scheme:dark){.sub{color:var(--text-sub-dark)}}
+
     .about{margin-top:20px; padding:18px 20px}
-    .about strong{display:block; font-size:12px; letter-spacing:.30px; text-transform:uppercase; color:var(--text-sub); margin-bottom:8px}
-    @media(prefers-color-scheme:dark){.about strong{color:var(--text-sub-dark)}}
+
     .groups{margin-top:30px; display:grid; gap:16px}
     .group{padding:16px 16px}
     .group h2{font-size:12px; letter-spacing:.30px; color:var(--text-sub); margin:0 0 12px 2px; text-transform:uppercase}
     @media(prefers-color-scheme:dark){.group h2{color:var(--text-sub-dark)}}
-    .links{list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(auto-fit, 200px); justify-content:start; gap:12px}
-    .links a{display:flex; align-items:center; gap:10px; padding:12px 14px; border-radius:16px; text-decoration:none; color:inherit; white-space:nowrap;
+
+    .links{
+      list-style:none; padding:0; margin:0;
+      display:grid; grid-template-columns:repeat(auto-fit, 200px);
+      justify-content:start; gap:var(--chip-gap);
+    }
+    .links a{
+      display:flex; align-items:center; gap:10px;
+      padding:12px 14px; border-radius:16px; text-decoration:none; color:inherit; white-space:nowrap;
       background:rgba(255,255,255,.60); border:1px solid rgba(255,255,255,.75);
       backdrop-filter:saturate(160%) blur(14px); -webkit-backdrop-filter:saturate(160%) blur(14px);
-      transition:transform .15s ease, box-shadow .15s ease}
+      transition:transform .15s ease, box-shadow .15s ease
+    }
     .links a:hover{transform:translateY(-1.5px); box-shadow:0 16px 32px rgba(16,24,40,.18)}
     @media(prefers-color-scheme:dark){
       .links a{background:rgba(20,22,29,.55); border-color:rgba(255,255,255,.14)}
@@ -87,91 +106,148 @@
     }
     .icon{width:18px;height:18px;display:inline-block;flex:0 0 18px}
     @media(prefers-color-scheme:dark){
-      .icon[src*="/000000"],.icon[src*="/333333"],.icon[src*="/999999"]{filter:invert(1) brightness(1.25)}
+      .icon[src*="/000000"], .icon[src*="/333333"], .icon[src*="/999999"]{filter:invert(1) brightness(1.25)}
     }
+
+    /* Chat */
     .jl-chat{margin:26px 0}
     .jl-chat-header{padding:12px 14px; font:700 12px ui-sans-serif; text-transform:uppercase; color:var(--text-sub)}
     @media(prefers-color-scheme:dark){.jl-chat-header{color:var(--text-sub-dark)}}
-    .jl-chat-body{--inputH: 88px; padding:12px 14px; padding-bottom:calc(var(--inputH) + 12px); max-height:60vh; overflow:auto}
-    .jl-msg{margin:10px 0 0 0; padding:12px 14px; border-radius:14px; border:1px solid rgba(255,255,255,.55); backdrop-filter:blur(14px)}
+
+    .jl-chat-body{
+      --inputH: 88px;
+      padding:12px 14px;
+      padding-bottom:calc(var(--inputH) + 12px);
+      max-height:60vh; overflow:auto; -webkit-overflow-scrolling:touch;
+    }
+
+    /* message rows for avatar layout */
+    .jl-row{display:flex; gap:10px; margin-top:10px}
+    .jl-row-user{justify-content:flex-end}
+    .jl-row-bot{justify-content:flex-start}
+
+    .jl-ava{
+      width:28px; height:28px; border-radius:50%; flex:0 0 28px; object-fit:cover;
+      box-shadow:0 2px 6px rgba(0,0,0,.15);
+      align-self:flex-start;
+    }
+
+    .jl-msg{
+      padding:12px 14px; border-radius:14px; max-width:min(100%, 620px);
+      border:1px solid rgba(255,255,255,.55);
+      backdrop-filter:saturate(160%) blur(14px); -webkit-backdrop-filter:saturate(160%) blur(14px);
+      white-space:pre-wrap; word-wrap:break-word;
+    }
     .jl-user{background:rgba(120,160,255,.26)}
     .jl-bot{background:rgba(240,245,255,.48)}
     @media(prefers-color-scheme:dark){
-      .jl-user{background:rgba(80,110,255,.20)}
-      .jl-bot{background:rgba(26,32,46,.60)}
+      .jl-user{background:rgba(80,110,255,.20); border-color:rgba(255,255,255,.10)}
+      .jl-bot{background:rgba(26,32,46,.60); border-color:rgba(255,255,255,.10)}
     }
-    .jl-chat-input{position:sticky; bottom:0; left:0; right:0; display:flex; gap:8px; padding:12px; backdrop-filter:blur(14px)}
+
+    .jl-typing{display:inline-block;width:0.9em;height:1em;border-right:2px solid currentColor;animation:jl-cursor .9s steps(1) infinite;vertical-align:bottom;margin-left:2px}
+    @keyframes jl-cursor{50%{border-right-color:transparent}}
+
+    .jl-chat-input{
+      position:sticky; bottom:0; left:0; right:0; display:flex; gap:8px; padding:12px;
+      backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+    }
     .jl-chat-input textarea{
       flex:1; min-height:48px; max-height:160px; padding:12px; border-radius:14px;
       background:#fff; border:1px solid rgba(0,0,0,.08); color:#0f1320;
-      font-size:16px; line-height:1.4; box-shadow:inset 0 2px 4px rgba(16,24,40,.06)
+      font-size:16px; line-height:1.4; box-shadow:inset 0 2px 4px rgba(16,24,40,.06);
+      resize:vertical;
     }
+    .jl-chat-input textarea::placeholder{color:#8a93a6; opacity:.95}
     .jl-chat-input textarea:focus{outline:none; border-color:#3b82f6; box-shadow:0 0 0 3px rgba(59,130,246,.18)}
-    .jl-chat-input button{padding:12px 16px; border-radius:14px; border:1px solid rgba(59,130,246,.55); background:linear-gradient(180deg, #6aaaff, #3b82f6); color:#fff; font-weight:700}
+    .jl-chat-input button{
+      padding:12px 16px; border-radius:14px; border:1px solid rgba(59,130,246,.55);
+      background:linear-gradient(180deg, #6aaaff, #3b82f6); color:#fff; font-weight:700; cursor:pointer
+    }
     @media(prefers-color-scheme:dark){
       .jl-chat-input textarea{background:#12151d; color:#eaf0ff; border:1px solid rgba(255,255,255,.12)}
       .jl-chat-input textarea:focus{border-color:#60a5fa; box-shadow:0 0 0 3px rgba(96,165,250,.22)}
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      *{animation:none !important; transition:none !important}
     }
   </style>
 </head>
 <body>
   <div class="blob"></div><div class="blob b2"></div>
+
   <div class="container">
     <header>
-      <img class="avatar glass" src="https://jessica-lavrov.github.io/img/portrait.jpg" alt="">
+      <img class="avatar glass" src="https://jessica-lavrov.github.io/img/portrait.jpg" alt="Jessica avatar" />
       <div>
         <h1>Jessica Lavrov</h1>
         <p class="sub">IT specialist and writer focused on open protocols, privacy, and digital economies.</p>
       </div>
     </header>
-    <div class="about glass"><strong>About</strong>
+
+    <div class="about glass">
+      <strong>About</strong>
       <p>Hi, I am Jessica. I write practical notes and essays about resilient, human scale technology, I care about open standards, privacy friendly tools, and clear product thinking, I like pretty UI, and I still read RFCs for fun. Less drama, more clarity, and code that minds its manners.</p>
     </div>
 
     <section class="groups">
-      <div class="group glass"><h2>Main Platforms</h2><ul class="links">
-        <li><a href="https://jessicalavrov.wordpress.com/"><img class="icon" src="https://cdn.simpleicons.org/wordpress/21759B"> WordPress</a></li>
-        <li><a href="https://jessica-lavrov.github.io"><img class="icon" src="https://github.githubassets.com/favicons/favicon.svg" data-fallback="https://github.githubassets.com/favicons/favicon.png"> GitHub Pages</a></li>
-        <li><a href="https://jessicalavrov.substack.com"><img class="icon" src="https://cdn.simpleicons.org/substack/FF6719"> Substack</a></li>
-        <li><a href="https://medium.com/@jessicalavrov"><img class="icon" src="https://medium.com/favicon.ico" data-fallback="https://cdn.simpleicons.org/medium/000000"> Medium</a></li>
-        <li><a href="https://jessica-lavrov.blogspot.com/"><img class="icon" src="https://cdn.simpleicons.org/blogger/FF5722"> Blogspot</a></li>
-        <li><a href="https://www.patreon.com/cw/Jessica_Lavrov"><img class="icon" src="https://cdn.simpleicons.org/patreon/FF424D"> Patreon</a></li>
-      </ul></div>
+      <div class="group glass">
+        <h2>Main Platforms</h2>
+        <ul class="links">
+          <li><a href="https://jessicalavrov.wordpress.com/"><img class="icon" src="https://cdn.simpleicons.org/wordpress/21759B" alt=""> WordPress</a></li>
+          <li><a href="https://jessica-lavrov.github.io"><img class="icon" src="https://github.githubassets.com/favicons/favicon.svg" alt="" data-fallback="https://github.githubassets.com/favicons/favicon.png"> GitHub Pages</a></li>
+          <li><a href="https://jessicalavrov.substack.com"><img class="icon" src="https://cdn.simpleicons.org/substack/FF6719" alt=""> Substack</a></li>
+          <li><a href="https://medium.com/@jessicalavrov"><img class="icon" src="https://medium.com/favicon.ico" alt="" data-fallback="https://cdn.simpleicons.org/medium/000000"> Medium</a></li>
+          <li><a href="https://jessica-lavrov.blogspot.com/"><img class="icon" src="https://cdn.simpleicons.org/blogger/FF5722" alt=""> Blogspot</a></li>
+          <li><a href="https://www.patreon.com/cw/Jessica_Lavrov"><img class="icon" src="https://cdn.simpleicons.org/patreon/FF424D" alt=""> Patreon</a></li>
+        </ul>
+      </div>
 
-      <div class="group glass"><h2>Social and Media</h2><ul class="links">
-        <li><a href="https://instagram.com/jessica.lavrov"><img class="icon" src="https://cdn.simpleicons.org/instagram/E4405F"> Instagram</a></li>
-        <li><a href="https://threads.net/@jessica.lavrov"><img class="icon" src="https://cdn.simpleicons.org/threads/999999"> Threads</a></li>
-        <li><a href="https://x.com/jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/x/999999"> X</a></li>
-        <li><a href="https://truthsocial.com/@jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/truthsocial/5A2DFF" data-fallback="https://truthsocial.com/favicon.ico"> Truth Social</a></li>
-        <li><a href="https://www.youtube.com/@jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/youtube/FF0000"> YouTube</a></li>
-        <li><a href="https://www.producthunt.com/@jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/producthunt/DA552F"> Product Hunt</a></li>
-        <li><a href="https://www.tiktok.com/@jessica.lavrov"><img class="icon" src="https://cdn.simpleicons.org/tiktok/999999"> TikTok</a></li>
-        <li><a href="https://www.tumblr.com/jessica-lavrov"><img class="icon" src="https://cdn.simpleicons.org/tumblr/36465D"> Tumblr</a></li>
-        <li><a href="https://pinterest.com/jessica_lavrov/"><img class="icon" src="https://cdn.simpleicons.org/pinterest/BD081C"> Pinterest</a></li>
-      </ul></div>
+      <div class="group glass">
+        <h2>Social and Media</h2>
+        <ul class="links">
+          <li><a href="https://instagram.com/jessica.lavrov"><img class="icon" src="https://cdn.simpleicons.org/instagram/E4405F" alt=""> Instagram</a></li>
+          <li><a href="https://threads.net/@jessica.lavrov"><img class="icon" src="https://cdn.simpleicons.org/threads/999999" alt=""> Threads</a></li>
+          <li><a href="https://x.com/jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/x/999999" alt=""> X</a></li>
+          <li><a href="https://truthsocial.com/@jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/truthsocial/5A2DFF" alt="" data-fallback="https://truthsocial.com/favicon.ico"> Truth Social</a></li>
+          <li><a href="https://www.youtube.com/@jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/youtube/FF0000" alt=""> YouTube</a></li>
+          <li><a href="https://www.producthunt.com/@jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/producthunt/DA552F" alt=""> Product Hunt</a></li>
+          <li><a href="https://www.tiktok.com/@jessica.lavrov"><img class="icon" src="https://cdn.simpleicons.org/tiktok/999999" alt=""> TikTok</a></li>
+          <li><a href="https://www.tumblr.com/jessica-lavrov"><img class="icon" src="https://cdn.simpleicons.org/tumblr/36465D" alt=""> Tumblr</a></li>
+          <li><a href="https://pinterest.com/jessica_lavrov/"><img class="icon" src="https://cdn.simpleicons.org/pinterest/BD081C" alt=""> Pinterest</a></li>
+        </ul>
+      </div>
 
-      <div class="group glass"><h2>Professional and Technical</h2><ul class="links">
-        <li><a href="https://www.linkedin.com/in/jessica-lavrov/"><img class="icon" src="https://cdn.simpleicons.org/linkedin/0A66C2" data-fallback="https://www.linkedin.com/favicon.ico"> LinkedIn</a></li>
-        <li><a href="https://github.com/jessica-lavrov"><img class="icon" src="https://cdn.simpleicons.org/github/333333"> GitHub</a></li>
-        <li><a href="https://stackoverflow.com/users/31605603/jessica-lavrov"><img class="icon" src="https://cdn.simpleicons.org/stackoverflow/F58025"> Stack Overflow</a></li>
-        <li><a href="https://www.quora.com/profile/Jessica-Lavrov"><img class="icon" src="https://cdn.simpleicons.org/quora/B92B27"> Quora</a></li>
-        <li><a href="https://www.reddit.com/user/JessicaLavrov/"><img class="icon" src="https://cdn.simpleicons.org/reddit/FF4500"> Reddit</a></li>
-        <li><a href="https://news.ycombinator.com/user?id=jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/ycombinator/F0652F"> Hacker News</a></li>
-        <li><a href="https://www.crunchbase.com/person/jessica-lavrov"><img class="icon" src="https://cdn.simpleicons.org/crunchbase/0288D1"> Crunchbase</a></li>
-      </ul></div>
+      <div class="group glass">
+        <h2>Professional and Technical</h2>
+        <ul class="links">
+          <li><a href="https://www.linkedin.com/in/jessica-lavrov/"><img class="icon" src="https://cdn.simpleicons.org/linkedin/0A66C2" alt="" data-fallback="https://www.linkedin.com/favicon.ico"> LinkedIn</a></li>
+          <li><a href="https://github.com/jessica-lavrov"><img class="icon" src="https://cdn.simpleicons.org/github/333333" alt=""> GitHub</a></li>
+          <li><a href="https://stackoverflow.com/users/31605603/jessica-lavrov"><img class="icon" src="https://cdn.simpleicons.org/stackoverflow/F58025" alt=""> Stack Overflow</a></li>
+          <li><a href="https://www.quora.com/profile/Jessica-Lavrov"><img class="icon" src="https://cdn.simpleicons.org/quora/B92B27" alt=""> Quora</a></li>
+          <li><a href="https://www.reddit.com/user/JessicaLavrov/"><img class="icon" src="https://cdn.simpleicons.org/reddit/FF4500" alt=""> Reddit</a></li>
+          <li><a href="https://news.ycombinator.com/user?id=jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/ycombinator/F0652F" alt=""> Hacker News</a></li>
+          <li><a href="https://www.crunchbase.com/person/jessica-lavrov"><img class="icon" src="https://cdn.simpleicons.org/crunchbase/0288D1" alt=""> Crunchbase</a></li>
+        </ul>
+      </div>
 
-      <div class="group glass"><h2>Decentralized and Identity</h2><ul class="links">
-        <li><a href="https://jessica-lavrov.bsky.social"><img class="icon" src="https://cdn.simpleicons.org/bluesky/0285FF"> Bluesky</a></li>
-        <li><a href="https://mastodon.social/@jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/mastodon/6364FF"> Mastodon</a></li>
-        <li><a href="https://gravatar.com/jessicalavrov"><img class="icon" src="https://cdn.simpleicons.org/gravatar/1E8CBE"> Gravatar</a></li>
-      </ul></div>
+      <div class="group glass">
+        <h2>Decentralized and Identity</h2>
+        <ul class="links">
+          <li><a href="https://jessica-lavrov.bsky.social"><img class="icon" src="https://cdn.simpleicons.org/bluesky/0285FF" alt=""> Bluesky</a></li>
+          <li><a href="https://mastodon.social/@jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/mastodon/6364FF" alt=""> Mastodon</a></li>
+          <li><a href="https://gravatar.com/jessicalavrov"><img class="icon" src="https://cdn.simpleicons.org/gravatar/1E8CBE" alt=""> Gravatar</a></li>
+        </ul>
+      </div>
     </section>
 
-    <section class="jl-chat glass"><div class="jl-chat-header">Ask about Jessica</div>
+    <section class="jl-chat glass" aria-label="Chat with Jessica's assistant">
+      <div class="jl-chat-header">Ask about Jessica</div>
       <div class="jl-chat-body" id="jl-body"></div>
       <form class="jl-chat-input" id="jl-form">
-        <textarea id="jl-input" placeholder="Ask about Jessica…" required></textarea>
-        <button type="submit">Send</button>
+        <textarea id="jl-input" placeholder="Ask about Jessica…" required spellcheck="false" autocomplete="off"></textarea>
+        <button type="submit" aria-label="Send message">Send</button>
       </form>
     </section>
   </div>
@@ -185,96 +261,135 @@
     let typingController=null;
     let autolock=true;
 
+    // Measure input bar height for padding
     function measureInputBar(){
       const h=form.getBoundingClientRect().height;
       bodyEl.style.setProperty("--inputH", h+"px");
-      bodyEl.style.padding-bottom = "calc(var(--inputH) + 12px)";
+      bodyEl.style.paddingBottom = "calc(var(--inputH) + 12px)";
     }
-    function atBottom(){
-      return bodyEl.scrollTop + bodyEl.clientHeight >= bodyEl.scrollHeight - 8;
-    }
+    function atBottom(){ return bodyEl.scrollTop + bodyEl.clientHeight >= bodyEl.scrollHeight - 8; }
     function forceScroll(){
       if(!autolock) return;
       const target = bodyEl.scrollHeight - bodyEl.clientHeight;
       if (target > 0) bodyEl.scrollTop = target;
     }
-    function addBubble(text,who){
-      const div=document.createElement("div");
-      div.className="jl-msg "+(who==="user"?"jl-user":"jl-bot");
-      div.textContent=text||"";
-      bodyEl.appendChild(div);
+
+    // Build message rows with optional avatar
+    function addBubble(text, who){
+      const row=document.createElement("div");
+      row.className="jl-row "+(who==="user"?"jl-row-user":"jl-row-bot");
+
+      if(who==="bot"){
+        const ava=document.createElement("img");
+        ava.className="jl-ava";
+        ava.src="https://jessica-lavrov.github.io/img/portrait.jpg";
+        ava.alt="Jessica";
+        row.appendChild(ava);
+      }
+
+      const msg=document.createElement("div");
+      msg.className="jl-msg "+(who==="user"?"jl-user":"jl-bot");
+      msg.textContent=text||"";
+      row.appendChild(msg);
+
+      bodyEl.appendChild(row);
       forceScroll();
-      return div;
+      return msg; // return the message element for typing effect
     }
-    async function typeIntoBubble(div,fullText,cps=28){
+
+    async function typeInto(element, fullText, cps=28){
       const cursor=document.createElement("span");
       cursor.className="jl-typing";
-      div.textContent="";
-      div.appendChild(cursor);
-      const controller={cancelled:false};
-      typingController=controller;
+      element.textContent="";
+      element.appendChild(cursor);
+      const controller={cancelled:false}; typingController=controller;
+
       const stepMs=1000/cps;
       let i=0,acc=0,last=performance.now();
+
       return new Promise(resolve=>{
         function frame(now){
-          if(controller.cancelled){ cursor.remove(); div.textContent=fullText; forceScroll(); return resolve() }
+          if(controller.cancelled){ cursor.remove(); element.textContent=fullText; forceScroll(); return resolve(); }
           const dt=now-last; last=now; acc+=dt;
           let wrote=false;
           while(acc>=stepMs && i<fullText.length){
             acc-=stepMs;
-            div.textContent+=fullText[i++];
-            div.appendChild(cursor);
+            element.textContent+=fullText[i++];
+            element.appendChild(cursor);
             wrote=true;
           }
           if(wrote) forceScroll();
-          if(i>=fullText.length){ cursor.remove(); forceScroll(); return resolve() }
-          requestAnimationFrame(frame)
+          if(i>=fullText.length){ cursor.remove(); forceScroll(); return resolve(); }
+          requestAnimationFrame(frame);
         }
-        requestAnimationFrame(frame)
-      })
+        requestAnimationFrame(frame);
+      });
     }
+
     async function sendToWorker(messages){
       const r=await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({messages})});
       const txt=await r.text();
       let data=null; try{data=JSON.parse(txt)}catch{}
       return{status:r.status,data,raw:txt}
     }
-    // icon fallbacks
+
+    // Icon fallbacks (e.g., favicons)
     document.querySelectorAll('img.icon').forEach(img=>{
       img.addEventListener('error',()=>{
         const fb=img.getAttribute('data-fallback');
         if(fb && img.src!==fb){ img.src=fb; img.style.filter='none'; }
       },{once:true});
     });
-    // Enter to send, Shift+Enter for newline
+
+    // Enter to send, Shift+Enter for newline, ignore IME composition
     input.addEventListener("keydown", e=>{
-      if(e.key==="Enter" && !e.shiftKey){ e.preventDefault(); form.dispatchEvent(new Event("submit",{cancelable:true,bubbles:true})); }
+      if(e.isComposing) return;                 // respect IME
+      if(e.key==="Enter" && !e.shiftKey){
+        e.preventDefault();
+        form.dispatchEvent(new Event("submit",{cancelable:true,bubbles:true}));
+      }
     });
-    // autoscroll lock when user is at the bottom
+
     bodyEl.addEventListener("scroll",()=>{ autolock = atBottom(); },{passive:true});
     window.addEventListener("resize",()=>{ measureInputBar(); forceScroll(); });
     input.addEventListener("focus",()=>{ setTimeout(()=>{ measureInputBar(); forceScroll(); },60); });
+
     form.addEventListener("submit",async e=>{
       e.preventDefault();
       const text=input.value.trim();
       if(!text)return;
       if(typingController) typingController.cancelled=true;
-      input.blur(); input.value="";
-      addBubble(text,"user"); history.push({role:"user",content:text});
-      const botBubble=addBubble("","bot");
+
+      input.blur();
+      input.value="";
+
+      addBubble(text,"user");
+      history.push({role:"user",content:text});
+
+      const botMsgEl = addBubble("", "bot");
       try{
         const{status,data,raw}=await sendToWorker(history);
-        if(data&&data.reply){ history.push({role:"assistant",content:data.reply}); await typeIntoBubble(botBubble,data.reply,30); }
-        else if(data&&data.error){
+        if(data&&data.reply){
+          history.push({role:"assistant",content:data.reply});
+          await typeInto(botMsgEl, data.reply, 30);
+        }else if(data&&data.error){
           const msg=(data.raw&&data.raw.error&&data.raw.error.message)?data.raw.error.message:data.error;
-          await typeIntoBubble(botBubble,"Warning, "+msg,32);
+          await typeInto(botMsgEl, "Warning, "+msg, 32);
         }else{
-          await typeIntoBubble(botBubble,"Unexpected response, "+status,32); console.log("raw:",raw);
+          await typeInto(botMsgEl, "Unexpected response, "+status, 32);
+          console.log("raw:",raw);
         }
-      }catch(err){ await typeIntoBubble(botBubble,"Network error. Please try again.",32); }
+      }catch(err){
+        await typeInto(botMsgEl, "Network error. Please try again.", 32);
+      }
     });
-    // greet
-    (function(){ const first = addBubble("", "bot"); typeIntoBubble(first, "Hi, ask me about Jessica’s work, writing, or where to follow her.", 30); measureInputBar(); })();
+
+    // initial layout + greeting
+    measureInputBar();
+    (function greet(){
+      const el = addBubble("", "bot");
+      typeInto(el, "Hi, ask me about Jessica’s work, writing, or where to follow her.", 28);
+    })();
   </script>
 </body>
 </html>
