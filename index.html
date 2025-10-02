@@ -22,6 +22,7 @@
       --card-radius: 18px;
       --card-blur: 22px;
     }
+
     html, body{scroll-behavior:auto; overflow-anchor:none}
     html{-webkit-text-size-adjust:100%}
     body{
@@ -34,6 +35,7 @@
     @media(prefers-color-scheme:dark){
       body{color:var(--text-dark);background:var(--bg-grad-1-dark) fixed}
     }
+
     .blob{
       position:fixed; inset:auto auto 8% -10%;
       width:420px; height:420px; border-radius:50%;
@@ -41,7 +43,9 @@
       background:radial-gradient(circle at 30% 30%, rgba(255,200,150,.55), rgba(255,150,200,.28) 40%, transparent 70%);
     }
     .blob.b2{inset:10% -8% auto auto; background:radial-gradient(circle at 60% 40%, rgba(130,200,255,.52), rgba(140,160,255,.30) 40%, transparent 70%); width:500px; height:500px; opacity:.30}
+
     .container{max-width:900px; margin:44px auto; padding:0 20px; position:relative; z-index:1}
+
     .glass{
       position:relative;
       background:var(--glass-bg);
@@ -59,6 +63,7 @@
       .glass{background:var(--glass-bg-dark); border-color:var(--glass-border-dark); box-shadow:0 18px 44px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.06)}
       .glass::before{background:var(--glass-highlight-dark)}
     }
+
     header{display:grid; grid-template-columns:auto 1fr; gap:16px; align-items:center}
     .avatar{
       width:96px;height:96px;border-radius:24px;object-fit:cover;
@@ -67,11 +72,14 @@
     h1{font-size:28px; margin:0 0 6px 0}
     .sub{margin:0; color:var(--text-sub)}
     @media(prefers-color-scheme:dark){.sub{color:var(--text-sub-dark)}}
+
     .about{margin-top:20px; padding:18px 20px}
+
     .groups{margin-top:30px; display:grid; gap:16px}
     .group{padding:16px 16px}
     .group h2{font-size:12px; letter-spacing:.30px; color:var(--text-sub); margin:0 0 12px 2px; text-transform:uppercase}
     @media(prefers-color-scheme:dark){.group h2{color:var(--text-sub-dark)}}
+
     .links{
       list-style:none; padding:0; margin:0;
       display:grid; grid-template-columns:repeat(auto-fit, 200px);
@@ -93,23 +101,30 @@
     @media(prefers-color-scheme:dark){
       .icon[src*="/000000"], .icon[src*="/333333"], .icon[src*="/999999"]{filter:invert(1) brightness(1.25)}
     }
-    .jl-chat{margin:26px 0}
+
+    .jl-chat{margin:26px 0; display:flex; flex-direction:column}
     .jl-chat-header{padding:12px 14px; font:700 12px ui-sans-serif; text-transform:uppercase; color:var(--text-sub)}
     @media(prefers-color-scheme:dark){.jl-chat-header{color:var(--text-sub-dark)}}
+
+    /* Fixed-height, scrollable chat body keeps page stable */
     .jl-chat-body{
-      --inputH: 88px;
+      height: clamp(300px, 50vh, 520px);
+      overflow:auto;
+      -webkit-overflow-scrolling:touch;
       padding:12px 14px;
-      padding-bottom:calc(var(--inputH) + 12px);
-      max-height:60vh; overflow:auto; -webkit-overflow-scrolling:touch; overflow-anchor:none;
+      overflow-anchor:none;
     }
+
     .jl-row{display:flex; gap:10px; margin-top:10px}
     .jl-row-user{justify-content:flex-end}
     .jl-row-bot{justify-content:flex-start}
+
     .jl-ava{
       width:28px; height:28px; border-radius:50%; flex:0 0 28px; object-fit:cover;
       box-shadow:0 2px 6px rgba(0,0,0,.15);
       align-self:flex-start;
     }
+
     .jl-msg{
       padding:12px 14px; border-radius:14px; max-width:min(100%, 620px);
       border:1px solid rgba(255,255,255,.55);
@@ -122,11 +137,14 @@
       .jl-user{background:rgba(80,110,255,.20); border-color:rgba(255,255,255,.10)}
       .jl-bot{background:rgba(26,32,46,.60); border-color:rgba(255,255,255,.10)}
     }
+
     .jl-typing{display:inline-block;width:0.9em;height:1em;border-right:2px solid currentColor;animation:jl-cursor .9s steps(1) infinite;vertical-align:bottom;margin-left:2px}
     @keyframes jl-cursor{50%{border-right-color:transparent}}
+
     .jl-chat-input{
-      position:sticky; bottom:0; left:0; right:0; display:flex; gap:8px; padding:12px;
+      display:flex; gap:8px; padding:12px;
       backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+      border-top:1px solid rgba(255,255,255,.35);
     }
     .jl-chat-input textarea{
       flex:1; min-height:48px; max-height:160px; padding:12px; border-radius:14px;
@@ -144,6 +162,7 @@
       .jl-chat-input textarea{background:#12151d; color:#eaf0ff; border:1px solid rgba(255,255,255,.12)}
       .jl-chat-input textarea:focus{border-color:#60a5fa; box-shadow:0 0 0 3px rgba(96,165,250,.22)}
     }
+
     @media (prefers-reduced-motion:reduce){
       *{animation:none !important; transition:none !important}
     }
@@ -151,6 +170,7 @@
 </head>
 <body>
   <div class="blob"></div><div class="blob b2"></div>
+
   <div class="container">
     <header>
       <img class="avatar glass" src="https://jessica-lavrov.github.io/img/portrait.jpg" alt="Jessica avatar" />
@@ -159,10 +179,12 @@
         <p class="sub">IT specialist and writer focused on open protocols, privacy, and digital economies.</p>
       </div>
     </header>
+
     <div class="about glass">
       <strong>About</strong>
       <p>Hi, I am Jessica. I write practical notes and essays about resilient, human scale technology, I care about open standards, privacy friendly tools, and clear product thinking, I like pretty UI, and I still read RFCs for fun. Less drama, more clarity, and code that minds its manners.</p>
     </div>
+
     <section class="groups">
       <div class="group glass">
         <h2>Main Platforms</h2>
@@ -175,6 +197,7 @@
           <li><a href="https://www.patreon.com/cw/Jessica_Lavrov"><img class="icon" src="https://cdn.simpleicons.org/patreon/FF424D" alt=""> Patreon</a></li>
         </ul>
       </div>
+
       <div class="group glass">
         <h2>Social and Media</h2>
         <ul class="links">
@@ -189,6 +212,7 @@
           <li><a href="https://pinterest.com/jessica_lavrov/"><img class="icon" src="https://cdn.simpleicons.org/pinterest/BD081C" alt=""> Pinterest</a></li>
         </ul>
       </div>
+
       <div class="group glass">
         <h2>Professional and Technical</h2>
         <ul class="links">
@@ -201,6 +225,7 @@
           <li><a href="https://www.crunchbase.com/person/jessica-lavrov"><img class="icon" src="https://cdn.simpleicons.org/crunchbase/0288D1" alt=""> Crunchbase</a></li>
         </ul>
       </div>
+
       <div class="group glass">
         <h2>Decentralized and Identity</h2>
         <ul class="links">
@@ -210,6 +235,7 @@
         </ul>
       </div>
     </section>
+
     <section class="jl-chat glass" aria-label="Chat with Jessica's assistant">
       <div class="jl-chat-header">Ask about Jessica</div>
       <div class="jl-chat-body" id="jl-body"></div>
@@ -219,6 +245,7 @@
       </form>
     </section>
   </div>
+
   <script>
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
     window.scrollTo(0,0);
@@ -231,11 +258,6 @@
     let typingController=null;
     let autolock=false;
 
-    function measureInputBar(){
-      const h=form.getBoundingClientRect().height;
-      bodyEl.style.setProperty("--inputH", h+"px");
-      bodyEl.style.paddingBottom = "calc(var(--inputH) + 12px)";
-    }
     function atBottom(){ return bodyEl.scrollTop + bodyEl.clientHeight >= bodyEl.scrollHeight - 8; }
     function forceScroll(){
       if(!autolock) return;
@@ -246,8 +268,8 @@
       input.style.height = 'auto';
       const next = Math.min(input.scrollHeight, 160);
       input.style.height = next + 'px';
-      measureInputBar();
     }
+
     function addBubble(text, who){
       const row=document.createElement("div");
       row.className="jl-row "+(who==="user"?"jl-row-user":"jl-row-bot");
@@ -266,6 +288,7 @@
       forceScroll();
       return msg;
     }
+
     async function typeInto(el, fullText, cps=28){
       const cursor=document.createElement("span");
       cursor.className="jl-typing";
@@ -292,18 +315,21 @@
         requestAnimationFrame(frame);
       });
     }
+
     async function sendToWorker(messages){
       const r=await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({messages})});
       const txt=await r.text();
       let data=null; try{data=JSON.parse(txt)}catch{}
       return{status:r.status,data,raw:txt}
     }
+
     document.querySelectorAll('img.icon').forEach(img=>{
       img.addEventListener('error',()=>{
         const fb=img.getAttribute('data-fallback');
         if(fb && img.src!==fb){ img.src=fb; img.style.filter='none'; }
       },{once:true});
     });
+
     input.addEventListener("keydown", e=>{
       if(e.isComposing) return;
       if(e.key==="Enter" && !e.shiftKey){
@@ -312,20 +338,24 @@
       }
     });
     input.addEventListener("input", autosize);
+
     bodyEl.addEventListener("scroll",()=>{ autolock = atBottom(); },{passive:true});
-    window.addEventListener("resize",()=>{ measureInputBar(); });
-    input.addEventListener("focus",()=>{ setTimeout(()=>{ measureInputBar(); },60); });
+
     form.addEventListener("submit",async e=>{
       e.preventDefault();
       const text=input.value.trim();
       if(!text)return;
       if(typingController) typingController.cancelled=true;
+
       input.value="";
       autosize();
       input.focus();
+
       addBubble(text,"user");
       historyBuf.push({role:"user",content:text});
+
       autolock = true;
+
       const botMsgEl = addBubble("", "bot");
       try{
         const{status,data,raw}=await sendToWorker(historyBuf);
@@ -343,11 +373,11 @@
         await typeInto(botMsgEl, "Network error. Please try again.", 32);
       }
     });
+
     document.addEventListener('DOMContentLoaded', ()=>{
       window.scrollTo(0,0);
       bodyEl.scrollTop = 0;
       autosize();
-      measureInputBar();
     }, {once:true});
     window.addEventListener('load', ()=>{
       window.scrollTo(0,0);
