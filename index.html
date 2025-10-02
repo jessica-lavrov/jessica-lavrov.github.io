@@ -254,7 +254,9 @@
     const input=document.getElementById("jl-input");
     const history=[];
     let typingController=null;
-    let autolock=true;
+
+    // start unlocked so initial load never autoscrolls
+    let autolock=false;
 
     function measureInputBar(){
       const h=form.getBoundingClientRect().height;
@@ -353,9 +355,11 @@
     });
     input.addEventListener("input", autosize);
 
+    // user controls autoscroll: it locks only if they are at bottom
     bodyEl.addEventListener("scroll",()=>{ autolock = atBottom(); },{passive:true});
-    window.addEventListener("resize",()=>{ measureInputBar(); forceScroll(); });
-    input.addEventListener("focus",()=>{ setTimeout(()=>{ measureInputBar(); forceScroll(); },60); });
+    window.addEventListener("resize",()=>{ measureInputBar(); /* no forceScroll on resize */ });
+
+    input.addEventListener("focus",()=>{ setTimeout(()=>{ measureInputBar(); /* no forceScroll on focus */ },60); });
 
     form.addEventListener("submit",async e=>{
       e.preventDefault();
@@ -370,6 +374,9 @@
 
       addBubble(text,"user");
       history.push({role:"user",content:text});
+
+      // user just typed, assume they want to follow the conversation
+      autolock = true;
 
       const botMsgEl = addBubble("", "bot");
       try{
@@ -389,13 +396,9 @@
       }
     });
 
-    // initial layout + greeting
+    // initial layout, no greeting, no auto-scroll
     autosize();
     measureInputBar();
-    (function greet(){
-      const el = addBubble("", "bot");
-      typeInto(el, "Hi, ask me about Jessica’s work, writing, or where to follow her.", 28);
-    })();
   </script>
 </body>
 </html>
