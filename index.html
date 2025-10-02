@@ -13,7 +13,6 @@
       --bg-grad-1-dark: radial-gradient(1200px 900px at -10% -10%, rgba(90,120,255,.20), transparent 60%),
                          radial-gradient(900px 900px at 110% 0%, rgba(255,120,200,.18), transparent 60%),
                          linear-gradient(180deg, #0b0d14 0%, #0f131b 100%);
-
       --glass-bg: rgba(255,255,255,.42);
       --glass-bg-dark: rgba(16,18,25,.46);
       --glass-border: rgba(255,255,255,.70);
@@ -24,49 +23,29 @@
       --text-sub: #5f6b80;
       --text-dark: #eaf0ff;
       --text-sub-dark: #9aa6bf;
-
       --card-radius: 18px;
       --card-blur: 22px;
       --card-shadow: 0 14px 40px rgba(16, 24, 40, .18), inset 0 1px 0 rgba(255,255,255,.45);
       --card-shadow-dark: 0 18px 44px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.06);
-
-      --chip-border: rgba(255,255,255,.75);
-      --chip-border-dark: rgba(255,255,255,.14);
-
-      --link-card-bg: rgba(255,255,255,.58);
-      --link-card-bg-dark: rgba(20,22,29,.52);
-      --link-card-hover: rgba(255,255,255,.75);
-      --link-card-hover-dark: rgba(34,38,48,.78);
-
-      --accent: #3b82f6;
-      --accent-dark: #60a5fa);
     }
-
-    html{-webkit-text-size-adjust:100%}
     body{
       margin:0;
-      font:16px/1.55 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji, sans-serif;
+      font:16px/1.55 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color:var(--text);
       background:var(--bg-grad-1) fixed;
       min-height:100vh;
-      position:relative;
     }
     @media(prefers-color-scheme:dark){
       body{color:var(--text-dark);background:var(--bg-grad-1-dark) fixed}
     }
-
     .blob{
       position:fixed; inset:auto auto 8% -10%;
       width:420px; height:420px; border-radius:50%;
-      filter:blur(48px); opacity:.35; pointer-events:none; z-index:0;
+      filter:blur(48px); opacity:.35; pointer-events:none;
       background:radial-gradient(circle at 30% 30%, rgba(255,200,150,.55), rgba(255,150,200,.28) 40%, transparent 70%);
-      transform:translateZ(0);
     }
     .blob.b2{inset:10% -8% auto auto; background:radial-gradient(circle at 60% 40%, rgba(130,200,255,.52), rgba(140,160,255,.30) 40%, transparent 70%); width:500px; height:500px; opacity:.30}
-
     .container{max-width:900px; margin:44px auto; padding:0 20px; position:relative; z-index:1}
-
-    /* Glass utility with stronger sheen */
     .glass{
       position:relative;
       background:var(--glass-bg);
@@ -77,248 +56,122 @@
       box-shadow:var(--card-shadow);
     }
     .glass::before{
-      content:"";
-      position:absolute; inset:0;
-      border-radius:inherit;
-      background:var(--glass-highlight);
-      pointer-events:none;
-      mix-blend-mode:soft-light;
+      content:""; position:absolute; inset:0; border-radius:inherit;
+      background:var(--glass-highlight); pointer-events:none; mix-blend-mode:soft-light;
     }
     @media(prefers-color-scheme:dark){
-      .glass{
-        background:var(--glass-bg-dark);
-        border-color:var(--glass-border-dark);
-        box-shadow:var(--card-shadow-dark);
-      }
+      .glass{background:var(--glass-bg-dark); border-color:var(--glass-border-dark); box-shadow:var(--card-shadow-dark)}
       .glass::before{background:var(--glass-highlight-dark)}
     }
-
-    header{
-      display:grid; grid-template-columns:auto 1fr; gap:16px; align-items:center;
-    }
-    .avatar{
-      width:96px;height:96px;border-radius:24px;object-fit:cover;
-      box-shadow:0 12px 34px rgba(16,24,40,.22), inset 0 1px 0 rgba(255,255,255,.25);
-    }
-    h1{font-size:28px; margin:0 0 6px 0; letter-spacing:.2px}
+    header{display:grid; grid-template-columns:auto 1fr; gap:16px; align-items:center}
+    .avatar{width:96px;height:96px;border-radius:24px;object-fit:cover;box-shadow:0 12px 34px rgba(16,24,40,.22), inset 0 1px 0 rgba(255,255,255,.25)}
+    h1{font-size:28px; margin:0 0 6px 0}
     .sub{margin:0; color:var(--text-sub)}
     @media(prefers-color-scheme:dark){.sub{color:var(--text-sub-dark)}}
-
     .about{margin-top:20px; padding:18px 20px}
-    .about strong{
-      display:block; font-size:12px; letter-spacing:.30px; text-transform:uppercase;
-      color:var(--text-sub); margin-bottom:8px;
-    }
+    .about strong{display:block; font-size:12px; letter-spacing:.30px; text-transform:uppercase; color:var(--text-sub); margin-bottom:8px}
     @media(prefers-color-scheme:dark){.about strong{color:var(--text-sub-dark)}}
-    .about p{margin:0; font-size:16px}
-
     .groups{margin-top:30px; display:grid; gap:16px}
     .group{padding:16px 16px}
-    .group h2{
-      font-size:12px; letter-spacing:.30px; color:var(--text-sub); margin:0 0 12px 2px; text-transform:uppercase;
-    }
+    .group h2{font-size:12px; letter-spacing:.30px; color:var(--text-sub); margin:0 0 12px 2px; text-transform:uppercase}
     @media(prefers-color-scheme:dark){.group h2{color:var(--text-sub-dark)}}
-
-    /* Link chips */
-    .links{
-      list-style:none; padding:0; margin:0;
-      display:grid; grid-template-columns:repeat(auto-fit, 200px);
-      justify-content:start; gap:12px;
-    }
-    .links a{
-      display:flex; align-items:center; gap:10px;
-      padding:12px 14px; border-radius:16px; text-decoration:none;
-      color:inherit; white-space:nowrap;
-      background:var(--link-card-bg);
-      border:1px solid var(--chip-border);
-      backdrop-filter:saturate(160%) blur(14px);
-      -webkit-backdrop-filter:saturate(160%) blur(14px);
-      transition:transform .15s ease, background-color .15s ease, border-color .15s ease, box-shadow .15s ease;
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.35), 0 10px 24px rgba(16,24,40,.12);
-    }
-    .links a:hover{
-      transform:translateY(-1.5px);
-      background:var(--link-card-hover);
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.42), 0 16px 32px rgba(16,24,40,.18);
-    }
+    .links{list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(auto-fit, 200px); justify-content:start; gap:12px}
+    .links a{display:flex; align-items:center; gap:10px; padding:12px 14px; border-radius:16px; text-decoration:none; color:inherit; white-space:nowrap;
+      background:rgba(255,255,255,.60); border:1px solid rgba(255,255,255,.75);
+      backdrop-filter:saturate(160%) blur(14px); -webkit-backdrop-filter:saturate(160%) blur(14px);
+      transition:transform .15s ease, box-shadow .15s ease}
+    .links a:hover{transform:translateY(-1.5px); box-shadow:0 16px 32px rgba(16,24,40,.18)}
     @media(prefers-color-scheme:dark){
-      .links a{
-        background:var(--link-card-bg-dark); border-color:var(--chip-border-dark);
-        box-shadow:inset 0 1px 0 rgba(255,255,255,.06), 0 14px 30px rgba(0,0,0,.40);
-      }
-      .links a:hover{
-        background:var(--link-card-hover-dark);
-        box-shadow:inset 0 1px 0 rgba(255,255,255,.10), 0 18px 38px rgba(0,0,0,.50);
-      }
+      .links a{background:rgba(20,22,29,.55); border-color:rgba(255,255,255,.14)}
+      .links a:hover{background:rgba(34,38,48,.75)}
     }
-
-    .icon{width:18px;height:18px;display:inline-block;flex:0 0 18px;filter:none;image-rendering:auto}
-
-    /* brighten dark icons in dark mode */
+    .icon{width:18px;height:18px;display:inline-block;flex:0 0 18px}
     @media(prefers-color-scheme:dark){
-      .icon[src*="/000000"],
-      .icon[src*="/111111"],
-      .icon[src*="/222222"],
-      .icon[src*="/333333"],
-      .icon[src*="/666666"],
-      .icon[src*="/777777"],
-      .icon[src*="/888888"],
-      .icon[src*="/999999"]{
-        filter:invert(1) brightness(1.25);
-      }
+      .icon[src*="/000000"],.icon[src*="/333333"],.icon[src*="/999999"]{filter:invert(1) brightness(1.25)}
     }
-
-    /* Chat assistant */
-    .jl-chat{margin:26px 0; overflow:hidden}
-    .jl-chat-header{
-      padding:12px 14px; font:700 12px ui-sans-serif; letter-spacing:.30px; text-transform:uppercase;
-      color:var(--text-sub);
-      backdrop-filter:saturate(160%) blur(14px);
-      -webkit-backdrop-filter:saturate(160%) blur(14px);
-      border-bottom:1px solid rgba(255,255,255,.50);
-    }
-    @media(prefers-color-scheme:dark){.jl-chat-header{color:var(--text-sub-dark); border-bottom-color:rgba(255,255,255,.10)}}
-
-    .jl-chat-body{
-      --inputH: 88px;
-      padding:12px 14px;
-      padding-bottom:calc(var(--inputH) + 12px);
-      max-height:60vh; overflow:auto; scroll-behavior:auto; scroll-padding-bottom:var(--inputH);
-      -webkit-overflow-scrolling:touch;
-    }
-    .jl-msg{
-      display:block; margin:10px 0 0 0; padding:12px 14px; border-radius:14px; max-width:100%;
-      white-space:pre-wrap; word-wrap:break-word;
-      border:1px solid rgba(255,255,255,.55);
-      backdrop-filter:saturate(160%) blur(14px);
-      -webkit-backdrop-filter:saturate(160%) blur(14px);
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.40), 0 8px 18px rgba(16,24,40,.10);
-    }
+    .jl-chat{margin:26px 0}
+    .jl-chat-header{padding:12px 14px; font:700 12px ui-sans-serif; text-transform:uppercase; color:var(--text-sub)}
+    @media(prefers-color-scheme:dark){.jl-chat-header{color:var(--text-sub-dark)}}
+    .jl-chat-body{--inputH: 88px; padding:12px 14px; padding-bottom:calc(var(--inputH) + 12px); max-height:60vh; overflow:auto}
+    .jl-msg{margin:10px 0 0 0; padding:12px 14px; border-radius:14px; border:1px solid rgba(255,255,255,.55); backdrop-filter:blur(14px)}
     .jl-user{background:rgba(120,160,255,.26)}
     .jl-bot{background:rgba(240,245,255,.48)}
     @media(prefers-color-scheme:dark){
-      .jl-user{background:rgba(80,110,255,.20); border-color:rgba(255,255,255,.10)}
-      .jl-bot{background:rgba(26,32,46,.60); border-color:rgba(255,255,255,.10)}
+      .jl-user{background:rgba(80,110,255,.20)}
+      .jl-bot{background:rgba(26,32,46,.60)}
     }
-
-    .jl-typing{display:inline-block;width:0.9em;height:1em;border-right:2px solid currentColor;animation:jl-cursor .9s steps(1) infinite;vertical-align:bottom;margin-left:2px}
-    @keyframes jl-cursor{50%{border-right-color:transparent}}
-
-    .jl-chat-input{
-      position:sticky; bottom:0; left:0; right:0; display:flex; gap:8px; padding:12px;
-      backdrop-filter:saturate(160%) blur(14px);
-      -webkit-backdrop-filter:saturate(160%) blur(14px);
-      background:linear-gradient(to top, rgba(255,255,255,.90), rgba(255,255,255,.45));
-      border-top:1px solid rgba(255,255,255,.60);
-      padding-bottom:calc(12px + env(safe-area-inset-bottom));
-      z-index:1;
-    }
-    @media(prefers-color-scheme:dark){
-      .jl-chat-input{
-        background:linear-gradient(to top, rgba(10,12,18,.90), rgba(10,12,18,.45));
-        border-top-color:rgba(255,255,255,.12);
-      }
-    }
+    .jl-chat-input{position:sticky; bottom:0; left:0; right:0; display:flex; gap:8px; padding:12px; backdrop-filter:blur(14px)}
     .jl-chat-input textarea{
-      flex:1; min-height:48px; max-height:160px; padding:12px 12px; border-radius:14px;
-      border:1px solid rgba(255,255,255,.70);
-      background:rgba(255,255,255,.72); color:#0f1320; font-size:16px; line-height:1.4;
-      backdrop-filter:saturate(160%) blur(12px); -webkit-backdrop-filter:saturate(160%) blur(12px);
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.45);
-      resize:vertical;
+      flex:1; min-height:48px; max-height:160px; padding:12px; border-radius:14px;
+      background:#fff; border:1px solid rgba(0,0,0,.08); color:#0f1320;
+      font-size:16px; line-height:1.4; box-shadow:inset 0 2px 4px rgba(16,24,40,.06)
     }
-    .jl-chat-input button{
-      padding:12px 16px; border-radius:14px; border:1px solid rgba(59,130,246,.55);
-      background:linear-gradient(180deg, #6aaaff, #3b82f6);
-      color:#fff; font-weight:800; cursor:pointer; font-size:15px; letter-spacing:.2px;
-      box-shadow:0 10px 24px rgba(59,130,246,.34), inset 0 1px 0 rgba(255,255,255,.45);
-      transition:transform .12s ease, box-shadow .12s ease;
-    }
-    .jl-chat-input button:hover{transform:translateY(-1px); box-shadow:0 14px 30px rgba(59,130,246,.40), inset 0 1px 0 rgba(255,255,255,.52)}
-    .jl-chat-input button:active{transform:translateY(0); box-shadow:0 10px 22px rgba(59,130,246,.30), inset 0 1px 0 rgba(255,255,255,.45)}
-
-    @media (prefers-reduced-motion:reduce){
-      *{animation:none !important; transition:none !important}
+    .jl-chat-input textarea:focus{outline:none; border-color:#3b82f6; box-shadow:0 0 0 3px rgba(59,130,246,.18)}
+    .jl-chat-input button{padding:12px 16px; border-radius:14px; border:1px solid rgba(59,130,246,.55); background:linear-gradient(180deg, #6aaaff, #3b82f6); color:#fff; font-weight:700}
+    @media(prefers-color-scheme:dark){
+      .jl-chat-input textarea{background:#12151d; color:#eaf0ff; border:1px solid rgba(255,255,255,.12)}
+      .jl-chat-input textarea:focus{border-color:#60a5fa; box-shadow:0 0 0 3px rgba(96,165,250,.22)}
     }
   </style>
 </head>
 <body>
-  <div class="blob"></div>
-  <div class="blob b2"></div>
-
+  <div class="blob"></div><div class="blob b2"></div>
   <div class="container">
     <header>
-      <img class="avatar glass" src="https://jessica-lavrov.github.io/img/portrait.jpg" alt="Portrait of Jessica Lavrov" />
+      <img class="avatar glass" src="https://jessica-lavrov.github.io/img/portrait.jpg" alt="">
       <div>
         <h1>Jessica Lavrov</h1>
         <p class="sub">IT specialist and writer focused on open protocols, privacy, and digital economies.</p>
       </div>
     </header>
-
-    <div class="about glass">
-      <strong>About</strong>
+    <div class="about glass"><strong>About</strong>
       <p>Hi, I am Jessica. I write practical notes and essays about resilient, human scale technology, I care about open standards, privacy friendly tools, and clear product thinking, I like pretty UI, and I still read RFCs for fun. Less drama, more clarity, and code that minds its manners.</p>
     </div>
 
     <section class="groups">
-      <div class="group glass">
-        <h2>Main Platforms</h2>
-        <ul class="links">
-          <li><a href="https://jessicalavrov.wordpress.com/"><img class="icon" src="https://cdn.simpleicons.org/wordpress/21759B" alt=""> WordPress</a></li>
-          <li><a href="https://jessica-lavrov.github.io"><img class="icon" src="https://github.githubassets.com/favicons/favicon.svg" alt="" data-fallback="https://github.githubassets.com/favicons/favicon.png"> GitHub Pages</a></li>
-          <li><a href="https://jessicalavrov.substack.com"><img class="icon" src="https://cdn.simpleicons.org/substack/FF6719" alt=""> Substack</a></li>
-          <!-- Medium with favicon and inline SVG fallback to avoid missing icon -->
-          <li><a href="https://medium.com/@jessicalavrov"><img class="icon" src="https://medium.com/favicon.ico" alt=""
-                 data-fallback='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><rect width="24" height="24" rx="5" ry="5" fill="white"/><text x="6" y="17" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="black">M</text></svg>'> Medium</a></li>
-          <li><a href="https://jessica-lavrov.blogspot.com/"><img class="icon" src="https://cdn.simpleicons.org/blogger/FF5722" alt=""> Blogspot</a></li>
-          <li><a href="https://www.patreon.com/cw/Jessica_Lavrov"><img class="icon" src="https://cdn.simpleicons.org/patreon/FF424D" alt=""> Patreon</a></li>
-        </ul>
-      </div>
+      <div class="group glass"><h2>Main Platforms</h2><ul class="links">
+        <li><a href="https://jessicalavrov.wordpress.com/"><img class="icon" src="https://cdn.simpleicons.org/wordpress/21759B"> WordPress</a></li>
+        <li><a href="https://jessica-lavrov.github.io"><img class="icon" src="https://github.githubassets.com/favicons/favicon.svg" data-fallback="https://github.githubassets.com/favicons/favicon.png"> GitHub Pages</a></li>
+        <li><a href="https://jessicalavrov.substack.com"><img class="icon" src="https://cdn.simpleicons.org/substack/FF6719"> Substack</a></li>
+        <li><a href="https://medium.com/@jessicalavrov"><img class="icon" src="https://medium.com/favicon.ico" data-fallback="https://cdn.simpleicons.org/medium/000000"> Medium</a></li>
+        <li><a href="https://jessica-lavrov.blogspot.com/"><img class="icon" src="https://cdn.simpleicons.org/blogger/FF5722"> Blogspot</a></li>
+        <li><a href="https://www.patreon.com/cw/Jessica_Lavrov"><img class="icon" src="https://cdn.simpleicons.org/patreon/FF424D"> Patreon</a></li>
+      </ul></div>
 
-      <div class="group glass">
-        <h2>Social and Media</h2>
-        <ul class="links">
-          <li><a href="https://instagram.com/jessica.lavrov"><img class="icon" src="https://cdn.simpleicons.org/instagram/E4405F" alt=""> Instagram</a></li>
-          <li><a href="https://threads.net/@jessica.lavrov"><img class="icon" src="https://cdn.simpleicons.org/threads/999999" alt=""> Threads</a></li>
-          <li><a href="https://x.com/jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/x/999999" alt=""> X</a></li>
-          <li><a href="https://truthsocial.com/@jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/truthsocial/5A2DFF" alt="" data-fallback="https://truthsocial.com/favicon.ico"> Truth Social</a></li>
-          <li><a href="https://www.youtube.com/@jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/youtube/FF0000" alt=""> YouTube</a></li>
-          <li><a href="https://www.producthunt.com/@jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/producthunt/DA552F" alt=""> Product Hunt</a></li>
-          <li><a href="https://www.tiktok.com/@jessica.lavrov"><img class="icon" src="https://cdn.simpleicons.org/tiktok/999999" alt=""> TikTok</a></li>
-          <li><a href="https://www.tumblr.com/jessica-lavrov"><img class="icon" src="https://cdn.simpleicons.org/tumblr/36465D" alt=""> Tumblr</a></li>
-          <li><a href="https://pinterest.com/jessica_lavrov/"><img class="icon" src="https://cdn.simpleicons.org/pinterest/BD081C" alt=""> Pinterest</a></li>
-        </ul>
-      </div>
+      <div class="group glass"><h2>Social and Media</h2><ul class="links">
+        <li><a href="https://instagram.com/jessica.lavrov"><img class="icon" src="https://cdn.simpleicons.org/instagram/E4405F"> Instagram</a></li>
+        <li><a href="https://threads.net/@jessica.lavrov"><img class="icon" src="https://cdn.simpleicons.org/threads/999999"> Threads</a></li>
+        <li><a href="https://x.com/jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/x/999999"> X</a></li>
+        <li><a href="https://truthsocial.com/@jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/truthsocial/5A2DFF" data-fallback="https://truthsocial.com/favicon.ico"> Truth Social</a></li>
+        <li><a href="https://www.youtube.com/@jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/youtube/FF0000"> YouTube</a></li>
+        <li><a href="https://www.producthunt.com/@jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/producthunt/DA552F"> Product Hunt</a></li>
+        <li><a href="https://www.tiktok.com/@jessica.lavrov"><img class="icon" src="https://cdn.simpleicons.org/tiktok/999999"> TikTok</a></li>
+        <li><a href="https://www.tumblr.com/jessica-lavrov"><img class="icon" src="https://cdn.simpleicons.org/tumblr/36465D"> Tumblr</a></li>
+        <li><a href="https://pinterest.com/jessica_lavrov/"><img class="icon" src="https://cdn.simpleicons.org/pinterest/BD081C"> Pinterest</a></li>
+      </ul></div>
 
-      <div class="group glass">
-        <h2>Professional and Technical</h2>
-        <ul class="links">
-          <li><a href="https://www.linkedin.com/in/jessica-lavrov/"><img class="icon" src="https://cdn.simpleicons.org/linkedin/0A66C2" alt="" data-fallback="https://www.linkedin.com/favicon.ico"> LinkedIn</a></li>
-          <li><a href="https://github.com/jessica-lavrov"><img class="icon" src="https://cdn.simpleicons.org/github/333333" alt=""> GitHub</a></li>
-          <li><a href="https://stackoverflow.com/users/31605603/jessica-lavrov"><img class="icon" src="https://cdn.simpleicons.org/stackoverflow/F58025" alt=""> Stack Overflow</a></li>
-          <li><a href="https://www.quora.com/profile/Jessica-Lavrov"><img class="icon" src="https://cdn.simpleicons.org/quora/B92B27" alt=""> Quora</a></li>
-          <li><a href="https://www.reddit.com/user/JessicaLavrov/"><img class="icon" src="https://cdn.simpleicons.org/reddit/FF4500" alt=""> Reddit</a></li>
-          <li><a href="https://news.ycombinator.com/user?id=jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/ycombinator/F0652F" alt=""> Hacker News</a></li>
-          <li><a href="https://www.crunchbase.com/person/jessica-lavrov"><img class="icon" src="https://cdn.simpleicons.org/crunchbase/0288D1" alt=""> Crunchbase</a></li>
-        </ul>
-      </div>
+      <div class="group glass"><h2>Professional and Technical</h2><ul class="links">
+        <li><a href="https://www.linkedin.com/in/jessica-lavrov/"><img class="icon" src="https://cdn.simpleicons.org/linkedin/0A66C2" data-fallback="https://www.linkedin.com/favicon.ico"> LinkedIn</a></li>
+        <li><a href="https://github.com/jessica-lavrov"><img class="icon" src="https://cdn.simpleicons.org/github/333333"> GitHub</a></li>
+        <li><a href="https://stackoverflow.com/users/31605603/jessica-lavrov"><img class="icon" src="https://cdn.simpleicons.org/stackoverflow/F58025"> Stack Overflow</a></li>
+        <li><a href="https://www.quora.com/profile/Jessica-Lavrov"><img class="icon" src="https://cdn.simpleicons.org/quora/B92B27"> Quora</a></li>
+        <li><a href="https://www.reddit.com/user/JessicaLavrov/"><img class="icon" src="https://cdn.simpleicons.org/reddit/FF4500"> Reddit</a></li>
+        <li><a href="https://news.ycombinator.com/user?id=jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/ycombinator/F0652F"> Hacker News</a></li>
+        <li><a href="https://www.crunchbase.com/person/jessica-lavrov"><img class="icon" src="https://cdn.simpleicons.org/crunchbase/0288D1"> Crunchbase</a></li>
+      </ul></div>
 
-      <div class="group glass">
-        <h2>Decentralized and Identity</h2>
-        <ul class="links">
-          <li><a href="https://jessica-lavrov.bsky.social"><img class="icon" src="https://cdn.simpleicons.org/bluesky/0285FF" alt=""> Bluesky</a></li>
-          <li><a href="https://mastodon.social/@jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/mastodon/6364FF" alt=""> Mastodon</a></li>
-          <li><a href="https://gravatar.com/jessicalavrov"><img class="icon" src="https://cdn.simpleicons.org/gravatar/1E8CBE" alt=""> Gravatar</a></li>
-        </ul>
-      </div>
+      <div class="group glass"><h2>Decentralized and Identity</h2><ul class="links">
+        <li><a href="https://jessica-lavrov.bsky.social"><img class="icon" src="https://cdn.simpleicons.org/bluesky/0285FF"> Bluesky</a></li>
+        <li><a href="https://mastodon.social/@jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/mastodon/6364FF"> Mastodon</a></li>
+        <li><a href="https://gravatar.com/jessicalavrov"><img class="icon" src="https://cdn.simpleicons.org/gravatar/1E8CBE"> Gravatar</a></li>
+      </ul></div>
     </section>
 
-    <section class="jl-chat glass" aria-label="Chat with Jessica's assistant">
-      <div class="jl-chat-header">Ask about Jessica</div>
+    <section class="jl-chat glass"><div class="jl-chat-header">Ask about Jessica</div>
       <div class="jl-chat-body" id="jl-body"></div>
       <form class="jl-chat-input" id="jl-form">
         <textarea id="jl-input" placeholder="Ask about Jessica…" required></textarea>
-        <button type="submit" aria-label="Send message">Send</button>
+        <button type="submit">Send</button>
       </form>
     </section>
   </div>
@@ -335,7 +188,7 @@
     function measureInputBar(){
       const h=form.getBoundingClientRect().height;
       bodyEl.style.setProperty("--inputH", h+"px");
-      bodyEl.style.paddingBottom = "calc(var(--inputH) + 12px)";
+      bodyEl.style.padding-bottom = "calc(var(--inputH) + 12px)";
     }
     function atBottom(){
       return bodyEl.scrollTop + bodyEl.clientHeight >= bodyEl.scrollHeight - 8;
@@ -362,7 +215,6 @@
       typingController=controller;
       const stepMs=1000/cps;
       let i=0,acc=0,last=performance.now();
-
       return new Promise(resolve=>{
         function frame(now){
           if(controller.cancelled){ cursor.remove(); div.textContent=fullText; forceScroll(); return resolve() }
@@ -387,62 +239,42 @@
       let data=null; try{data=JSON.parse(txt)}catch{}
       return{status:r.status,data,raw:txt}
     }
-
-    // Icon fallbacks
+    // icon fallbacks
     document.querySelectorAll('img.icon').forEach(img=>{
       img.addEventListener('error',()=>{
         const fb=img.getAttribute('data-fallback');
-        if(fb && img.src!==fb){
-          img.src=fb;
-          img.style.filter='none';
-        }
+        if(fb && img.src!==fb){ img.src=fb; img.style.filter='none'; }
       },{once:true});
     });
-
     // Enter to send, Shift+Enter for newline
     input.addEventListener("keydown", e=>{
-      if(e.key==="Enter" && !e.shiftKey){
-        e.preventDefault();
-        form.dispatchEvent(new Event("submit",{cancelable:true,bubbles:true}));
-      }
+      if(e.key==="Enter" && !e.shiftKey){ e.preventDefault(); form.dispatchEvent(new Event("submit",{cancelable:true,bubbles:true})); }
     });
-
+    // autoscroll lock when user is at the bottom
     bodyEl.addEventListener("scroll",()=>{ autolock = atBottom(); },{passive:true});
     window.addEventListener("resize",()=>{ measureInputBar(); forceScroll(); });
     input.addEventListener("focus",()=>{ setTimeout(()=>{ measureInputBar(); forceScroll(); },60); });
-
     form.addEventListener("submit",async e=>{
       e.preventDefault();
       const text=input.value.trim();
       if(!text)return;
       if(typingController) typingController.cancelled=true;
-      input.blur();
-      input.value="";
-      addBubble(text,"user");
-      history.push({role:"user",content:text});
+      input.blur(); input.value="";
+      addBubble(text,"user"); history.push({role:"user",content:text});
       const botBubble=addBubble("","bot");
       try{
         const{status,data,raw}=await sendToWorker(history);
-        if(data&&data.reply){
-          history.push({role:"assistant",content:data.reply});
-          await typeIntoBubble(botBubble,data.reply,30);
-        }else if(data&&data.error){
+        if(data&&data.reply){ history.push({role:"assistant",content:data.reply}); await typeIntoBubble(botBubble,data.reply,30); }
+        else if(data&&data.error){
           const msg=(data.raw&&data.raw.error&&data.raw.error.message)?data.raw.error.message:data.error;
           await typeIntoBubble(botBubble,"Warning, "+msg,32);
         }else{
-          await typeIntoBubble(botBubble,"Unexpected response, "+status,32);
-          console.log("raw:",raw);
+          await typeIntoBubble(botBubble,"Unexpected response, "+status,32); console.log("raw:",raw);
         }
-      }catch(err){
-        await typeIntoBubble(botBubble,"Network error. Please try again.",32);
-      }
+      }catch(err){ await typeIntoBubble(botBubble,"Network error. Please try again.",32); }
     });
-
-    measureInputBar();
-    (function greet(){
-      const first = addBubble("", "bot");
-      typeIntoBubble(first, "Hi, ask me about Jessica’s work, writing, or where to follow her.", 30);
-    })();
+    // greet
+    (function(){ const first = addBubble("", "bot"); typeIntoBubble(first, "Hi, ask me about Jessica’s work, writing, or where to follow her.", 30); measureInputBar(); })();
   </script>
 </body>
 </html>
