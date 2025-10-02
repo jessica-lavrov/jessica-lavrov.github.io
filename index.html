@@ -22,6 +22,7 @@
       --card-radius: 18px;
       --card-blur: 22px;
     }
+    html, body{scroll-behavior:auto; overflow-anchor:none}
     html{-webkit-text-size-adjust:100%}
     body{
       margin:0;
@@ -99,7 +100,7 @@
       --inputH: 88px;
       padding:12px 14px;
       padding-bottom:calc(var(--inputH) + 12px);
-      max-height:60vh; overflow:auto; -webkit-overflow-scrolling:touch;
+      max-height:60vh; overflow:auto; -webkit-overflow-scrolling:touch; overflow-anchor:none;
     }
     .jl-row{display:flex; gap:10px; margin-top:10px}
     .jl-row-user{justify-content:flex-end}
@@ -219,13 +220,17 @@
     </section>
   </div>
   <script>
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.scrollTo(0,0);
+
     const API="https://jessica-lavrov-chat-proxy.jessicalavrov.workers.dev";
     const bodyEl=document.getElementById("jl-body");
     const form=document.getElementById("jl-form");
     const input=document.getElementById("jl-input");
-    const history=[];
+    const historyBuf=[];
     let typingController=null;
     let autolock=false;
+
     function measureInputBar(){
       const h=form.getBoundingClientRect().height;
       bodyEl.style.setProperty("--inputH", h+"px");
@@ -319,13 +324,13 @@
       autosize();
       input.focus();
       addBubble(text,"user");
-      history.push({role:"user",content:text});
+      historyBuf.push({role:"user",content:text});
       autolock = true;
       const botMsgEl = addBubble("", "bot");
       try{
-        const{status,data,raw}=await sendToWorker(history);
+        const{status,data,raw}=await sendToWorker(historyBuf);
         if(data&&data.reply){
-          history.push({role:"assistant",content:data.reply});
+          historyBuf.push({role:"assistant",content:data.reply});
           await typeInto(botMsgEl, data.reply, 30);
         }else if(data&&data.error){
           const msg=(data.raw&&data.raw.error&&data.raw.error.message)?data.raw.error.message:data.error;
@@ -338,8 +343,16 @@
         await typeInto(botMsgEl, "Network error. Please try again.", 32);
       }
     });
-    autosize();
-    measureInputBar();
+    document.addEventListener('DOMContentLoaded', ()=>{
+      window.scrollTo(0,0);
+      bodyEl.scrollTop = 0;
+      autosize();
+      measureInputBar();
+    }, {once:true});
+    window.addEventListener('load', ()=>{
+      window.scrollTo(0,0);
+      bodyEl.scrollTop = 0;
+    }, {once:true});
   </script>
 </body>
 </html>
