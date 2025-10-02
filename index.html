@@ -52,9 +52,9 @@
     }
 
     /* Brand icons */
-    .icon{width:18px;height:18px;display:inline-block;flex:0 0 18px;filter:none}
+    .icon{width:18px;height:18px;display:inline-block;flex:0 0 18px;filter:none;image-rendering:auto}
 
-    /* Brighten dark icons in dark mode */
+    /* Brighten very dark icons in dark mode */
     @media(prefers-color-scheme:dark){
       .icon[src*="/000000"],
       .icon[src*="/111111"],
@@ -137,7 +137,7 @@
         <li><a href="https://instagram.com/jessica.lavrov"><img class="icon" src="https://cdn.simpleicons.org/instagram/E4405F" alt=""> Instagram</a></li>
         <li><a href="https://threads.net/@jessica.lavrov"><img class="icon" src="https://cdn.simpleicons.org/threads/999999" alt=""> Threads</a></li>
         <li><a href="https://x.com/jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/x/999999" alt=""> X</a></li>
-        <li><a href="https://truthsocial.com/@jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/truthsocial/5A2DFF" alt=""> Truth Social</a></li>
+        <li><a href="https://truthsocial.com/@jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/truthsocial/5A2DFF" alt="" data-fallback="https://truthsocial.com/favicon.ico"> Truth Social</a></li>
         <li><a href="https://www.youtube.com/@jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/youtube/FF0000" alt=""> YouTube</a></li>
         <li><a href="https://www.producthunt.com/@jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/producthunt/DA552F" alt=""> Product Hunt</a></li>
         <li><a href="https://www.tiktok.com/@jessica.lavrov"><img class="icon" src="https://cdn.simpleicons.org/tiktok/999999" alt=""> TikTok</a></li>
@@ -149,7 +149,7 @@
     <div class="group">
       <h2>Professional & Technical</h2>
       <ul class="links">
-        <li><a href="https://www.linkedin.com/in/jessica-lavrov/"><img class="icon" src="https://cdn.simpleicons.org/linkedin/0A66C2" alt=""> LinkedIn</a></li>
+        <li><a href="https://www.linkedin.com/in/jessica-lavrov/"><img class="icon" src="https://cdn.simpleicons.org/linkedin/0A66C2" alt="" data-fallback="https://www.linkedin.com/favicon.ico"> LinkedIn</a></li>
         <li><a href="https://github.com/jessica-lavrov"><img class="icon" src="https://cdn.simpleicons.org/github/333333" alt=""> GitHub</a></li>
         <li><a href="https://stackoverflow.com/users/31605603/jessica-lavrov"><img class="icon" src="https://cdn.simpleicons.org/stackoverflow/F58025" alt=""> Stack Overflow</a></li>
         <li><a href="https://www.quora.com/profile/Jessica-Lavrov"><img class="icon" src="https://cdn.simpleicons.org/quora/B92B27" alt=""> Quora</a></li>
@@ -242,6 +242,17 @@
       let data=null; try{data=JSON.parse(txt)}catch{}
       return{status:r.status,data,raw:txt}
     }
+
+    // Fallback for icons that fail to load (e.g., Truth Social, LinkedIn CDN hiccups)
+    document.querySelectorAll('img.icon').forEach(img=>{
+      img.addEventListener('error',()=>{
+        const fb=img.getAttribute('data-fallback');
+        if(fb && img.src!==fb){
+          img.src=fb;
+          img.style.filter='none'; // avoid invert on favicons
+        }
+      },{once:true});
+    });
 
     // maintain autoscroll lock when user is at the bottom
     bodyEl.addEventListener("scroll",()=>{ autolock = atBottom(); },{passive:true});
