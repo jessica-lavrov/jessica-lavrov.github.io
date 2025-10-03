@@ -1,389 +1,352 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>Jessica Lavrov — IT Specialist & Writer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no" />
-  <meta name="color-scheme" content="light dark" />
+  <!-- Primary SEO -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Jessica Lavrov — Official Bio &amp; Verified Links (2025)</title>
+  <meta name="description" content="Official biography of Jessica Lavrov — IT specialist and writer focused on privacy, open protocols, iOS, and thoughtful UI/UX. Verified links, selected writing, past highlights, and contact.">
+  <meta name="author" content="Jessica Lavrov">
+  <link rel="canonical" href="https://jessicalavrov.com/about/">
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+  <meta http-equiv="Content-Language" content="en-US">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Jessica Lavrov — Official Bio & Verified Links">
+  <meta property="og:description" content="IT specialist & writer focused on privacy, open protocols, iOS, and thoughtful UI/UX. Official biography with verified links and selected writing.">
+  <meta property="og:url" content="https://jessicalavrov.com/about/">
+  <meta property="og:site_name" content="Jessica Lavrov">
+  <meta property="og:image" content="https://jessicalavrov.com/images/jessica-lavrov-og.jpg">
+  <meta property="og:image:alt" content="Portrait of Jessica Lavrov">
+  <meta property="og:locale" content="en_US">
+  <meta property="profile:first_name" content="Jessica">
+  <meta property="profile:last_name" content="Lavrov">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Jessica Lavrov — Official Bio & Verified Links">
+  <meta name="twitter:description" content="Official bio, verified links, selected writing, and contact.">
+  <meta name="twitter:image" content="https://jessicalavrov.com/images/jessica-lavrov-og.jpg">
+
+  <!-- Optional brand color -->
+  <meta name="theme-color" content="#FAD9E6">
+
+  <!-- Performance: preload hero image to improve LCP -->
+  <link rel="preload" as="image" href="https://jessicalavrov.com/images/jessica-lavrov-og.jpg">
+
+  <!-- Optional hreflang for future translations
+  <link rel="alternate" hreflang="en" href="https://jessicalavrov.com/about/">
+  <link rel="alternate" hreflang="es" href="https://jessicalavrov.com/es/acerca-de/">
+  <link rel="alternate" hreflang="nl" href="https://jessicalavrov.com/nl/over/">
+  -->
+
+  <!-- Minimal, feminine styling -->
   <style>
     :root{
-      --bg-grad-1: radial-gradient(1200px 900px at 10% -10%, rgba(120,180,255,.35), transparent 60%), radial-gradient(900px 900px at 110% 10%, rgba(255,140,200,.30), transparent 60%), linear-gradient(180deg, #f6f9ff 0%, #eaf0ff 100%);
-      --bg-grad-1-dark: radial-gradient(1200px 900px at -10% -10%, rgba(90,120,255,.20), transparent 60%), radial-gradient(900px 900px at 110% 0%, rgba(255,120,200,.18), transparent 60%), linear-gradient(180deg, #0b0d14 0%, #0f131b 100%);
-      --glass-bg: rgba(255,255,255,.42);
-      --glass-bg-dark: rgba(16,18,25,.46);
-      --glass-border: rgba(255,255,255,.70);
-      --glass-border-dark: rgba(255,255,255,.12);
-      --glass-highlight: radial-gradient(120% 100% at 50% -20%, rgba(255,255,255,.65), transparent 55%);
-      --glass-highlight-dark: radial-gradient(120% 100% at 50% -20%, rgba(255,255,255,.10), transparent 55%);
-      --text: #0f1320;
-      --text-sub: #5f6b80;
-      --text-dark: #eaf0ff;
-      --text-sub-dark: #9aa6bf;
-      --card-radius: 18px;
-      --card-blur: 22px;
+      --bg:#fff; --ink:#1f1f1f; --muted:#5b5b5b;
+      --accent:#f48fb1;      /* rosy pink */
+      --accent-2:#ffe6ef;    /* soft blush */
+      --ring:#ffd1e1;        /* focus ring */
+      --card:#ffffff; --max: 880px; --radius: 14px;
+      --shadow: 0 10px 30px rgba(244,143,177,.18);
     }
-    html, body{scroll-behavior:auto; overflow-anchor:none}
-    html{-webkit-text-size-adjust:100%}
-    body{
-      margin:0;
-      font:16px/1.55 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      color:var(--text);
-      background:var(--bg-grad-1) fixed;
-      min-height:100vh;
-    }
-    @media(prefers-color-scheme:dark){
-      body{color:var(--text-dark);background:var(--bg-grad-1-dark) fixed}
-    }
-    .blob{
-      position:fixed; inset:auto auto 8% -10%;
-      width:420px; height:420px; border-radius:50%;
-      filter:blur(48px); opacity:.35; pointer-events:none;
-      background:radial-gradient(circle at 30% 30%, rgba(255,200,150,.55), rgba(255,150,200,.28) 40%, transparent 70%);
-    }
-    .blob.b2{inset:10% -8% auto auto; background:radial-gradient(circle at 60% 40%, rgba(130,200,255,.52), rgba(140,160,255,.30) 40%, transparent 70%); width:500px; height:500px; opacity:.30}
-    .container{max-width:900px; margin:44px auto; padding:0 20px; position:relative; z-index:1}
-    .glass{
-      position:relative;
-      background:var(--glass-bg);
-      backdrop-filter:saturate(160%) blur(var(--card-blur));
-      -webkit-backdrop-filter:saturate(160%) blur(var(--card-blur));
-      border:1px solid var(--glass-border);
-      border-radius:var(--card-radius);
-      box-shadow:0 14px 40px rgba(16, 24, 40, .18), inset 0 1px 0 rgba(255,255,255,.45);
-    }
-    .glass::before{
-      content:""; position:absolute; inset:0; border-radius:inherit;
-      background:var(--glass-highlight); pointer-events:none; mix-blend-mode:soft-light;
-    }
-    @media(prefers-color-scheme:dark){
-      .glass{background:var(--glass-bg-dark); border-color:var(--glass-border-dark); box-shadow:0 18px 44px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.06)}
-      .glass::before{background:var(--glass-highlight-dark)}
-    }
-    header{display:grid; grid-template-columns:auto 1fr; gap:16px; align-items:center}
-    .avatar{
-      width:96px;height:96px;border-radius:24px;object-fit:cover;
-      box-shadow:0 12px 34px rgba(16,24,40,.22), inset 0 1px 0 rgba(255,255,255,.25)
-    }
-    h1{font-size:28px; margin:0 0 6px 0}
-    .sub{margin:0; color:var(--text-sub)}
-    @media(prefers-color-scheme:dark){.sub{color:var(--text-sub-dark)}}
-    .about{margin-top:20px; padding:18px 20px}
-    .groups{margin-top:30px; display:grid; gap:16px}
-    .group{padding:16px 16px}
-    .group h2{font-size:12px; letter-spacing:.30px; color:var(--text-sub); margin:0 0 12px 2px; text-transform:uppercase}
-    @media(prefers-color-scheme:dark){.group h2{color:var(--text-sub-dark)}}
-    .links{
-      list-style:none; padding:0; margin:0;
-      display:grid; grid-template-columns:repeat(auto-fit, 200px);
-      justify-content:start; gap:12px;
-    }
-    .links a{
-      display:flex; align-items:center; gap:10px;
-      padding:12px 14px; border-radius:16px; text-decoration:none; color:inherit; white-space:nowrap;
-      background:rgba(255,255,255,.60); border:1px solid rgba(255,255,255,.75);
-      backdrop-filter:saturate(160%) blur(14px); -webkit-backdrop-filter:saturate(160%) blur(14px);
-      transition:transform .15s ease, box-shadow .15s ease
-    }
-    .links a:hover{transform:translateY(-1.5px); box-shadow:0 16px 32px rgba(16,24,40,.18)}
-    @media(prefers-color-scheme:dark){
-      .links a{background:rgba(20,22,29,.55); border-color:rgba(255,255,255,.14)}
-      .links a:hover{background:rgba(34,38,48,.75)}
-    }
-    .icon{width:18px;height:18px;display:inline-block;flex:0 0 18px}
-    @media(prefers-color-scheme:dark){
-      .icon[src*="/000000"], .icon[src*="/333333"], .icon[src*="/999999"]{filter:invert(1) brightness(1.25)}
-    }
-    .jl-chat{margin:26px 0; display:flex; flex-direction:column}
-    .jl-chat-header{padding:12px 14px; font:700 12px ui-sans-serif; text-transform:uppercase; color:var(--text-sub)}
-    @media(prefers-color-scheme:dark){.jl-chat-header{color:var(--text-sub-dark)}}
-    .jl-chat-body{
-      height: clamp(300px, 50vh, 520px);
-      overflow:auto;
-      -webkit-overflow-scrolling:touch;
-      padding:12px 14px;
-      overflow-anchor:none;
-    }
-    .jl-row{display:flex; gap:10px; margin-top:10px}
-    .jl-row-user{justify-content:flex-end}
-    .jl-row-bot{justify-content:flex-start}
-    .jl-ava{
-      width:28px; height:28px; border-radius:50%; flex:0 0 28px; object-fit:cover;
-      box-shadow:0 2px 6px rgba(0,0,0,.15);
-      align-self:flex-start;
-    }
-    .jl-msg{
-      padding:12px 14px; border-radius:14px; max-width:min(100%, 620px);
-      border:1px solid rgba(255,255,255,.55);
-      backdrop-filter:saturate(160%) blur(14px); -webkit-backdrop-filter:saturate(160%) blur(14px);
-      white-space:pre-wrap; word-wrap:break-word;
-    }
-    .jl-user{background:rgba(120,160,255,.26)}
-    .jl-bot{background:rgba(240,245,255,.48)}
-    @media(prefers-color-scheme:dark){
-      .jl-user{background:rgba(80,110,255,.20); border-color:rgba(255,255,255,.10)}
-      .jl-bot{background:rgba(26,32,46,.60); border-color:rgba(255,255,255,.10)}
-    }
-    .jl-typing{display:inline-block;width:0.9em;height:1em;border-right:2px solid currentColor;animation:jl-cursor .9s steps(1) infinite;vertical-align:bottom;margin-left:2px}
-    @keyframes jl-cursor{50%{border-right-color:transparent}}
-    .jl-chat-input{
-      display:flex; gap:8px; padding:12px;
-      backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
-      border-top:1px solid rgba(255,255,255,.35);
-    }
-    .jl-chat-input textarea{
-      flex:1; min-height:48px; max-height:160px; padding:12px; border-radius:14px;
-      background:#fff; border:1px solid rgba(0,0,0,.08); color:#0f1320;
-      font-size:16px; line-height:1.4; box-shadow:inset 0 2px 4px rgba(16,24,40,.06);
-      resize:none; overflow-y:auto;
-    }
-    .jl-chat-input textarea::placeholder{color:#8a93a6; opacity:.95}
-    .jl-chat-input textarea:focus{outline:none; border-color:#3b82f6; box-shadow:0 0 0 3px rgba(59,130,246,.18)}
-    .jl-chat-input button{
-      padding:12px 16px; border-radius:14px; border:1px solid rgba(59,130,246,.55);
-      background:linear-gradient(180deg, #6aaaff, #3b82f6); color:#fff; font-weight:700; cursor:pointer
-    }
-    @media(prefers-color-scheme:dark){
-      .jl-chat-input textarea{background:#12151d; color:#eaf0ff; border:1px solid rgba(255,255,255,.12)}
-      .jl-chat-input textarea:focus{border-color:#60a5fa; box-shadow:0 0 0 3px rgba(96,165,250,.22)}
-    }
-    @media (prefers-reduced-motion:reduce){
-      *{animation:none !important; transition:none !important}
-    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif}
+    a{color:#b00063;text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--max);margin:0 auto;padding:28px 18px 56px}
+    header{display:flex;align-items:center;gap:18px;margin:8px 0 18px}
+    header .dot{width:44px;height:44px;border-radius:50%;background:var(--accent-2);display:grid;place-items:center;box-shadow:var(--shadow)}
+    header .dot span{font-size:22px}
+    header .title{display:flex;flex-direction:column}
+    header h1{font-size:28px;line-height:1.2;margin:0}
+    header .subtitle{color:var(--muted);font-size:15px}
+    .hero{background:linear-gradient(0deg,var(--card),var(--accent-2));border-radius:var(--radius);padding:22px;border:1px solid var(--ring);box-shadow:var(--shadow)}
+    .hero p{margin:.5rem 0}
+    nav.toc{margin:18px 0 0; padding:14px; border:1px dashed var(--ring); border-radius:10px; background:#fff}
+    nav.toc a{margin-right:10px}
+    .grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:22px}
+    @media(min-width:880px){.grid{grid-template-columns:1.2fr .8fr}}
+    section{background:var(--card);border:1px solid #f4e4ea;border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+    h2{font-size:22px;margin:0 0 10px}
+    h3{font-size:18px;margin:16px 0 6px}
+    ul{margin:0 0 0 20px;padding:0}
+    .tag{display:inline-block;font-size:12px;padding:4px 8px;border-radius:999px;background:var(--accent-2);border:1px solid var(--ring);margin:2px 6px 0 0}
+    .links a{display:inline-block;margin:6px 10px 6px 0}
+    .note{font-size:14px;color:var(--muted)}
+    .btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;border-radius:999px;padding:10px 16px;border:0;box-shadow:var(--shadow)}
+    .btn:hover{filter:brightness(.97)}
+    .card{border:1px solid #f3d7e3;border-radius:12px;padding:12px;margin:10px 0}
+    .faq summary{cursor:pointer;font-weight:600}
+    .faq details{border:1px solid #f3d7e3;border-radius:12px;padding:14px;margin:8px 0;background:#fff}
+    .sr-only{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+    .muted{color:var(--muted)}
+    footer{margin-top:28px;color:var(--muted);font-size:14px}
+    img.round{border-radius:14px;max-width:100%;height:auto;border:1px solid #f4e4ea}
   </style>
+
+  <!-- Structured Data: ProfilePage + Person (critical for entity) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"ProfilePage",
+    "@id":"https://jessicalavrov.com/about/#profile",
+    "url":"https://jessicalavrov.com/about/",
+    "name":"Jessica Lavrov — Official Bio & Verified Links",
+    "dateModified":"2025-10-03",
+    "inLanguage":"en-US",
+    "breadcrumb":{"@id":"https://jessicalavrov.com/about/#breadcrumb"},
+    "mainEntity":{
+      "@type":"Person",
+      "@id":"https://jessicalavrov.com/#jessica",
+      "name":"Jessica Lavrov",
+      "alternateName":["Jess Lavrov"],
+      "jobTitle":"IT Specialist and Writer",
+      "description":"Colorado-based IT specialist & writer focused on privacy, open protocols, iOS, and thoughtful UI/UX.",
+      "disambiguatingDescription":"U.S.-based IT specialist and writer named Jessica Lavrov; not related to the Russian politician Sergey Lavrov.",
+      "image":"https://jessicalavrov.com/images/jessica-lavrov.jpg",
+      "url":"https://jessicalavrov.com/",
+      "email":"mailto:[email@domain]",
+      "homeLocation":{"@type":"Place","name":"Colorado, USA"},
+      "knowsLanguage":["English","Spanish","Russian","Dutch"],
+      "knowsAbout":["privacy","open protocols","iOS development","user interface design","digital clarity"],
+      "sameAs":[
+        "https://jessicalavrov.com/",
+        "https://jessicalavrov.medium.com/",
+        "https://github.com/jessica-lavrov",
+        "https://jessica-lavrov.github.io/",
+        "https://jessicalavrov.wordpress.com/",
+        "https://jessicalavrov.blogspot.com/",
+        "https://jessicalavrov.substack.com/",
+        "https://stackoverflow.com/users/31605603/jessica-lavrov",
+        "https://www.reddit.com/user/JessicaLavrov/",
+        "https://about.me/jessica.lavrov"
+        /* Optionally add: "https://x.com/YOUR_HANDLE","https://instagram.com/YOUR_HANDLE","https://www.linkedin.com/in/YOUR_HANDLE","https://www.youtube.com/@YOUR_HANDLE" */
+      ]
+    }
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage (brand-SERP disambiguation) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"Who is Jessica Lavrov?",
+        "acceptedAnswer":{"@type":"Answer","text":"Jessica Lavrov is a Colorado-based IT specialist and writer focused on privacy, open protocols, and clear, human-centered product thinking. This page is her official bio with verified links."}
+      },
+      {
+        "@type":"Question",
+        "name":"Is Jessica Lavrov related to Sergey Lavrov?",
+        "acceptedAnswer":{"@type":"Answer","text":"No. Different person and profession; not related."}
+      }
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: BreadcrumbList -->
+  <script type="application/ld+json" id="breadcrumb">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "@id":"https://jessicalavrov.com/about/#breadcrumb",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://jessicalavrov.com/"},
+      {"@type":"ListItem","position":2,"name":"About","item":"https://jessicalavrov.com/about/"}
+    ]
+  }
+  </script>
+
+  <!-- rel=me (optional): verify Mastodon later -->
+  <!-- <link rel="me" href="https://mastodon.social/@YOUR_HANDLE"> -->
 </head>
 <body>
-  <div class="blob"></div><div class="blob b2"></div>
+  <a class="sr-only" href="#main">Skip to content</a>
 
-  <div class="container">
+  <div class="wrap">
     <header>
-      <img class="avatar glass" src="https://jessica-lavrov.github.io/img/portrait.jpg" alt="Jessica avatar" />
-      <div>
-        <h1>Jessica Lavrov</h1>
-        <p class="sub">IT specialist and writer focused on open protocols, privacy, and digital economies.</p>
+      <div class="dot" aria-hidden="true"><span>♡</span></div>
+      <div class="title">
+        <h1>Jessica Lavrov — Official Bio &amp; Verified Links</h1>
+        <div class="subtitle">Warm, practical tech with a feminine touch ✨</div>
       </div>
     </header>
 
-    <div class="about glass">
-      <strong>About</strong>
-      <p>Hi, I am Jessica. I write practical notes and essays about resilient, human scale technology, I care about open standards, privacy friendly tools, and clear product thinking, I like pretty UI, and I still read RFCs for fun. Less drama, more clarity, and code that minds its manners.</p>
+    <div class="hero">
+      <p><strong>Hi, I’m Jessica Lavrov 💗</strong> — a Colorado‑based <strong>IT specialist and writer</strong> who loves building things that feel smooth, human, and genuinely helpful. I write about <strong>privacy</strong>, <strong>open protocols</strong>, and <strong>digital clarity</strong>, then put those ideas to work in friendly, real‑world products.</p>
+      <p class="muted">I’m half Dutch and half Puerto Rican; I speak some Russian, <em>un poquito de español</em>, and I’m learning Dutch. And yes — Lavrov, but not that Lavrov. ☺︎</p>
+      <p><em>Not related to Sergey Lavrov; I’m a U.S.-based IT specialist and writer.</em> For official info, the home of <a href="https://jessicalavrov.com/">Jessica Lavrov</a> is this website.</p>
+
+      <!-- Table of contents for scannability (imports cleanly to Medium) -->
+      <nav class="toc" aria-label="Table of contents">
+        <strong>Quick nav:</strong>
+        <a href="#short-version">Short version</a>
+        <a href="#focus-now">What I’m focused on now</a>
+        <a href="#selected-writing">Selected writing</a>
+        <a href="#past-highlights">Past highlights</a>
+        <a href="#official-links">Official links</a>
+        <a href="#contact-media">Contact &amp; media</a>
+        <a href="#faq">FAQ</a>
+      </nav>
     </div>
 
-    <section class="groups">
-      <div class="group glass">
-        <h2>Main Platforms</h2>
-        <ul class="links">
-          <li><a href="https://jessicalavrov.wordpress.com/"><img class="icon" src="https://cdn.simpleicons.org/wordpress/21759B" alt=""> WordPress</a></li>
-          <li><a href="https://jessica-lavrov.github.io"><img class="icon" src="https://github.githubassets.com/favicons/favicon.svg" alt="" data-fallback="https://github.githubassets.com/favicons/favicon.png"> GitHub Pages</a></li>
-          <li><a href="https://jessicalavrov.substack.com"><img class="icon" src="https://cdn.simpleicons.org/substack/FF6719" alt=""> Substack</a></li>
-          <li><a href="https://medium.com/@jessicalavrov"><img class="icon" src="https://medium.com/favicon.ico" alt="" data-fallback="https://cdn.simpleicons.org/medium/000000"> Medium</a></li>
-          <li><a href="https://jessica-lavrov.blogspot.com/"><img class="icon" src="https://cdn.simpleicons.org/blogger/FF5722" alt=""> Blogspot</a></li>
-          <li><a href="https://www.patreon.com/cw/Jessica_Lavrov"><img class="icon" src="https://cdn.simpleicons.org/patreon/FF424D" alt=""> Patreon</a></li>
-        </ul>
-      </div>
+    <div class="grid" id="main">
+      <!-- Main column -->
+      <main>
+        <!-- H2: Short version (2–3 sentences) -->
+        <section aria-labelledby="short-version" id="short-version">
+          <h2>Short version</h2>
+          <p>I’m <strong>Jessica Lavrov</strong> — a Colorado‑based <strong>IT specialist and writer</strong> focused on privacy, open protocols, iOS, and thoughtful UI/UX. I turn complex tech into warm, practical guides and ship small tools that feel soft‑but‑precise so people stay in control online.</p>
+        </section>
 
-      <div class="group glass">
-        <h2>Social and Media</h2>
-        <ul class="links">
-          <li><a href="https://instagram.com/jessica.lavrov"><img class="icon" src="https://cdn.simpleicons.org/instagram/E4405F" alt=""> Instagram</a></li>
-          <li><a href="https://threads.net/@jessica.lavrov"><img class="icon" src="https://cdn.simpleicons.org/threads/999999" alt=""> Threads</a></li>
-          <li><a href="https://x.com/jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/x/999999" alt=""> X</a></li>
-          <li><a href="https://truthsocial.com/@jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/truthsocial/5A2DFF" alt="" data-fallback="https://truthsocial.com/favicon.ico"> Truth Social</a></li>
-          <li><a href="https://www.youtube.com/@jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/youtube/FF0000" alt=""> YouTube</a></li>
-          <li><a href="https://www.producthunt.com/@jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/producthunt/DA552F" alt=""> Product Hunt</a></li>
-          <li><a href="https://www.tiktok.com/@jessica.lavrov"><img class="icon" src="https://cdn.simpleicons.org/tiktok/999999" alt=""> TikTok</a></li>
-          <li><a href="https://www.tumblr.com/jessica-lavrov"><img class="icon" src="https://cdn.simpleicons.org/tumblr/36465D" alt=""> Tumblr</a></li>
-          <li><a href="https://pinterest.com/jessica_lavrov/"><img class="icon" src="https://cdn.simpleicons.org/pinterest/BD081C" alt=""> Pinterest</a></li>
-        </ul>
-      </div>
+        <!-- H2: What I’m focused on now -->
+        <section aria-labelledby="focus-now" id="focus-now">
+          <h2>What I’m focused on now</h2>
+          <ul>
+            <li><strong>Privacy &amp; open protocols</strong> — practical guides that de‑mystify choices for everyday users.</li>
+            <li><strong>iOS + UI/UX</strong> — soft‑but‑precise interfaces; AI only where it truly helps.</li>
+            <li><strong>Digital clarity</strong> — essays and checklists that trade buzzwords for calm, confident steps.</li>
+          </ul>
+          <div class="note">P.S. I keep a friendly little AI assistant on my GitHub Pages — <a href="https://jessica-lavrov.github.io/">scroll to the bottom and say hi</a> 💬</div>
+        </section>
 
-      <div class="group glass">
-        <h2>Professional and Technical</h2>
-        <ul class="links">
-          <li><a href="https://www.linkedin.com/in/jessica-lavrov/"><img class="icon" src="https://cdn.simpleicons.org/linkedin/0A66C2" alt="" data-fallback="https://www.linkedin.com/favicon.ico"> LinkedIn</a></li>
-          <li><a href="https://github.com/jessica-lavrov"><img class="icon" src="https://cdn.simpleicons.org/github/333333" alt=""> GitHub</a></li>
-          <li><a href="https://stackoverflow.com/users/31605603/jessica-lavrov"><img class="icon" src="https://cdn.simpleicons.org/stackoverflow/F58025" alt=""> Stack Overflow</a></li>
-          <li><a href="https://www.quora.com/profile/Jessica-Lavrov"><img class="icon" src="https://cdn.simpleicons.org/quora/B92B27" alt=""> Quora</a></li>
-          <li><a href="https://www.reddit.com/user/JessicaLavrov/"><img class="icon" src="https://cdn.simpleicons.org/reddit/FF4500" alt=""> Reddit</a></li>
-          <li><a href="https://news.ycombinator.com/user?id=jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/ycombinator/F0652F" alt=""> Hacker News</a></li>
-          <li><a href="https://www.crunchbase.com/person/jessica-lavrov"><img class="icon" src="https://cdn.simpleicons.org/crunchbase/0288D1" alt=""> Crunchbase</a></li>
-        </ul>
-      </div>
+        <!-- H2: Selected writing — 6–10 items, 1‑line each -->
+        <section aria-labelledby="selected-writing" id="selected-writing">
+          <h2>Selected writing (start here)</h2>
 
-      <div class="group glass">
-        <h2>Decentralized and Identity</h2>
-        <ul class="links">
-          <li><a href="https://jessica-lavrov.bsky.social"><img class="icon" src="https://cdn.simpleicons.org/bluesky/0285FF" alt=""> Bluesky</a></li>
-          <li><a href="https://mastodon.social/@jessica_lavrov"><img class="icon" src="https://cdn.simpleicons.org/mastodon/6364FF" alt=""> Mastodon</a></li>
-          <li><a href="https://gravatar.com/jessicalavrov"><img class="icon" src="https://cdn.simpleicons.org/gravatar/1E8CBE" alt=""> Gravatar</a></li>
-        </ul>
-      </div>
-    </section>
+          <div class="card">
+            <h3><a href="https://jessicalavrov.medium.com/how-i-published-and-host-jessicalavrov-com-for-free-9d0d1399b1f5">How I Published and Host JessicaLavrov.com for Free</a></h3>
+            <p class="muted">Secure, fast, zero hosting bills — a calm, step‑by‑step way to ship your personal site. <em>(Syndicated; canonical to this site.)</em></p>
+          </div>
 
-    <section class="jl-chat glass" aria-label="Chat with Jessica's assistant">
-      <div class="jl-chat-header">Ask about Jessica</div>
-      <div class="jl-chat-body" id="jl-body"></div>
-      <form class="jl-chat-input" id="jl-form">
-        <textarea id="jl-input" placeholder="Ask about Jessica…" required spellcheck="false" autocomplete="off"></textarea>
-        <button type="submit" aria-label="Send message">Send</button>
-      </form>
-    </section>
+          <div class="card">
+            <h3><a href="https://jessicalavrov.medium.com/unearthing-the-core-vs-knots-rift-a-bitcoin-purists-probe-into-possible-sabotage-0cf889348401">Unearthing the Core vs Knots Rift</a></h3>
+            <p class="muted">Open‑source governance and incentives explained without drama — just signal.</p>
+          </div>
+
+          <div class="card">
+            <h3><a href="https://jessicalavrov.medium.com/how-regulation-pushed-crypto-pioneers-out-of-the-u-s-and-delayed-an-industry-by-years-fd3016ffa80d">How Regulation Pushed Crypto Pioneers Out of the U.S.</a></h3>
+            <p class="muted">A human look at policy choices and their impact on builders.</p>
+          </div>
+
+          <div class="card">
+            <h3><a href="https://jessica-lavrov.github.io/">Ask My Assistant (GitHub Pages)</a></h3>
+            <p class="muted">A tiny, friendly assistant — conversational Q&amp;A and quick demos.</p>
+          </div>
+
+          <div class="card">
+            <h3><a href="https://jessicalavrov.substack.com/">Substack — Notes &amp; Letters</a></h3>
+            <p class="muted">Short, personal updates and link roundups between essays.</p>
+          </div>
+
+          <div class="card">
+            <h3><a href="https://jessicalavrov.wordpress.com/">WordPress — Intro</a></h3>
+            <p class="muted">A simple introduction page that points back to my official site.</p>
+          </div>
+
+          <div class="card">
+            <h3><a href="https://jessicalavrov.blogspot.com/">Blogger — Welcome</a></h3>
+            <p class="muted">A first hello and a soft spot for Priscilla. 🐾</p>
+          </div>
+
+          <div class="card">
+            <h3><a href="https://about.me/jessica.lavrov">About.me — Profile</a></h3>
+            <p class="muted">A compact card with essentials and a link back to my official site.</p>
+          </div>
+
+          <p class="note">I syndicate to Medium and other platforms with a <strong>canonical link</strong> back to <a href="https://jessicalavrov.com/">Jessica Lavrov</a> so this site remains the source of truth.</p>
+        </section>
+
+        <!-- H2: Past highlights — one paragraph -->
+        <section aria-labelledby="past-highlights" id="past-highlights">
+          <h2>Past highlights</h2>
+          <p>Before tech, I spent time in <strong>modeling and pageantry</strong>, plus a bit of on‑camera work — experiences that taught me poise, presence, and how to tell complex stories simply. Today I bring that polish to product work, writing, and talks.</p>
+        </section>
+
+        <!-- (Optional) Extra context -->
+        <section aria-labelledby="background">
+          <h2 id="background">Languages &amp; background</h2>
+          <ul>
+            <li><strong>Background:</strong> half Dutch, half Puerto Rican; born in Europe on American soil.</li>
+            <li><strong>Languages:</strong> English; some Russian; <em>un poquito de español</em>; learning Dutch.</li>
+            <li><strong>Before tech:</strong> those stage skills became superpowers for product work and writing.</li>
+          </ul>
+          <img class="round" src="https://www.gravatar.com/avatar/?s=640&d=mp" width="640" height="426" alt="Jessica Lavrov — Colorado-based IT specialist and writer" loading="lazy" decoding="async">
+          <div class="tags" aria-label="Page topics">
+            <span class="tag">privacy</span>
+            <span class="tag">open protocols</span>
+            <span class="tag">iOS</span>
+            <span class="tag">UI/UX</span>
+            <span class="tag">digital clarity</span>
+          </div>
+        </section>
+
+        <!-- H2: FAQ -->
+        <section class="faq" aria-labelledby="faq">
+          <h2 id="faq">FAQ</h2>
+          <details>
+            <summary>Is this the official website of Jessica Lavrov?</summary>
+            <p>Yes — <strong>JessicaLavrov.com</strong> is my official site. Other platforms host syndicated copies that link back here.</p>
+          </details>
+          <details>
+            <summary>Are you related to Sergey Lavrov?</summary>
+            <p>No. Different person, different field.</p>
+          </details>
+          <details>
+            <summary>How can we collaborate?</summary>
+            <p>Message me on my listed socials or email <a href="mailto:[email@domain]">[email@domain]</a> with project details.</p>
+          </details>
+        </section>
+
+        <p class="note">Syndication note: this page is the canonical source and may appear as a mirrored copy on Medium and other platforms with a rel=<code>canonical</code> back to this URL.</p>
+        <p><a href="#top">Back to top ↑</a></p>
+      </main>
+
+      <!-- Side column -->
+      <aside>
+        <!-- H2: Official links (verified) -->
+        <section id="official-links" aria-labelledby="links">
+          <h2 id="links">Official links (verified)</h2>
+          <div class="links">
+            <a href="https://jessicalavrov.com/"><strong>Website (home)</strong></a><br>
+            <a href="https://jessicalavrov.medium.com/">Medium (syndicated essays)</a><br>
+            <a href="https://github.com/jessica-lavrov">GitHub profile</a><br>
+            <a href="https://jessica-lavrov.github.io/">GitHub Pages (assistant)</a><br>
+            <a href="https://jessicalavrov.wordpress.com/">WordPress</a><br>
+            <a href="https://jessicalavrov.blogspot.com/">Blogspot</a><br>
+            <a href="https://jessicalavrov.substack.com/">Substack newsletter</a><br>
+            <a href="https://stackoverflow.com/users/31605603/jessica-lavrov">Stack Overflow</a><br>
+            <a href="https://www.reddit.com/user/JessicaLavrov/">Reddit</a><br>
+            <a href="https://about.me/jessica.lavrov">About.me</a>
+            <!-- Add X/Twitter, Instagram, LinkedIn, YouTube here if you want them listed and include the same URLs in JSON-LD sameAs -->
+          </div>
+          <p class="note">If a profile isn’t listed here, it isn’t me.</p>
+        </section>
+
+        <!-- H2: Contact / media -->
+        <section aria-labelledby="contact-media" id="contact-media">
+          <h2>Contact &amp; media</h2>
+          <address>
+            <p>Email: <a href="mailto:[email@domain]">[email@domain]</a></p>
+            <p>Location: Colorado, USA</p>
+            <p><a href="https://jessicalavrov.com/press/">Media kit</a> (bio, headshots, usage)</p>
+          </address>
+        </section>
+      </aside>
+    </div>
+
+    <footer>
+      <p>© <span id="year">2025</span> Jessica Lavrov • all official links above • hosted on Cloudflare</p>
+      <p class="muted">Last updated: October 3, 2025</p>
+    </footer>
   </div>
 
   <script>
-    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-    window.scrollTo(0,0);
-
-    const API="https://jessica-lavrov-chat-proxy.jessicalavrov.workers.dev";
-    const bodyEl=document.getElementById("jl-body");
-    const form=document.getElementById("jl-form");
-    const input=document.getElementById("jl-input");
-    const historyBuf=[];
-    let typingController=null;
-    let autolock=false;
-
-    function escapeHTML(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-    function linkifyHTML(plain){
-      const urlRe=/\bhttps?:\/\/[^\s<>()]+/g;
-      const escaped=escapeHTML(plain);
-      return escaped.replace(urlRe,u=>{try{new URL(u)}catch{return u}return `<a href="${u}" target="_blank" rel="noopener noreferrer">${u}</a>`})
-    }
-    function stripMarkdownLinks(s){return s.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,"$2")}
-
-    function atBottom(){ return bodyEl.scrollTop + bodyEl.clientHeight >= bodyEl.scrollHeight - 8; }
-    function forceScroll(){
-      if(!autolock) return;
-      const target = bodyEl.scrollHeight - bodyEl.clientHeight;
-      if (target > 0) bodyEl.scrollTop = target;
-    }
-    function autosize(){
-      input.style.height = 'auto';
-      const next = Math.min(input.scrollHeight, 160);
-      input.style.height = next + 'px';
-    }
-
-    function addBubble(text, who){
-      const row=document.createElement("div");
-      row.className="jl-row "+(who==="user"?"jl-row-user":"jl-row-bot");
-      if(who==="bot"){
-        const ava=document.createElement("img");
-        ava.className="jl-ava";
-        ava.src="https://jessica-lavrov.github.io/img/portrait.jpg";
-        ava.alt="Jessica";
-        row.appendChild(ava);
-      }
-      const msg=document.createElement("div");
-      msg.className="jl-msg "+(who==="user"?"jl-user":"jl-bot");
-      msg.textContent=text||"";
-      row.appendChild(msg);
-      bodyEl.appendChild(row);
-      forceScroll();
-      return msg;
-    }
-
-    async function typeInto(el, fullText, cps=28){
-      const cursor=document.createElement("span");
-      cursor.className="jl-typing";
-      el.textContent="";
-      el.appendChild(cursor);
-      const controller={cancelled:false}; typingController=controller;
-      const stepMs=1000/cps;
-      let i=0,acc=0,last=performance.now();
-      return new Promise(resolve=>{
-        function frame(now){
-          if(controller.cancelled){
-            cursor.remove();
-            el.innerHTML = linkifyHTML(stripMarkdownLinks(fullText));
-            forceScroll();
-            return resolve();
-          }
-          const dt=now-last; last=now; acc+=dt;
-          let wrote=false;
-          while(acc>=stepMs && i<fullText.length){
-            acc-=stepMs;
-            el.textContent = fullText.slice(0, ++i);
-            el.appendChild(cursor);
-            wrote=true;
-          }
-          if(wrote) forceScroll();
-          if(i>=fullText.length){
-            cursor.remove();
-            el.innerHTML = linkifyHTML(stripMarkdownLinks(fullText));
-            forceScroll();
-            return resolve();
-          }
-          requestAnimationFrame(frame);
-        }
-        requestAnimationFrame(frame);
-      });
-    }
-
-    async function sendToWorker(messages){
-      const r=await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({messages})});
-      const txt=await r.text();
-      let data=null; try{data=JSON.parse(txt)}catch{}
-      return{status:r.status,data,raw:txt}
-    }
-
-    document.querySelectorAll('img.icon').forEach(img=>{
-      img.addEventListener('error',()=>{
-        const fb=img.getAttribute('data-fallback');
-        if(fb && img.src!==fb){ img.src=fb; img.style.filter='none'; }
-      },{once:true});
-    });
-
-    input.addEventListener("keydown", e=>{
-      if(e.isComposing) return;
-      if(e.key==="Enter" && !e.shiftKey){
-        e.preventDefault();
-        form.dispatchEvent(new Event("submit",{cancelable:true,bubbles:true}));
-      }
-    });
-    input.addEventListener("input", autosize);
-
-    bodyEl.addEventListener("scroll",()=>{ autolock = atBottom(); },{passive:true});
-
-    form.addEventListener("submit",async e=>{
-      e.preventDefault();
-      const text=input.value.trim();
-      if(!text)return;
-      if(typingController) typingController.cancelled=true;
-
-      input.value="";
-      autosize();
-      input.focus();
-
-      addBubble(text,"user");
-      historyBuf.push({role:"user",content:text});
-
-      autolock = true;
-
-      const botMsgEl = addBubble("", "bot");
-      try{
-        const{status,data,raw}=await sendToWorker(historyBuf);
-        if(data&&data.reply){
-          historyBuf.push({role:"assistant",content:data.reply});
-          await typeInto(botMsgEl, data.reply, 30);
-        }else if(data&&data.error){
-          const msg=(data.raw&&data.raw.error&&data.raw.error.message)?data.raw.error.message:data.error;
-          await typeInto(botMsgEl, "Warning, "+msg, 32);
-        }else{
-          await typeInto(botMsgEl, "Unexpected response, "+status, 32);
-          console.log("raw:",raw);
-        }
-      }catch(err){
-        await typeInto(botMsgEl, "Network error. Please try again.", 32);
-      }
-    });
-
-    document.addEventListener('DOMContentLoaded', ()=>{
-      window.scrollTo(0,0);
-      bodyEl.scrollTop = 0;
-      autosize();
-    }, {once:true});
-    window.addEventListener('load', ()=>{
-      window.scrollTo(0,0);
-      bodyEl.scrollTop = 0;
-    }, {once:true});
+    // Update year automatically
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
