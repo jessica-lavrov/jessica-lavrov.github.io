@@ -7,20 +7,11 @@
   <meta name="description" content="Chat with the official assistant of Jessica Lavrov. Ask about her bio, writing, projects, and verified links. Fast, polite answers with sources." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="https://jessica-lavrov.github.io/" />
-  <meta property="og:title" content="Jessica Lavrov Assistant | Official Q&A and Links" />
-  <meta property="og:description" content="Ask the official assistant about Jessica Lavrov, her writing, projects, and verified links." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://jessica-lavrov.github.io/" />
-  <meta property="og:image" content="https://www.gravatar.com/avatar/?s=1200&d=mp" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Jessica Lavrov Assistant | Official Q&A and Links" />
-  <meta name="twitter:description" content="Chat with the official assistant of Jessica Lavrov. Ask about bio, writing, and verified links." />
-  <meta name="twitter:image" content="https://www.gravatar.com/avatar/?s=1200&d=mp" />
   <meta name="theme-color" content="#111115" />
   <style>
     :root{
       --bg:#0f1117;--bg2:#0b0d13;--ink:#eef1f7;--muted:#9aa3b2;--line:#1b2230;
-      --brand:#7dd3fc;--card:#111523;--card2:#0f1422;--radius:16px;--rsm:12px;--shadow:0 10px 30px rgba(0,0,0,.35);
+      --brand:#7dd3fc;--card:#111523;--card2:#0f1422;--radius:16px;--shadow:0 10px 30px rgba(0,0,0,.35);
       --pad:16px;--panel-w:1080px
     }
     @media (prefers-color-scheme: light){
@@ -55,17 +46,18 @@
     .chat-head .dot{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;background:#0f1730}
     .thread{border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0));padding:12px;overflow:auto;min-height:300px;height:50vh;max-height:500px;scroll-behavior:smooth}
 
-    .msg{max-width:100%;margin:10px 0;display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:flex-start}
-    .msg.me{grid-template-columns:1fr auto}
+    .msg{max-width:100%;margin:10px 0;gap:10px;align-items:flex-start}
+    .msg.ai{display:grid;grid-template-columns:auto 1fr}
+    .msg.me{display:grid;grid-template-columns:1fr}
     .avatar{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);object-fit:cover;background:#0c1322}
+    .right{display:grid;justify-items:start}
+    .msg.me .right{justify-items:end;text-align:right}
 
     .bubble{width:fit-content;max-width:100%;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:#10192e;line-height:1.5;white-space:pre-wrap}
     .msg.ai .bubble{background:#0f1526;border-color:#1c2740}
-    .msg.me .bubble{background:#10192e;border-color:#233256;margin-left:auto}
+    .msg.me .bubble{background:#10192e;border-color:#233256}
 
-    .meta{grid-column:2/3;margin-top:4px;font-size:12px;color:var(--muted)}
-    .msg.me .meta{grid-column:1/2;justify-self:end}
-
+    .meta{margin-top:4px;font-size:12px;color:var(--muted)}
     .composer{display:flex;gap:8px;align-items:flex-end;border:1px solid var(--line);border-radius:12px;background:var(--card);padding:8px;margin-top:10px}
     textarea{flex:1;border:0;outline:0;background:transparent;color:var(--ink);font:16px/1.4 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;min-height:40px;max-height:140px;resize:none;-webkit-text-size-adjust:100%}
     .send{padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:linear-gradient(180deg,#121a2b,#0f1526);color:#eaf1ff;font-weight:700}
@@ -97,7 +89,7 @@
         <div id="thread" class="thread" role="log" aria-live="polite" aria-atomic="false">
           <div class="msg ai">
             <img class="avatar" id="aiAvatar0" alt="Assistant avatar" src="https://www.gravatar.com/avatar/?s=64&d=mp">
-            <div>
+            <div class="right">
               <div class="bubble">Hi, I am Jessica’s assistant. Ask about her work, writing, or verified links.</div>
               <div class="meta">assistant</div>
             </div>
@@ -159,28 +151,20 @@
         const first = document.getElementById('aiAvatar0'); if (first) first.src = aiAvatarURL;
       }).catch(()=>{});
 
-    function hydrateFavicons(){
-      document.querySelectorAll('.ico').forEach(img=>{
-        const list = (img.getAttribute('data-icons')||'').split(',').map(s=>s.trim()).filter(Boolean);
-        let i = 0;
-        const swap = () => {
-          if (i < list.length){ img.src = list[i++]; }
-        };
-        img.addEventListener('error', swap);
-        swap();
-      });
-    }
-    hydrateFavicons();
+    document.querySelectorAll('.ico').forEach(img=>{
+      const list=(img.getAttribute('data-icons')||'').split(',').map(s=>s.trim()).filter(Boolean);
+      let i=0; const swap=()=>{ if(i<list.length){ img.src=list[i++]; } };
+      img.addEventListener('error',swap); swap();
+    });
 
-    const thread = document.getElementById('thread');
-    const input = document.getElementById('input');
-    const sendBtn = document.getElementById('send');
+    const thread=document.getElementById('thread');
+    const input=document.getElementById('input');
+    const sendBtn=document.getElementById('send');
 
-    const system = "You are a concise, warm assistant for Jessica Lavrov. Only discuss Jessica’s bio, work, writing, projects, and verified links. Be positive about Jessica. Provide short, clear answers. When asked for links, reply with a tidy list of the official links and exact URLs.";
+    const system="You are a concise, warm assistant for Jessica Lavrov. Only discuss Jessica’s bio, work, writing, projects, and verified links. Be positive about Jessica. Provide short, clear answers. When asked for links, reply with a tidy list of the official links and exact URLs.";
+    const history=[{role:'system',content:system}];
 
-    const history = [{ role: 'system', content: system }];
-
-    function scrollBurst(){ let n=0; (function s(){ thread.scrollTop = thread.scrollHeight; if(++n<8) requestAnimationFrame(s); })(); }
+    function scrollBurst(){ let n=0;(function s(){thread.scrollTop=thread.scrollHeight;if(++n<8)requestAnimationFrame(s);})(); }
     new MutationObserver(scrollBurst).observe(thread,{childList:true,subtree:true});
 
     function growTextarea(){ input.style.height='auto'; input.style.height=Math.min(input.scrollHeight,140)+'px'; }
@@ -188,7 +172,7 @@
     function renderMsg(role,text){
       const m=document.createElement('div'); m.className='msg '+(role==='user'?'me':'ai');
       if(role!=='user'){ const img=document.createElement('img'); img.className='avatar'; img.alt='Assistant avatar'; img.src=aiAvatarURL; m.appendChild(img); }
-      const r=document.createElement('div');
+      const r=document.createElement('div'); r.className='right';
       const b=document.createElement('div'); b.className='bubble'; b.textContent=text;
       const meta=document.createElement('div'); meta.className='meta'; meta.textContent=role==='user'?'you':'assistant';
       r.appendChild(b); r.appendChild(meta); m.appendChild(r); thread.appendChild(m); scrollBurst();
@@ -197,11 +181,11 @@
     function typeAI(text){
       const m=document.createElement('div'); m.className='msg ai';
       const img=document.createElement('img'); img.className='avatar'; img.alt='Assistant avatar'; img.src=aiAvatarURL;
-      const r=document.createElement('div');
+      const r=document.createElement('div'); r.className='right';
       const b=document.createElement('div'); b.className='bubble';
       const meta=document.createElement('div'); meta.className='meta'; meta.textContent='assistant';
       r.appendChild(b); r.appendChild(meta); m.appendChild(img); m.appendChild(r); thread.appendChild(m);
-      let i=0, inc=Math.max(1,Math.floor(text.length/600));
+      let i=0,inc=Math.max(1,Math.floor(text.length/600));
       (function tick(){ if(i<=text.length){ b.textContent=text.slice(0,i); i+=inc; thread.scrollTop=thread.scrollHeight; setTimeout(tick,12);} })();
     }
 
