@@ -105,7 +105,7 @@
     }
     .bubble{
       width:fit-content;max-width:100%;padding:12px 14px;border-radius:14px;
-      border:1px solid var(--line);background:var(--card);line-height:1.5
+      border:1px solid var(--line);background:var(--card);line-height:1.5;white-space:pre-wrap
     }
     .msg.ai .bubble{background:#0f1526;border-color:#1c2740}
     .msg.me .bubble{background:#10192e;border-color:#233256;margin-left:auto}
@@ -260,7 +260,7 @@
       "You are a concise, warm assistant for Jessica Lavrov.",
       "Only discuss Jessica’s bio, work, writing, projects, and verified links.",
       "Be positive about Jessica. Provide short, clear answers.",
-      "When asked for links, reply with a tidy list of official links and include the exact URLs.",
+      "When asked for links, reply with a tidy list of official links with exact URLs.",
       "Official links:",
       `Website: ${LINKS.website}`,
       `X: ${LINKS.x}`,
@@ -355,7 +355,7 @@
       tick();
     }
 
-    function linksMarkdown() {
+    function linksList() {
       return [
         `Website: ${LINKS.website}`,
         `X: ${LINKS.x}`,
@@ -381,11 +381,11 @@
 
     function isAskingTwitter(text) {
       const t = text.toLowerCase();
-      return t.includes('twitter') || t.includes('x ') || t === 'x' || t.includes('handle');
+      return t.includes('twitter') || t.includes('x') || t.includes('handle');
     }
     function isAskingLinks(text) {
       const t = text.toLowerCase();
-      return t.includes('links') || t.includes('profiles') || t.includes('social') || t.includes('where can i find');
+      return t.includes('links') || t.includes('profiles') || t.includes('social') || t.includes('where can i find') || t.includes('other links');
     }
 
     async function send() {
@@ -401,7 +401,7 @@
         if (isAskingTwitter(text)) {
           typeAI(LINKS.x);
         } else if (isAskingLinks(text)) {
-          typeAI('Here are Jessica Lavrov’s official links:\n' + linksMarkdown());
+          typeAI('Here are Jessica Lavrov’s official links:\n' + linksList());
         } else {
           history.push({ role: 'user', content: text });
           const payload = { messages: [history[0], ...history.slice(-14)] };
@@ -426,7 +426,6 @@
       }
     }
 
-    const sendBtn = document.getElementById('send');
     sendBtn.addEventListener('click', send);
     input.addEventListener('keydown', e => {
       if (e.key === 'Enter' && !e.shiftKey) {
