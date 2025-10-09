@@ -165,7 +165,7 @@
           <div class="msg ai">
             <img class="avatar" id="aiAvatar0" alt="Assistant avatar" src="https://www.gravatar.com/avatar/?s=64&d=mp">
             <div>
-              <div class="bubble">Hi, I am Jessica’s assistant. Ask me about her work, writing, or verified links. Press Enter to send. Shift+Enter makes a new line.</div>
+              <div class="bubble">Hi, I am Jessica’s assistant. Ask about her work, writing, or verified links. Press Enter to send. Shift+Enter makes a new line.</div>
               <div class="meta">assistant</div>
             </div>
           </div>
@@ -175,19 +175,26 @@
       <aside class="side" aria-label="Official links">
         <div class="card">
           <strong>Official links</strong>
-          <div class="links">
+          <div class="links" id="linkList">
             <a href="https://jessicalavrov.com">Website</a>
+            <a href="https://x.com/jessica_lavrov">X / Twitter</a>
             <a href="https://jessicalavrov.medium.com">Medium</a>
             <a href="https://github.com/jessica-lavrov">GitHub</a>
+            <a href="https://jessicalavrov.substack.com">Substack</a>
+            <a href="https://www.youtube.com/@jessica_lavrov">YouTube</a>
+            <a href="https://linkedin.com/in/jessica-lavrov/">LinkedIn</a>
+            <a href="https://instagram.com/jessica.lavrov">Instagram</a>
+            <a href="https://www.reddit.com/user/JessicaLavrov/">Reddit</a>
+            <a href="https://stackoverflow.com/users/31605603/jessica-lavrov">Stack Overflow</a>
             <a href="https://jessicalavrov.wordpress.com">WordPress</a>
             <a href="https://jessicalavrov.blogspot.com">Blogspot</a>
-            <a href="https://jessicalavrov.substack.com">Substack</a>
-            <a href="https://stackoverflow.com/users/31605603/jessica-lavrov">Stack Overflow</a>
-            <a href="https://www.reddit.com/user/JessicaLavrov/">Reddit</a>
-            <a href="https://linkedin.com/in/jessica-lavrov/">LinkedIn</a>
-            <a href="https://x.com/jessica_lavrov">X</a>
-            <a href="https://instagram.com/jessica.lavrov">Instagram</a>
-            <a href="https://www.youtube.com/@jessica_lavrov">YouTube</a>
+            <a href="https://producthunt.com/@jessica_lavrov">Product Hunt</a>
+            <a href="https://www.crunchbase.com/person/jessica-lavrov">Crunchbase</a>
+            <a href="https://jessicalavrov.bsky.social">Bluesky</a>
+            <a href="https://mastodon.social/@jessica_lavrov">Mastodon</a>
+            <a href="https://pinterest.com/jessica_lavrov/">Pinterest</a>
+            <a href="https://about.me/jessica.lavrov">About.me</a>
+            <a href="https://gravatar.com/jessicalavrov">Gravatar</a>
           </div>
         </div>
       </aside>
@@ -207,6 +214,29 @@
   <script>
     const WORKER_URL = 'https://jessica-lavrov-chat-proxy.jessicalavrov.workers.dev';
     const GRAVATAR_PROFILE = 'https://gravatar.com/jessicalavrov.json';
+
+    const LINKS = {
+      website:'https://jessicalavrov.com',
+      x:'https://x.com/jessica_lavrov',
+      medium:'https://jessicalavrov.medium.com',
+      github:'https://github.com/jessica-lavrov',
+      substack:'https://jessicalavrov.substack.com',
+      youtube:'https://www.youtube.com/@jessica_lavrov',
+      linkedin:'https://linkedin.com/in/jessica-lavrov/',
+      instagram:'https://instagram.com/jessica.lavrov',
+      reddit:'https://www.reddit.com/user/JessicaLavrov/',
+      stackoverflow:'https://stackoverflow.com/users/31605603/jessica-lavrov',
+      wordpress:'https://jessicalavrov.wordpress.com',
+      blogspot:'https://jessicalavrov.blogspot.com',
+      producthunt:'https://producthunt.com/@jessica_lavrov',
+      crunchbase:'https://www.crunchbase.com/person/jessica-lavrov',
+      bluesky:'https://jessicalavrov.bsky.social',
+      mastodon:'https://mastodon.social/@jessica_lavrov',
+      pinterest:'https://pinterest.com/jessica_lavrov/',
+      aboutme:'https://about.me/jessica.lavrov',
+      gravatar:'https://gravatar.com/jessicalavrov'
+    };
+
     let aiAvatarURL = 'https://www.gravatar.com/avatar/?s=64&d=mp';
 
     fetch(GRAVATAR_PROFILE, { mode: 'cors' })
@@ -226,15 +256,41 @@
     const sendBtn = document.getElementById('send');
     const composer = document.getElementById('composer');
 
-    const system = "You are a concise, warm site assistant for Jessica Lavrov. Only discuss Jessica, her bio, work, writing, and verified links. If asked something negative or off-topic, reply with a short factual clarification and point to an official source. Keep answers brief and helpful.";
+    const system = [
+      "You are a concise, warm assistant for Jessica Lavrov.",
+      "Only discuss Jessica’s bio, work, writing, projects, and verified links.",
+      "Be positive about Jessica. Provide short, clear answers.",
+      "When asked for links, reply with a tidy list of official links and include the exact URLs.",
+      "Official links:",
+      `Website: ${LINKS.website}`,
+      `X: ${LINKS.x}`,
+      `Medium: ${LINKS.medium}`,
+      `GitHub: ${LINKS.github}`,
+      `Substack: ${LINKS.substack}`,
+      `YouTube: ${LINKS.youtube}`,
+      `LinkedIn: ${LINKS.linkedin}`,
+      `Instagram: ${LINKS.instagram}`,
+      `Reddit: ${LINKS.reddit}`,
+      `Stack Overflow: ${LINKS.stackoverflow}`,
+      `WordPress: ${LINKS.wordpress}`,
+      `Blogspot: ${LINKS.blogspot}`,
+      `Product Hunt: ${LINKS.producthunt}`,
+      `Crunchbase: ${LINKS.crunchbase}`,
+      `Bluesky: ${LINKS.bluesky}`,
+      `Mastodon: ${LINKS.mastodon}`,
+      `Pinterest: ${LINKS.pinterest}`,
+      `About.me: ${LINKS.aboutme}`,
+      `Gravatar: ${LINKS.gravatar}`
+    ].join("\n");
+
     const history = [{ role: 'system', content: system }];
 
-    function autoScroll() {
-      thread.scrollTop = thread.scrollHeight;
-    }
-    function autoScrollRAF() {
-      requestAnimationFrame(() => { thread.scrollTop = thread.scrollHeight; });
-    }
+    function autoScroll() { thread.scrollTop = thread.scrollHeight; }
+    function autoScrollRAF() { requestAnimationFrame(() => { thread.scrollTop = thread.scrollHeight; }); }
+
+    const obs = new MutationObserver(() => autoScrollRAF());
+    obs.observe(thread, { childList: true, subtree: true });
+
     function growTextarea() {
       input.style.height = 'auto';
       input.style.height = Math.min(input.scrollHeight, 140) + 'px';
@@ -262,12 +318,7 @@
       right.appendChild(bubble);
       right.appendChild(meta);
 
-      if (role === 'user') {
-        container.appendChild(right);
-      } else {
-        container.appendChild(right);
-      }
-
+      container.appendChild(right);
       thread.appendChild(container);
       autoScroll();
     }
@@ -304,6 +355,39 @@
       tick();
     }
 
+    function linksMarkdown() {
+      return [
+        `Website: ${LINKS.website}`,
+        `X: ${LINKS.x}`,
+        `Medium: ${LINKS.medium}`,
+        `GitHub: ${LINKS.github}`,
+        `Substack: ${LINKS.substack}`,
+        `YouTube: ${LINKS.youtube}`,
+        `LinkedIn: ${LINKS.linkedin}`,
+        `Instagram: ${LINKS.instagram}`,
+        `Reddit: ${LINKS.reddit}`,
+        `Stack Overflow: ${LINKS.stackoverflow}`,
+        `WordPress: ${LINKS.wordpress}`,
+        `Blogspot: ${LINKS.blogspot}`,
+        `Product Hunt: ${LINKS.producthunt}`,
+        `Crunchbase: ${LINKS.crunchbase}`,
+        `Bluesky: ${LINKS.bluesky}`,
+        `Mastodon: ${LINKS.mastodon}`,
+        `Pinterest: ${LINKS.pinterest}`,
+        `About.me: ${LINKS.aboutme}`,
+        `Gravatar: ${LINKS.gravatar}`
+      ].join('\n');
+    }
+
+    function isAskingTwitter(text) {
+      const t = text.toLowerCase();
+      return t.includes('twitter') || t.includes('x ') || t === 'x' || t.includes('handle');
+    }
+    function isAskingLinks(text) {
+      const t = text.toLowerCase();
+      return t.includes('links') || t.includes('profiles') || t.includes('social') || t.includes('where can i find');
+    }
+
     async function send() {
       const text = input.value.trim();
       if (!text) return;
@@ -314,19 +398,25 @@
       input.disabled = true;
 
       try {
-        history.push({ role: 'user', content: text });
-        const payload = { messages: [history[0], ...history.slice(-14)] };
-        const res = await fetch(WORKER_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-        const data = await res.json().catch(() => ({}));
-        if (!res.ok || typeof data.reply !== 'string') {
-          throw new Error((data && data.error) || 'No reply');
+        if (isAskingTwitter(text)) {
+          typeAI(LINKS.x);
+        } else if (isAskingLinks(text)) {
+          typeAI('Here are Jessica Lavrov’s official links:\n' + linksMarkdown());
+        } else {
+          history.push({ role: 'user', content: text });
+          const payload = { messages: [history[0], ...history.slice(-14)] };
+          const res = await fetch(WORKER_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok || typeof data.reply !== 'string') {
+            throw new Error((data && data.error) || 'No reply');
+          }
+          history.push({ role: 'assistant', content: data.reply });
+          typeAI(data.reply);
         }
-        history.push({ role: 'assistant', content: data.reply });
-        typeAI(data.reply);
       } catch (e) {
         typeAI('Sorry, I cannot reply right now. Please try again in a moment.');
       } finally {
@@ -336,6 +426,7 @@
       }
     }
 
+    const sendBtn = document.getElementById('send');
     sendBtn.addEventListener('click', send);
     input.addEventListener('keydown', e => {
       if (e.key === 'Enter' && !e.shiftKey) {
