@@ -50,18 +50,23 @@
 
     .main{flex:1;display:flex;flex-direction:column;gap:14px;max-width:var(--panel-w);margin:0 auto;width:100%;padding:12px var(--pad)}
     .panel{border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,var(--card),var(--card2));box-shadow:var(--shadow);padding:12px}
+
     .chat-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
     .chat-head .dot{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;background:#0f1730}
-    .thread{border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0));padding:12px;overflow:auto;min-height:300px;height:50vh;max-height:500px}
+    .thread{border:1px solid var(--line);border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0));padding:12px;overflow:auto;min-height:300px;height:50vh;max-height:500px;scroll-behavior:smooth}
+
     .msg{max-width:100%;margin:10px 0;display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:flex-start}
     .msg.me{grid-template-columns:1fr auto}
     .avatar{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);object-fit:cover;background:#0c1322}
+
     .bubble{width:fit-content;max-width:100%;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:#10192e;line-height:1.5;white-space:pre-wrap}
     .msg.ai .bubble{background:#0f1526;border-color:#1c2740}
     .msg.me .bubble{background:#10192e;border-color:#233256;margin-left:auto}
+
     .meta{grid-column:2/3;margin-top:4px;font-size:12px;color:var(--muted)}
-    .msg.me .meta{grid-column:2/3;justify-self:end}
-    .composer{display:flex;gap:8px;align-items:flex-end;border:1px solid var(--line);border-radius:12px;background:var(--card);padding:8px}
+    .msg.me .meta{grid-column:1/2;justify-self:end}
+
+    .composer{display:flex;gap:8px;align-items:flex-end;border:1px solid var(--line);border-radius:12px;background:var(--card);padding:8px;margin-top:10px}
     textarea{flex:1;border:0;outline:0;background:transparent;color:var(--ink);font:16px/1.4 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;min-height:40px;max-height:140px;resize:none;-webkit-text-size-adjust:100%}
     .send{padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:linear-gradient(180deg,#121a2b,#0f1526);color:#eaf1ff;font-weight:700}
     .hint{color:var(--muted);font-size:12px;margin-top:6px}
@@ -98,7 +103,7 @@
             </div>
           </div>
         </div>
-        <div class="composer" style="margin-top:10px">
+        <div class="composer">
           <textarea id="input" placeholder="Ask about Jessica…" rows="1" inputmode="text" autocomplete="off" aria-label="Message input"></textarea>
           <button id="send" class="send" aria-label="Send">Send</button>
         </div>
@@ -108,31 +113,31 @@
       <section class="panel" aria-label="Official links">
         <strong style="display:block;margin-bottom:8px">Jessica Lavrov official links</strong>
         <div class="grid-links" id="linkList">
-          <a href="https://jessicalavrov.com"><img class="ico" src="https://icons.duckduckgo.com/ip3/jessicalavrov.com.ico" data-alt1="https://www.google.com/s2/favicons?domain=jessicalavrov.com&sz=64" data-alt2="https://api.faviconkit.com/jessicalavrov.com/64" alt="">Website</a>
-          <a href="https://x.com/jessica_lavrov"><img class="ico" src="https://icons.duckduckgo.com/ip3/x.com.ico" data-alt1="https://www.google.com/s2/favicons?domain=x.com&sz=64" data-alt2="https://api.faviconkit.com/x.com/64" alt="">X / Twitter</a>
-          <a href="https://jessicalavrov.medium.com"><img class="ico" src="https://icons.duckduckgo.com/ip3/medium.com.ico" data-alt1="https://www.google.com/s2/favicons?domain=medium.com&sz=64" data-alt2="https://api.faviconkit.com/medium.com/64" alt="">Medium</a>
-          <a href="https://github.com/jessica-lavrov"><img class="ico" src="https://icons.duckduckgo.com/ip3/github.com.ico" data-alt1="https://www.google.com/s2/favicons?domain=github.com&sz=64" data-alt2="https://api.faviconkit.com/github.com/64" alt="">GitHub</a>
-          <a href="https://jessicalavrov.substack.com"><img class="ico" src="https://icons.duckduckgo.com/ip3/substack.com.ico" data-alt1="https://www.google.com/s2/favicons?domain=substack.com&sz=64" data-alt2="https://api.faviconkit.com/substack.com/64" alt="">Substack</a>
-          <a href="https://www.youtube.com/@jessica_lavrov"><img class="ico" src="https://icons.duckduckgo.com/ip3/youtube.com.ico" data-alt1="https://www.google.com/s2/favicons?domain=youtube.com&sz=64" data-alt2="https://api.faviconkit.com/youtube.com/64" alt="">YouTube</a>
-          <a href="https://linkedin.com/in/jessica-lavrov/"><img class="ico" src="https://icons.duckduckgo.com/ip3/linkedin.com.ico" data-alt1="https://www.google.com/s2/favicons?domain=linkedin.com&sz=64" data-alt2="https://api.faviconkit.com/linkedin.com/64" alt="">LinkedIn</a>
-          <a href="https://instagram.com/jessica.lavrov"><img class="ico" src="https://icons.duckduckgo.com/ip3/instagram.com.ico" data-alt1="https://www.google.com/s2/favicons?domain=instagram.com&sz=64" data-alt2="https://api.faviconkit.com/instagram.com/64" alt="">Instagram</a>
-          <a href="https://www.reddit.com/user/JessicaLavrov/"><img class="ico" src="https://icons.duckduckgo.com/ip3/reddit.com.ico" data-alt1="https://www.google.com/s2/favicons?domain=reddit.com&sz=64" data-alt2="https://api.faviconkit.com/reddit.com/64" alt="">Reddit</a>
-          <a href="https://stackoverflow.com/users/31605603/jessica-lavrov"><img class="ico" src="https://icons.duckduckgo.com/ip3/stackoverflow.com.ico" data-alt1="https://www.google.com/s2/favicons?domain=stackoverflow.com&sz=64" data-alt2="https://api.faviconkit.com/stackoverflow.com/64" alt="">Stack Overflow</a>
-          <a href="https://jessicalavrov.wordpress.com"><img class="ico" src="https://icons.duckduckgo.com/ip3/wordpress.com.ico" data-alt1="https://www.google.com/s2/favicons?domain=wordpress.com&sz=64" data-alt2="https://api.faviconkit.com/wordpress.com/64" alt="">WordPress</a>
-          <a href="https://jessicalavrov.blogspot.com"><img class="ico" src="https://icons.duckduckgo.com/ip3/blogspot.com.ico" data-alt1="https://www.google.com/s2/favicons?domain=blogspot.com&sz=64" data-alt2="https://api.faviconkit.com/blogspot.com/64" alt="">Blogspot</a>
-          <a href="https://producthunt.com/@jessica_lavrov"><img class="ico" src="https://icons.duckduckgo.com/ip3/producthunt.com.ico" data-alt1="https://www.google.com/s2/favicons?domain=producthunt.com&sz=64" data-alt2="https://api.faviconkit.com/producthunt.com/64" alt="">Product Hunt</a>
-          <a href="https://www.crunchbase.com/person/jessica-lavrov"><img class="ico" src="https://icons.duckduckgo.com/ip3/crunchbase.com.ico" data-alt1="https://www.google.com/s2/favicons?domain=crunchbase.com&sz=64" data-alt2="https://api.faviconkit.com/crunchbase.com/64" alt="">Crunchbase</a>
-          <a href="https://jessicalavrov.bsky.social"><img class="ico" src="https://icons.duckduckgo.com/ip3/bsky.social.ico" data-alt1="https://www.google.com/s2/favicons?domain=bsky.social&sz=64" data-alt2="https://api.faviconkit.com/bsky.social/64" alt="">Bluesky</a>
-          <a href="https://mastodon.social/@jessica_lavrov"><img class="ico" src="https://icons.duckduckgo.com/ip3/mastodon.social.ico" data-alt1="https://www.google.com/s2/favicons?domain=mastodon.social&sz=64" data-alt2="https://api.faviconkit.com/mastodon.social/64" alt="">Mastodon</a>
-          <a href="https://pinterest.com/jessica_lavrov/"><img class="ico" src="https://icons.duckduckgo.com/ip3/pinterest.com.ico" data-alt1="https://www.google.com/s2/favicons?domain=pinterest.com&sz=64" data-alt2="https://api.faviconkit.com/pinterest.com/64" alt="">Pinterest</a>
-          <a href="https://about.me/jessica.lavrov"><img class="ico" src="https://icons.duckduckgo.com/ip3/about.me.ico" data-alt1="https://www.google.com/s2/favicons?domain=about.me&sz=64" data-alt2="https://api.faviconkit.com/about.me/64" alt="">About.me</a>
-          <a href="https://gravatar.com/jessicalavrov"><img class="ico" src="https://icons.duckduckgo.com/ip3/gravatar.com.ico" data-alt1="https://www.google.com/s2/favicons?domain=gravatar.com&sz=64" data-alt2="https://api.faviconkit.com/gravatar.com/64" alt="">Gravatar</a>
-          <a href="https://news.ycombinator.com/user?id=jessica_lavrov"><img class="ico" src="https://icons.duckduckgo.com/ip3/news.ycombinator.com.ico" data-alt1="https://www.google.com/s2/favicons?domain=news.ycombinator.com&sz=64" data-alt2="https://api.faviconkit.com/news.ycombinator.com/64" alt="">Hacker News</a>
-          <a href="https://www.patreon.com/cw/Jessica_Lavrov"><img class="ico" src="https://icons.duckduckgo.com/ip3/patreon.com.ico" data-alt1="https://www.google.com/s2/favicons?domain=patreon.com&sz=64" data-alt2="https://api.faviconkit.com/patreon.com/64" alt="">Patreon</a>
-          <a href="https://truthsocial.com/@jessica_lavrov"><img class="ico" src="https://icons.duckduckgo.com/ip3/truthsocial.com.ico" data-alt1="https://www.google.com/s2/favicons?domain=truthsocial.com&sz=64" data-alt2="https://api.faviconkit.com/truthsocial.com/64" alt="">Truth Social</a>
-          <a href="https://threads.net/@jessica.lavrov"><img class="ico" src="https://icons.duckduckgo.com/ip3/threads.net.ico" data-alt1="https://www.google.com/s2/favicons?domain=threads.net&sz=64" data-alt2="https://api.faviconkit.com/threads.net/64" alt="">Threads</a>
-          <a href="https://www.quora.com/profile/Jessica-Lavrov"><img class="ico" src="https://icons.duckduckgo.com/ip3/quora.com.ico" data-alt1="https://www.google.com/s2/favicons?domain=quora.com&sz=64" data-alt2="https://api.faviconkit.com/quora.com/64" alt="">Quora</a>
-          <a href="https://www.wikidata.org/wiki/Q136409297"><img class="ico" src="https://icons.duckduckgo.com/ip3/wikidata.org.ico" data-alt1="https://www.google.com/s2/favicons?domain=wikidata.org&sz=64" data-alt2="https://api.faviconkit.com/wikidata.org/64" alt="">Wikidata</a>
+          <a href="https://jessicalavrov.com"><img class="ico" data-icons="https://www.google.com/s2/favicons?domain=jessicalavrov.com&sz=64,https://icons.duckduckgo.com/ip3/jessicalavrov.com.ico,https://api.faviconkit.com/jessicalavrov.com/64" alt="">Website</a>
+          <a href="https://x.com/jessica_lavrov"><img class="ico" data-icons="https://www.google.com/s2/favicons?domain=x.com&sz=64,https://icons.duckduckgo.com/ip3/x.com.ico,https://api.faviconkit.com/x.com/64" alt="">X / Twitter</a>
+          <a href="https://jessicalavrov.medium.com"><img class="ico" data-icons="https://www.google.com/s2/favicons?domain=medium.com&sz=64,https://icons.duckduckgo.com/ip3/medium.com.ico,https://api.faviconkit.com/medium.com/64" alt="">Medium</a>
+          <a href="https://github.com/jessica-lavrov"><img class="ico" data-icons="https://www.google.com/s2/favicons?domain=github.com&sz=64,https://icons.duckduckgo.com/ip3/github.com.ico,https://api.faviconkit.com/github.com/64" alt="">GitHub</a>
+          <a href="https://jessicalavrov.substack.com"><img class="ico" data-icons="https://www.google.com/s2/favicons?domain=substack.com&sz=64,https://icons.duckduckgo.com/ip3/substack.com.ico,https://api.faviconkit.com/substack.com/64" alt="">Substack</a>
+          <a href="https://www.youtube.com/@jessica_lavrov"><img class="ico" data-icons="https://www.google.com/s2/favicons?domain=youtube.com&sz=64,https://icons.duckduckgo.com/ip3/youtube.com.ico,https://api.faviconkit.com/youtube.com/64" alt="">YouTube</a>
+          <a href="https://linkedin.com/in/jessica-lavrov/"><img class="ico" data-icons="https://www.google.com/s2/favicons?domain=linkedin.com&sz=64,https://icons.duckduckgo.com/ip3/linkedin.com.ico,https://api.faviconkit.com/linkedin.com/64" alt="">LinkedIn</a>
+          <a href="https://instagram.com/jessica.lavrov"><img class="ico" data-icons="https://www.google.com/s2/favicons?domain=instagram.com&sz=64,https://icons.duckduckgo.com/ip3/instagram.com.ico,https://api.faviconkit.com/instagram.com/64" alt="">Instagram</a>
+          <a href="https://www.reddit.com/user/JessicaLavrov/"><img class="ico" data-icons="https://www.google.com/s2/favicons?domain=reddit.com&sz=64,https://icons.duckduckgo.com/ip3/reddit.com.ico,https://api.faviconkit.com/reddit.com/64" alt="">Reddit</a>
+          <a href="https://stackoverflow.com/users/31605603/jessica-lavrov"><img class="ico" data-icons="https://www.google.com/s2/favicons?domain=stackoverflow.com&sz=64,https://icons.duckduckgo.com/ip3/stackoverflow.com.ico,https://api.faviconkit.com/stackoverflow.com/64" alt="">Stack Overflow</a>
+          <a href="https://jessicalavrov.wordpress.com"><img class="ico" data-icons="https://www.google.com/s2/favicons?domain=wordpress.com&sz=64,https://icons.duckduckgo.com/ip3/wordpress.com.ico,https://api.faviconkit.com/wordpress.com/64" alt="">WordPress</a>
+          <a href="https://jessicalavrov.blogspot.com"><img class="ico" data-icons="https://www.google.com/s2/favicons?domain=blogspot.com&sz=64,https://icons.duckduckgo.com/ip3/blogspot.com.ico,https://api.faviconkit.com/blogspot.com/64" alt="">Blogspot</a>
+          <a href="https://producthunt.com/@jessica_lavrov"><img class="ico" data-icons="https://www.google.com/s2/favicons?domain=producthunt.com&sz=64,https://icons.duckduckgo.com/ip3/producthunt.com.ico,https://api.faviconkit.com/producthunt.com/64" alt="">Product Hunt</a>
+          <a href="https://www.crunchbase.com/person/jessica-lavrov"><img class="ico" data-icons="https://www.google.com/s2/favicons?domain=crunchbase.com&sz=64,https://icons.duckduckgo.com/ip3/crunchbase.com.ico,https://api.faviconkit.com/crunchbase.com/64" alt="">Crunchbase</a>
+          <a href="https://jessicalavrov.bsky.social"><img class="ico" data-icons="https://www.google.com/s2/favicons?domain=bsky.app&sz=64,https://icons.duckduckgo.com/ip3/bsky.app.ico,https://api.faviconkit.com/bsky.app/64" alt="">Bluesky</a>
+          <a href="https://mastodon.social/@jessica_lavrov"><img class="ico" data-icons="https://www.google.com/s2/favicons?domain=mastodon.social&sz=64,https://icons.duckduckgo.com/ip3/mastodon.social.ico,https://api.faviconkit.com/mastodon.social/64" alt="">Mastodon</a>
+          <a href="https://pinterest.com/jessica_lavrov/"><img class="ico" data-icons="https://www.google.com/s2/favicons?domain=pinterest.com&sz=64,https://icons.duckduckgo.com/ip3/pinterest.com.ico,https://api.faviconkit.com/pinterest.com/64" alt="">Pinterest</a>
+          <a href="https://about.me/jessica.lavrov"><img class="ico" data-icons="https://www.google.com/s2/favicons?domain=about.me&sz=64,https://icons.duckduckgo.com/ip3/about.me.ico,https://api.faviconkit.com/about.me/64" alt="">About.me</a>
+          <a href="https://gravatar.com/jessicalavrov"><img class="ico" data-icons="https://www.google.com/s2/favicons?domain=gravatar.com&sz=64,https://icons.duckduckgo.com/ip3/gravatar.com.ico,https://api.faviconkit.com/gravatar.com/64" alt="">Gravatar</a>
+          <a href="https://news.ycombinator.com/user?id=jessica_lavrov"><img class="ico" data-icons="https://www.google.com/s2/favicons?domain=news.ycombinator.com&sz=64,https://icons.duckduckgo.com/ip3/news.ycombinator.com.ico,https://api.faviconkit.com/news.ycombinator.com/64" alt="">Hacker News</a>
+          <a href="https://www.patreon.com/cw/Jessica_Lavrov"><img class="ico" data-icons="https://www.google.com/s2/favicons?domain=patreon.com&sz=64,https://icons.duckduckgo.com/ip3/patreon.com.ico,https://api.faviconkit.com/patreon.com/64" alt="">Patreon</a>
+          <a href="https://truthsocial.com/@jessica_lavrov"><img class="ico" data-icons="https://www.google.com/s2/favicons?domain=truthsocial.com&sz=64,https://icons.duckduckgo.com/ip3/truthsocial.com.ico,https://api.faviconkit.com/truthsocial.com/64" alt="">Truth Social</a>
+          <a href="https://threads.net/@jessica.lavrov"><img class="ico" data-icons="https://www.google.com/s2/favicons?domain=threads.net&sz=64,https://icons.duckduckgo.com/ip3/threads.net.ico,https://api.faviconkit.com/threads.net/64" alt="">Threads</a>
+          <a href="https://www.quora.com/profile/Jessica-Lavrov"><img class="ico" data-icons="https://www.google.com/s2/favicons?domain=quora.com&sz=64,https://icons.duckduckgo.com/ip3/quora.com.ico,https://api.faviconkit.com/quora.com/64" alt="">Quora</a>
+          <a href="https://www.wikidata.org/wiki/Q136409297"><img class="ico" data-icons="https://www.google.com/s2/favicons?domain=wikidata.org&sz=64,https://icons.duckduckgo.com/ip3/wikidata.org.ico,https://api.faviconkit.com/wikidata.org/64" alt="">Wikidata</a>
         </div>
       </section>
     </main>
@@ -154,16 +159,18 @@
         const first = document.getElementById('aiAvatar0'); if (first) first.src = aiAvatarURL;
       }).catch(()=>{});
 
-    document.querySelectorAll('.ico').forEach(img=>{
-      let tries=0;
-      img.addEventListener('error',function h(){
-        tries++;
-        const a1=img.getAttribute('data-alt1'), a2=img.getAttribute('data-alt2');
-        if(tries===1 && a1){img.src=a1; return;}
-        if(tries===2 && a2){img.src=a2; return;}
-        img.removeEventListener('error',h);
+    function hydrateFavicons(){
+      document.querySelectorAll('.ico').forEach(img=>{
+        const list = (img.getAttribute('data-icons')||'').split(',').map(s=>s.trim()).filter(Boolean);
+        let i = 0;
+        const swap = () => {
+          if (i < list.length){ img.src = list[i++]; }
+        };
+        img.addEventListener('error', swap);
+        swap();
       });
-    });
+    }
+    hydrateFavicons();
 
     const thread = document.getElementById('thread');
     const input = document.getElementById('input');
