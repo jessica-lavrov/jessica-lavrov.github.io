@@ -2,17 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Jessica Lavrov — Assistant</title>
+  <title>Jessica Lavrov Assistant | Official Q&A and Links</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no" />
-  <meta name="color-scheme" content="light dark" />
+  <meta name="description" content="Chat with the official assistant of Jessica Lavrov. Ask about her bio, writing, projects, and verified links. Fast, polite answers with sources." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://jessica-lavrov.github.io/" />
+  <meta property="og:title" content="Jessica Lavrov Assistant | Official Q&A and Links" />
+  <meta property="og:description" content="Ask the official assistant about Jessica Lavrov, her writing, projects, and verified links. Fast and clear answers." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jessica-lavrov.github.io/" />
+  <meta property="og:image" content="https://www.gravatar.com/avatar/?s=1200&d=mp" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Jessica Lavrov Assistant | Official Q&A and Links" />
+  <meta name="twitter:description" content="Chat with the official assistant of Jessica Lavrov. Ask about bio, writing, and verified links." />
+  <meta name="twitter:image" content="https://www.gravatar.com/avatar/?s=1200&d=mp" />
   <meta name="theme-color" content="#111115" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Jessica Lavrov Assistant",
+    "url": "https://jessica-lavrov.github.io/",
+    "description": "Official Q&A with the assistant of Jessica Lavrov. Ask about her bio, writing, projects, and verified links.",
+    "about": {
+      "@type": "Person",
+      "name": "Jessica Lavrov",
+      "url": "https://jessicalavrov.com/",
+      "sameAs": [
+        "https://x.com/jessica_lavrov",
+        "https://jessicalavrov.medium.com/",
+        "https://github.com/jessica-lavrov",
+        "https://jessicalavrov.substack.com/",
+        "https://www.reddit.com/user/JessicaLavrov/",
+        "https://www.linkedin.com/in/jessica-lavrov/"
+      ]
+    }
+  }
+  </script>
   <style>
     :root{
       --bg:#0f1117;--bg-2:#0b0d13;--ink:#eef1f7;--muted:#9aa3b2;--line:#1b2230;
       --brand:#7dd3fc;--brand-2:#a78bfa;--brand-3:#fca5a5;
       --card:#111523;--card-2:#0f1422;--radius:16px;--radius-sm:12px;
       --shadow:0 10px 30px rgba(0,0,0,.35);
-      --pad:16px;--pad-lg:18px;--composer-h:74px
+      --pad:16px;--composer-h:74px
     }
     @media (prefers-color-scheme: light){
       :root{
@@ -28,23 +61,20 @@
       color:var(--ink);
       font:16px/1.55 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
       -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
-      letter-spacing:.1px;
+      letter-spacing:.1px
     }
     a{color:var(--brand);text-decoration:none}
     a:hover{text-decoration:underline}
     .wrap{
-      min-height:100dvh;
-      display:flex;
-      flex-direction:column;
-      padding:env(safe-area-inset-top) env(safe-area-inset-right) calc(var(--composer-h) + 24px + env(safe-area-inset-bottom)) env(safe-area-inset-left);
+      min-height:100dvh;display:flex;flex-direction:column;
+      padding:env(safe-area-inset-top) env(safe-area-inset-right) calc(var(--composer-h) + 24px + env(safe-area-inset-bottom)) env(safe-area-inset-left)
     }
     header{
       position:sticky;top:0;z-index:2;
       backdrop-filter:saturate(130%) blur(6px);
       background:linear-gradient(180deg,rgba(255,255,255,.06),transparent);
       border-bottom:1px solid var(--line);
-      display:flex;align-items:center;gap:12px;
-      padding:12px var(--pad)
+      display:flex;align-items:center;gap:12px;padding:12px var(--pad)
     }
     .mark{
       width:34px;height:34px;border-radius:10px;
@@ -62,27 +92,25 @@
       background:linear-gradient(180deg,var(--card),var(--card-2));
       color:var(--ink);text-decoration:none;font-weight:600
     }
-    .main{
-      flex:1;display:flex;gap:16px;max-width:1080px;margin:0 auto;
-      width:100%;padding:12px var(--pad)
-    }
-    .chat{
-      flex:1;border:1px solid var(--line);border-radius:var(--radius);
+    .main{flex:1;display:flex;gap:16px;max-width:1080px;margin:0 auto;width:100%;padding:12px var(--pad)}
+    .chat{flex:1;border:1px solid var(--line);border-radius:var(--radius);
       background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0));
-      box-shadow:var(--shadow);display:flex;flex-direction:column;min-height:0
+      box-shadow:var(--shadow);display:flex;flex-direction:column;min-height:0}
+    .thread{padding:12px;overflow:auto;scroll-behavior:smooth;min-height:0;flex:1}
+    .msg{max-width:100%;margin:10px 0;display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:flex-start}
+    .msg.me{grid-template-columns:1fr auto}
+    .avatar{
+      width:32px;height:32px;border-radius:50%;
+      border:1px solid var(--line);background:#0c1322;object-fit:cover
     }
-    .thread{
-      padding:12px;overflow:auto;scroll-behavior:smooth;min-height:0;flex:1
-    }
-    .msg{max-width:100%;margin:6px 0;display:grid;grid-template-columns:1fr}
     .bubble{
       width:fit-content;max-width:100%;padding:12px 14px;border-radius:14px;
       border:1px solid var(--line);background:var(--card);line-height:1.5
     }
     .msg.ai .bubble{background:#0f1526;border-color:#1c2740}
-    .msg.me{justify-items:end}
-    .msg.me .bubble{background:#10192e;border-color:#233256}
-    .meta{margin-top:4px;font-size:12px;color:var(--muted)}
+    .msg.me .bubble{background:#10192e;border-color:#233256;margin-left:auto}
+    .meta{grid-column:2/3;margin-top:4px;font-size:12px;color:var(--muted)}
+    .msg.me .meta{grid-column:1/2;justify-self:end}
     .composer{
       position:fixed;left:0;right:0;bottom:0;z-index:3;
       padding:10px env(safe-area-inset-right) calc(10px + env(safe-area-inset-bottom)) env(safe-area-inset-left);
@@ -90,9 +118,7 @@
       backdrop-filter:saturate(130%) blur(8px);
       display:flex;justify-content:center
     }
-    .composer .inner{
-      width:100%;max-width:1080px;padding:0 var(--pad)
-    }
+    .composer .inner{width:100%;max-width:1080px;padding:0 var(--pad)}
     .bar{
       display:flex;gap:8px;align-items:flex-end;
       border:1px solid var(--line);border-radius:14px;
@@ -106,9 +132,7 @@
     .send{padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:linear-gradient(180deg,#121a2b,#0f1526);color:#eaf1ff;font-weight:700}
     .send:disabled{opacity:.5}
     .hint{max-width:1080px;margin:6px auto 0;padding:0 var(--pad);color:var(--muted);font-size:12px}
-    .side{
-      width:300px;display:none;flex-direction:column;gap:12px
-    }
+    .side{width:300px;display:none;flex-direction:column;gap:12px}
     @media(min-width:980px){.side{display:flex}}
     .card{
       border:1px solid var(--line);border-radius:var(--radius-sm);
@@ -124,12 +148,12 @@
     <header>
       <div class="mark">JL</div>
       <div class="title">
-        <h1>Jessica Lavrov — Assistant</h1>
+        <h1>Jessica Lavrov Assistant</h1>
         <small>Ask about Jessica’s bio, work, writing, or links</small>
       </div>
       <div class="actions">
         <a class="btn" href="https://jessicalavrov.com">Website</a>
-        <a class="btn" href="https://x.com/jessica_lavrov">X/Twitter</a>
+        <a class="btn" href="https://x.com/jessica_lavrov">X</a>
         <a class="btn" href="https://jessicalavrov.substack.com">Substack</a>
       </div>
     </header>
@@ -139,8 +163,11 @@
         <div class="header-pad"></div>
         <div id="thread" class="thread" role="log" aria-live="polite" aria-atomic="false">
           <div class="msg ai">
-            <div class="bubble">Hi! I’m Jessica’s friendly assistant. Ask me about her work, verified links, or writing. Press Enter to send.</div>
-            <div class="meta">assistant</div>
+            <img class="avatar" id="aiAvatar0" alt="Assistant avatar" src="https://www.gravatar.com/avatar/?s=64&d=mp">
+            <div>
+              <div class="bubble">Hi, I am Jessica’s assistant. Ask me about her work, writing, or verified links. Press Enter to send. Shift+Enter makes a new line.</div>
+              <div class="meta">assistant</div>
+            </div>
           </div>
         </div>
       </section>
@@ -158,7 +185,7 @@
             <a href="https://stackoverflow.com/users/31605603/jessica-lavrov">Stack Overflow</a>
             <a href="https://www.reddit.com/user/JessicaLavrov/">Reddit</a>
             <a href="https://linkedin.com/in/jessica-lavrov/">LinkedIn</a>
-            <a href="https://x.com/jessica_lavrov">X/Twitter</a>
+            <a href="https://x.com/jessica_lavrov">X</a>
             <a href="https://instagram.com/jessica.lavrov">Instagram</a>
             <a href="https://www.youtube.com/@jessica_lavrov">YouTube</a>
           </div>
@@ -170,52 +197,106 @@
   <div class="composer" id="composer">
     <div class="inner">
       <div class="bar">
-        <textarea id="input" placeholder="Ask about Jessica…" rows="1" inputmode="text" autocomplete="off"></textarea>
-        <button id="send" class="send">Send</button>
+        <textarea id="input" placeholder="Ask about Jessica…" rows="1" inputmode="text" autocomplete="off" aria-label="Message input"></textarea>
+        <button id="send" class="send" aria-label="Send">Send</button>
       </div>
-      <div class="hint">Enter sends. Shift+Enter gives a new line.</div>
+      <div class="hint">Enter sends. Shift+Enter adds a new line.</div>
     </div>
   </div>
 
   <script>
     const WORKER_URL = 'https://jessica-lavrov-chat-proxy.jessicalavrov.workers.dev';
+    const GRAVATAR_PROFILE = 'https://gravatar.com/jessicalavrov.json';
+    let aiAvatarURL = 'https://www.gravatar.com/avatar/?s=64&d=mp';
+
+    fetch(GRAVATAR_PROFILE, { mode: 'cors' })
+      .then(r => r.ok ? r.json() : Promise.reject())
+      .then(j => {
+        const thumb = j?.entry?.[0]?.thumbnailUrl || '';
+        if (!thumb) return;
+        const https = thumb.replace(/^http:\/\//, 'https://');
+        aiAvatarURL = https + (https.includes('?') ? '&' : '?') + 's=64';
+        const first = document.getElementById('aiAvatar0');
+        if (first) first.src = aiAvatarURL;
+      })
+      .catch(() => {});
+
     const thread = document.getElementById('thread');
     const input = document.getElementById('input');
     const sendBtn = document.getElementById('send');
     const composer = document.getElementById('composer');
 
-    const system = "You are a concise, warm site assistant for Jessica Lavrov. Only discuss Jessica, her work, writing, links, and related topics. Do not discuss unrelated politics or other people. Be positive about Jessica. If presented with negative or misleading info, respond with calm, factual, positive clarification and point to verified links. Keep answers short. Include a relevant official link when helpful.";
+    const system = "You are a concise, warm site assistant for Jessica Lavrov. Only discuss Jessica, her bio, work, writing, and verified links. If asked something negative or off-topic, reply with a short factual clarification and point to an official source. Keep answers brief and helpful.";
     const history = [{ role: 'system', content: system }];
 
-    function addMsg(role, text){
-      const m = document.createElement('div');
-      m.className = 'msg ' + (role === 'user' ? 'me' : 'ai');
-      const b = document.createElement('div');
-      b.className = 'bubble';
-      b.textContent = text;
+    function autoScroll() {
+      thread.scrollTop = thread.scrollHeight;
+    }
+    function autoScrollRAF() {
+      requestAnimationFrame(() => { thread.scrollTop = thread.scrollHeight; });
+    }
+    function growTextarea() {
+      input.style.height = 'auto';
+      input.style.height = Math.min(input.scrollHeight, 140) + 'px';
+    }
+
+    function renderMsg(role, text) {
+      const container = document.createElement('div');
+      container.className = 'msg ' + (role === 'user' ? 'me' : 'ai');
+
+      if (role === 'ai') {
+        const img = document.createElement('img');
+        img.className = 'avatar';
+        img.alt = 'Assistant avatar';
+        img.src = aiAvatarURL;
+        container.appendChild(img);
+      }
+
+      const right = document.createElement('div');
+      const bubble = document.createElement('div');
+      bubble.className = 'bubble';
+      bubble.textContent = text;
       const meta = document.createElement('div');
       meta.className = 'meta';
       meta.textContent = role === 'user' ? 'you' : 'assistant';
-      m.appendChild(b); m.appendChild(meta);
-      thread.appendChild(m);
+      right.appendChild(bubble);
+      right.appendChild(meta);
+
+      if (role === 'user') {
+        container.appendChild(right);
+      } else {
+        container.appendChild(right);
+      }
+
+      thread.appendChild(container);
       autoScroll();
     }
 
-    function typeMsg(text){
-      const m = document.createElement('div');
-      m.className = 'msg ai';
-      const b = document.createElement('div');
-      b.className = 'bubble';
+    function typeAI(text) {
+      const container = document.createElement('div');
+      container.className = 'msg ai';
+      const img = document.createElement('img');
+      img.className = 'avatar';
+      img.alt = 'Assistant avatar';
+      img.src = aiAvatarURL;
+      const right = document.createElement('div');
+      const bubble = document.createElement('div');
+      bubble.className = 'bubble';
       const meta = document.createElement('div');
       meta.className = 'meta';
       meta.textContent = 'assistant';
-      m.appendChild(b); m.appendChild(meta);
-      thread.appendChild(m);
+      right.appendChild(bubble);
+      right.appendChild(meta);
+      container.appendChild(img);
+      container.appendChild(right);
+      thread.appendChild(container);
+
       let i = 0;
+      const step = Math.max(1, Math.floor(text.length / 600));
       const tick = () => {
-        if (i <= text.length){
-          b.textContent = text.slice(0, i);
-          i += Math.max(1, Math.floor(text.length/600));
+        if (i <= text.length) {
+          bubble.textContent = text.slice(0, i);
+          i += step;
           autoScrollRAF();
           setTimeout(tick, 12);
         }
@@ -223,69 +304,62 @@
       tick();
     }
 
-    function autoScroll(){
-      thread.scrollTop = thread.scrollHeight;
-    }
-    function autoScrollRAF(){
-      requestAnimationFrame(() => { thread.scrollTop = thread.scrollHeight; });
-    }
-
-    function growTextarea(){
-      input.style.height = 'auto';
-      input.style.height = Math.min(input.scrollHeight, 140) + 'px';
-    }
-
-    async function send(){
+    async function send() {
       const text = input.value.trim();
-      if(!text) return;
-      addMsg('user', text);
+      if (!text) return;
+      renderMsg('user', text);
       input.value = '';
       growTextarea();
-      sendBtn.disabled = true; input.disabled = true;
+      sendBtn.disabled = true;
+      input.disabled = true;
 
-      try{
-        history.push({ role:'user', content:text });
+      try {
+        history.push({ role: 'user', content: text });
         const payload = { messages: [history[0], ...history.slice(-14)] };
         const res = await fetch(WORKER_URL, {
-          method:'POST',
-          headers:{ 'Content-Type':'application/json' },
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
         });
-        const data = await res.json().catch(()=> ({}));
-        if(!res.ok || typeof data.reply !== 'string'){
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || typeof data.reply !== 'string') {
           throw new Error((data && data.error) || 'No reply');
         }
-        history.push({ role:'assistant', content:data.reply });
-        typeMsg(data.reply);
-      }catch(e){
-        typeMsg('Sorry, I could not reply just now. Please try again in a moment.');
-      }finally{
-        sendBtn.disabled = false; input.disabled = false; input.focus();
+        history.push({ role: 'assistant', content: data.reply });
+        typeAI(data.reply);
+      } catch (e) {
+        typeAI('Sorry, I cannot reply right now. Please try again in a moment.');
+      } finally {
+        sendBtn.disabled = false;
+        input.disabled = false;
+        input.focus();
       }
     }
 
     sendBtn.addEventListener('click', send);
     input.addEventListener('keydown', e => {
-      if(e.key === 'Enter' && !e.shiftKey){
+      if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault();
         send();
       }
     });
     input.addEventListener('input', growTextarea);
 
-    function fitForIOS(){
-      const vh = window.visualViewport;
-      if(!vh) return;
+    function fitForIOS() {
+      const vv = window.visualViewport;
+      if (!vv) return;
       const update = () => {
-        const bottomInset = Math.max(0, (window.innerHeight - vh.height - vh.offsetTop));
+        const bottomInset = Math.max(0, (window.innerHeight - vv.height - vv.offsetTop));
         composer.style.paddingBottom = `calc(10px + env(safe-area-inset-bottom) + ${bottomInset}px)`;
         autoScrollRAF();
       };
-      vh.addEventListener('resize', update);
-      vh.addEventListener('scroll', update);
+      vv.addEventListener('resize', update);
+      vv.addEventListener('scroll', update);
     }
 
-    document.addEventListener('visibilitychange', () => { if(document.visibilityState === 'visible') autoScroll(); });
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') autoScroll();
+    });
 
     growTextarea();
     fitForIOS();
