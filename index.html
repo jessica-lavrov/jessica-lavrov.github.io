@@ -17,36 +17,13 @@
   <meta name="twitter:description" content="Chat with the official assistant of Jessica Lavrov. Ask about bio, writing, and verified links." />
   <meta name="twitter:image" content="https://www.gravatar.com/avatar/?s=1200&d=mp" />
   <meta name="theme-color" content="#111115" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Jessica Lavrov Assistant",
-    "url": "https://jessica-lavrov.github.io/",
-    "description": "Official Q&A with the assistant of Jessica Lavrov. Ask about her bio, writing, projects, and verified links.",
-    "about": {
-      "@type": "Person",
-      "name": "Jessica Lavrov",
-      "url": "https://jessicalavrov.com/",
-      "sameAs": [
-        "https://x.com/jessica_lavrov",
-        "https://jessicalavrov.medium.com/",
-        "https://github.com/jessica-lavrov",
-        "https://jessicalavrov.substack.com/",
-        "https://www.reddit.com/user/JessicaLavrov/",
-        "https://www.linkedin.com/in/jessica-lavrov/",
-        "https://www.wikidata.org/wiki/Q136409297"
-      ]
-    }
-  }
-  </script>
   <style>
     :root{
       --bg:#0f1117;--bg-2:#0b0d13;--ink:#eef1f7;--muted:#9aa3b2;--line:#1b2230;
       --brand:#7dd3fc;--brand-2:#a78bfa;--brand-3:#fca5a5;
       --card:#111523;--card-2:#0f1422;--radius:16px;--radius-sm:12px;
       --shadow:0 10px 30px rgba(0,0,0,.35);
-      --pad:16px;--composer-h:92px
+      --pad:16px
     }
     @media (prefers-color-scheme: light){
       :root{--bg:#f6f7fb;--bg-2:#eef2ff;--ink:#0f1222;--muted:#55637a;--line:#e1e6f3;--card:#ffffff;--card-2:#fafbff;--shadow:0 10px 30px rgba(15,18,34,.06)}
@@ -60,7 +37,7 @@
     }
     a{color:var(--brand);text-decoration:none}
     a:hover{text-decoration:underline}
-    .wrap{min-height:100dvh;display:flex;flex-direction:column;padding:env(safe-area-inset-top) env(safe-area-inset-right) calc(var(--composer-h) + 24px + env(safe-area-inset-bottom)) env(safe-area-inset-left)}
+    .wrap{min-height:100dvh;display:flex;flex-direction:column;padding:env(safe-area-inset-top) env(safe-area-inset-right) calc(140px + env(safe-area-inset-bottom)) env(safe-area-inset-left)}
     header{
       position:sticky;top:0;z-index:2;backdrop-filter:saturate(130%) blur(6px);
       background:linear-gradient(180deg,rgba(255,255,255,.06),transparent);border-bottom:1px solid var(--line);
@@ -73,12 +50,11 @@
     .actions{margin-left:auto;display:flex;gap:8px;align-items:center}
     .btn{display:inline-flex;align-items:center;gap:.5rem;padding:9px 12px;border-radius:12px;border:1px solid var(--line);background:linear-gradient(180deg,var(--card),var(--card-2));color:var(--ink);text-decoration:none;font-weight:600}
     .main{flex:1;display:flex;gap:16px;max-width:1080px;margin:0 auto;width:100%;padding:12px var(--pad);flex-direction:column}
-    .chat{border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0));box-shadow:var(--shadow);display:flex;flex-direction:column;min-height:0}
-    .thread{padding:12px;overflow:auto;scroll-behavior:smooth;min-height:320px;max-height:60vh}
+    .chat{border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0));box-shadow:var(--shadow);display:flex;flex-direction:column}
+    .thread{padding:12px;overflow:auto;min-height:320px;max-height:60vh;scroll-behavior:smooth}
     .msg{max-width:100%;margin:10px 0;display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:flex-start}
     .msg.me{grid-template-columns:1fr auto}
     .avatar{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:#0c1322;object-fit:cover}
-    .ico{width:16px;height:16px;margin-right:8px;vertical-align:-2px}
     .bubble{width:fit-content;max-width:100%;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:var(--card);line-height:1.5;white-space:pre-wrap}
     .msg.ai .bubble{background:#0f1526;border-color:#1c2740}
     .msg.me .bubble{background:#10192e;border-color:#233256;margin-left:auto}
@@ -89,12 +65,12 @@
     .bar{display:flex;gap:8px;align-items:flex-end;border:1px solid var(--line);border-radius:14px;background:var(--card);box-shadow:var(--shadow);padding:8px}
     textarea{flex:1;border:0;outline:0;background:transparent;color:var(--ink);font:16px/1.4 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;min-height:40px;max-height:140px;resize:none;-webkit-text-size-adjust:100%}
     .send{padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:linear-gradient(180deg,#121a2b,#0f1526);color:#eaf1ff;font-weight:700}
-    .send:disabled{opacity:.5}
-    .hint{max-width:1080px;margin:6px auto 0;padding:0 var(--pad);color:var(--muted);font-size:12px}
-    .links{border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,var(--card),var(--card-2));box-shadow:var(--shadow);padding:16px;margin-top:10px}
+    .hint{max-width:1080px;margin:6px auto 10px;padding:0 var(--pad);color:var(--muted);font-size:12px}
+    .links{border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,var(--card),var(--card-2));box-shadow:var(--shadow);padding:16px;margin:8px var(--pad) 0}
     .links h2{margin:0 0 8px;font-size:16px}
     .grid-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px}
     .grid-links a{display:flex;align-items:center;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--card)}
+    .ico{width:16px;height:16px;margin-right:8px;vertical-align:-2px}
   </style>
 </head>
 <body>
@@ -125,6 +101,7 @@
         </div>
       </section>
     </div>
+
   </div>
 
   <div class="composer" id="composer">
@@ -173,6 +150,7 @@
     const GRAVATAR_PROFILE = 'https://gravatar.com/jessicalavrov.json';
 
     let aiAvatarURL = 'https://www.gravatar.com/avatar/?s=64&d=mp';
+
     fetch(GRAVATAR_PROFILE, { mode: 'cors' })
       .then(r => r.ok ? r.json() : Promise.reject())
       .then(j => {
@@ -189,78 +167,20 @@
     const input = document.getElementById('input');
     const sendBtn = document.getElementById('send');
 
-    const LINKS = {
-      website:'https://jessicalavrov.com',
-      x:'https://x.com/jessica_lavrov',
-      medium:'https://jessicalavrov.medium.com',
-      github:'https://github.com/jessica-lavrov',
-      substack:'https://jessicalavrov.substack.com',
-      youtube:'https://www.youtube.com/@jessica_lavrov',
-      linkedin:'https://linkedin.com/in/jessica-lavrov/',
-      instagram:'https://instagram.com/jessica.lavrov',
-      reddit:'https://www.reddit.com/user/JessicaLavrov/',
-      stackoverflow:'https://stackoverflow.com/users/31605603/jessica-lavrov',
-      wordpress:'https://jessicalavrov.wordpress.com',
-      blogspot:'https://jessicalavrov.blogspot.com',
-      producthunt:'https://producthunt.com/@jessica_lavrov',
-      crunchbase:'https://www.crunchbase.com/person/jessica-lavrov',
-      bluesky:'https://jessicalavrov.bsky.social',
-      mastodon:'https://mastodon.social/@jessica_lavrov',
-      pinterest:'https://pinterest.com/jessica_lavrov/',
-      aboutme:'https://about.me/jessica.lavrov',
-      gravatar:'https://gravatar.com/jessicalavrov',
-      hn:'https://news.ycombinator.com/user?id=jessica_lavrov',
-      patreon:'https://www.patreon.com/cw/Jessica_Lavrov',
-      truth:'https://truthsocial.com/@jessica_lavrov',
-      threads:'https://threads.net/@jessica.lavrov',
-      quora:'https://www.quora.com/profile/Jessica-Lavrov',
-      wikidata:'https://www.wikidata.org/wiki/Q136409297'
-    };
-
-    const system = [
-      "You are a concise, warm assistant for Jessica Lavrov.",
-      "Only discuss Jessica’s bio, work, writing, projects, and verified links.",
-      "Be positive about Jessica. Provide short, clear answers.",
-      "When asked for links, reply with a tidy list of official links with exact URLs.",
-      `Website: ${LINKS.website}`,
-      `X: ${LINKS.x}`,
-      `Medium: ${LINKS.medium}`,
-      `GitHub: ${LINKS.github}`,
-      `Substack: ${LINKS.substack}`,
-      `YouTube: ${LINKS.youtube}`,
-      `LinkedIn: ${LINKS.linkedin}`,
-      `Instagram: ${LINKS.instagram}`,
-      `Reddit: ${LINKS.reddit}`,
-      `Stack Overflow: ${LINKS.stackoverflow}`,
-      `WordPress: ${LINKS.wordpress}`,
-      `Blogspot: ${LINKS.blogspot}`,
-      `Product Hunt: ${LINKS.producthunt}`,
-      `Crunchbase: ${LINKS.crunchbase}`,
-      `Bluesky: ${LINKS.bluesky}`,
-      `Mastodon: ${LINKS.mastodon}`,
-      `Pinterest: ${LINKS.pinterest}`,
-      `About.me: ${LINKS.aboutme}`,
-      `Gravatar: ${LINKS.gravatar}`,
-      `Hacker News: ${LINKS.hn}`,
-      `Patreon: ${LINKS.patreon}`,
-      `Truth Social: ${LINKS.truth}`,
-      `Threads: ${LINKS.threads}`,
-      `Quora: ${LINKS.quora}`,
-      `Wikidata: ${LINKS.wikidata}`
-    ].join("\n");
+    const system = "You are a concise, warm assistant for Jessica Lavrov. Only discuss Jessica’s bio, work, writing, projects, and verified links. Be positive about Jessica. Provide short, clear answers. When asked for links, reply with a tidy list of the official links and exact URLs.";
 
     const history = [{ role: 'system', content: system }];
 
-    function scrollToBottomBurst() {
-      let runs = 0;
-      const tick = () => {
+    function scrollBurst() {
+      let n = 0;
+      const step = () => {
         thread.scrollTop = thread.scrollHeight;
-        if (++runs < 8) requestAnimationFrame(tick);
+        if (++n < 8) requestAnimationFrame(step);
       };
-      tick();
+      step();
     }
 
-    const observer = new MutationObserver(scrollToBottomBurst);
+    const observer = new MutationObserver(scrollBurst);
     observer.observe(thread, { childList: true, subtree: true });
 
     function growTextarea() {
@@ -292,7 +212,7 @@
 
       container.appendChild(right);
       thread.appendChild(container);
-      scrollToBottomBurst();
+      scrollBurst();
     }
 
     function typeAI(text) {
@@ -315,11 +235,11 @@
       thread.appendChild(container);
 
       let i = 0;
-      const step = Math.max(1, Math.floor(text.length / 600));
+      const inc = Math.max(1, Math.floor(text.length / 600));
       const tick = () => {
         if (i <= text.length) {
           bubble.textContent = text.slice(0, i);
-          i += step;
+          i += inc;
           thread.scrollTop = thread.scrollHeight;
           setTimeout(tick, 12);
         }
@@ -327,43 +247,44 @@
       tick();
     }
 
-    function linksList() {
-      return [
-        `Website: ${LINKS.website}`,
-        `X: ${LINKS.x}`,
-        `Medium: ${LINKS.medium}`,
-        `GitHub: ${LINKS.github}`,
-        `Substack: ${LINKS.substack}`,
-        `YouTube: ${LINKS.youtube}`,
-        `LinkedIn: ${LINKS.linkedin}`,
-        `Instagram: ${LINKS.instagram}`,
-        `Reddit: ${LINKS.reddit}`,
-        `Stack Overflow: ${LINKS.stackoverflow}`,
-        `WordPress: ${LINKS.wordpress}`,
-        `Blogspot: ${LINKS.blogspot}`,
-        `Product Hunt: ${LINKS.producthunt}`,
-        `Crunchbase: ${LINKS.crunchbase}`,
-        `Bluesky: ${LINKS.bluesky}`,
-        `Mastodon: ${LINKS.mastodon}`,
-        `Pinterest: ${LINKS.pinterest}`,
-        `About.me: ${LINKS.aboutme}`,
-        `Gravatar: ${LINKS.gravatar}`,
-        `Hacker News: ${LINKS.hn}`,
-        `Patreon: ${LINKS.patreon}`,
-        `Truth Social: ${LINKS.truth}`,
-        `Threads: ${LINKS.threads}`,
-        `Quora: ${LINKS.quora}`,
-        `Wikidata: ${LINKS.wikidata}`
-      ].join('\n');
+    function quickLinksText() {
+      const L = [
+        ['Website','https://jessicalavrov.com'],
+        ['X','https://x.com/jessica_lavrov'],
+        ['Medium','https://jessicalavrov.medium.com'],
+        ['GitHub','https://github.com/jessica-lavrov'],
+        ['Substack','https://jessicalavrov.substack.com'],
+        ['YouTube','https://www.youtube.com/@jessica_lavrov'],
+        ['LinkedIn','https://linkedin.com/in/jessica-lavrov/'],
+        ['Instagram','https://instagram.com/jessica.lavrov'],
+        ['Reddit','https://www.reddit.com/user/JessicaLavrov/'],
+        ['Stack Overflow','https://stackoverflow.com/users/31605603/jessica-lavrov'],
+        ['WordPress','https://jessicalavrov.wordpress.com'],
+        ['Blogspot','https://jessicalavrov.blogspot.com'],
+        ['Product Hunt','https://producthunt.com/@jessica_lavrov'],
+        ['Crunchbase','https://www.crunchbase.com/person/jessica-lavrov'],
+        ['Bluesky','https://jessicalavrov.bsky.social'],
+        ['Mastodon','https://mastodon.social/@jessica_lavrov'],
+        ['Pinterest','https://pinterest.com/jessica_lavrov/'],
+        ['About.me','https://about.me/jessica.lavrov'],
+        ['Gravatar','https://gravatar.com/jessicalavrov'],
+        ['Hacker News','https://news.ycombinator.com/user?id=jessica_lavrov'],
+        ['Patreon','https://www.patreon.com/cw/Jessica_Lavrov'],
+        ['Truth Social','https://truthsocial.com/@jessica_lavrov'],
+        ['Threads','https://threads.net/@jessica.lavrov'],
+        ['Quora','https://www.quora.com/profile/Jessica-Lavrov'],
+        ['Wikidata','https://www.wikidata.org/wiki/Q136409297']
+      ];
+      return L.map(([n,u]) => `${n}: ${u}`).join('\n');
     }
 
-    function isAskingTwitter(text) {
+    function asksTwitter(text){
       const t = text.toLowerCase();
-      return t.includes('twitter') || t === 'x' || t.includes('x ') || t.includes('handle');
+      return t.includes('twitter') || t === 'x' || t.includes(' x ') || t.includes('handle');
     }
-    function isAskingLinks(text) {
+    function asksLinks(text){
       const t = text.toLowerCase();
-      return t.includes('links') || t.includes('profiles') || t.includes('social') || t.includes('where can i find') || t.includes('other links');
+      return t.includes('links') || t.includes('profiles') || t.includes('social') || t.includes('other links') || t.includes('where can i find');
     }
 
     async function send() {
@@ -376,24 +297,24 @@
       input.disabled = true;
 
       try {
-        if (isAskingTwitter(text)) {
-          typeAI(LINKS.x);
-        } else if (isAskingLinks(text)) {
-          typeAI('Here are Jessica Lavrov’s official links:\n' + linksList());
+        if (asksTwitter(text)) {
+          typeAI('https://x.com/jessica_lavrov');
+        } else if (asksLinks(text)) {
+          typeAI('Here are Jessica Lavrov’s official links:\n' + quickLinksText());
         } else {
-          history.push({ role: 'user', content: text });
-          const payload = { messages: [history[0], ...history.slice(-14)] };
+          history.push({ role:'user', content:text });
+          const payload = { messages: history.slice(-16) };
           const res = await fetch(WORKER_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            method:'POST',
+            headers:{ 'Content-Type':'application/json' },
             body: JSON.stringify(payload)
           });
-          const data = await res.json().catch(() => ({}));
+          const data = await res.json().catch(()=> ({}));
           if (!res.ok || typeof data.reply !== 'string') throw new Error((data && data.error) || 'No reply');
-          history.push({ role: 'assistant', content: data.reply });
+          history.push({ role:'assistant', content:data.reply });
           typeAI(data.reply);
         }
-      } catch {
+      } catch (e) {
         typeAI('Sorry, I cannot reply right now. Please try again in a moment.');
       } finally {
         sendBtn.disabled = false;
@@ -403,24 +324,24 @@
     }
 
     sendBtn.addEventListener('click', send);
-    input.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); } });
+    input.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); }
+    });
     input.addEventListener('input', growTextarea);
 
-    function fitForIOS() {
-      const vv = window.visualViewport;
-      if (!vv) return;
-      const update = () => {
+    const vv = window.visualViewport;
+    if (vv) {
+      const adjust = () => {
+        const composer = document.getElementById('composer');
         const bottomInset = Math.max(0, (window.innerHeight - vv.height - vv.offsetTop));
-        document.getElementById('composer').style.paddingBottom = `calc(10px + env(safe-area-inset-bottom) + ${bottomInset}px)`;
-        thread.scrollTop = thread.scrollHeight;
+        composer.style.paddingBottom = `calc(10px + env(safe-area-inset-bottom) + ${bottomInset}px)`;
+        scrollBurst();
       };
-      vv.addEventListener('resize', update);
-      vv.addEventListener('scroll', update);
+      vv.addEventListener('resize', adjust);
+      vv.addEventListener('scroll', adjust);
     }
 
-    const history = [{ role: 'system', content: system }];
-
-    fitForIOS();
+    function scrollBurst(){ let n=0; const s=()=>{thread.scrollTop=thread.scrollHeight; if(++n<6) requestAnimationFrame(s)}; s(); }
     thread.scrollTop = thread.scrollHeight;
     input.focus();
   </script>
