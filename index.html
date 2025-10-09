@@ -34,7 +34,8 @@
         "https://github.com/jessica-lavrov",
         "https://jessicalavrov.substack.com/",
         "https://www.reddit.com/user/JessicaLavrov/",
-        "https://www.linkedin.com/in/jessica-lavrov/"
+        "https://www.linkedin.com/in/jessica-lavrov/",
+        "https://www.wikidata.org/wiki/Q136409297"
       ]
     }
   }
@@ -48,99 +49,50 @@
       --pad:16px;--composer-h:74px
     }
     @media (prefers-color-scheme: light){
-      :root{
-        --bg:#f6f7fb;--bg-2:#eef2ff;--ink:#0f1222;--muted:#55637a;--line:#e1e6f3;
-        --card:#ffffff;--card-2:#fafbff;--shadow:0 10px 30px rgba(15,18,34,.06)
-      }
+      :root{--bg:#f6f7fb;--bg-2:#eef2ff;--ink:#0f1222;--muted:#55637a;--line:#e1e6f3;--card:#ffffff;--card-2:#fafbff;--shadow:0 10px 30px rgba(15,18,34,.06)}
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0;
-      background:linear-gradient(180deg,var(--bg),var(--bg-2));
-      color:var(--ink);
-      font:16px/1.55 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-      -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
-      letter-spacing:.1px
+      margin:0;background:linear-gradient(180deg,var(--bg),var(--bg-2));color:var(--ink);
+      font:16px/1.55 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;letter-spacing:.1px
     }
     a{color:var(--brand);text-decoration:none}
     a:hover{text-decoration:underline}
-    .wrap{
-      min-height:100dvh;display:flex;flex-direction:column;
-      padding:env(safe-area-inset-top) env(safe-area-inset-right) calc(var(--composer-h) + 24px + env(safe-area-inset-bottom)) env(safe-area-inset-left)
-    }
+    .wrap{min-height:100dvh;display:flex;flex-direction:column;padding:env(safe-area-inset-top) env(safe-area-inset-right) calc(var(--composer-h) + 24px + env(safe-area-inset-bottom)) env(safe-area-inset-left)}
     header{
-      position:sticky;top:0;z-index:2;
-      backdrop-filter:saturate(130%) blur(6px);
-      background:linear-gradient(180deg,rgba(255,255,255,.06),transparent);
-      border-bottom:1px solid var(--line);
+      position:sticky;top:0;z-index:2;backdrop-filter:saturate(130%) blur(6px);
+      background:linear-gradient(180deg,rgba(255,255,255,.06),transparent);border-bottom:1px solid var(--line);
       display:flex;align-items:center;gap:12px;padding:12px var(--pad)
     }
-    .mark{
-      width:34px;height:34px;border-radius:10px;
-      background:linear-gradient(135deg,var(--card),var(--card-2));
-      border:1px solid var(--line);display:grid;place-items:center;
-      box-shadow:var(--shadow);font-weight:800;color:var(--brand)
-    }
+    .mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--card),var(--card-2));border:1px solid var(--line);display:grid;place-items:center;box-shadow:var(--shadow);font-weight:800;color:var(--brand)}
     .title{display:flex;flex-direction:column}
     .title h1{margin:0;font-size:18px;line-height:1.2}
     .title small{color:var(--muted)}
     .actions{margin-left:auto;display:flex;gap:8px;align-items:center}
-    .btn{
-      display:inline-flex;align-items:center;gap:.5rem;
-      padding:9px 12px;border-radius:12px;border:1px solid var(--line);
-      background:linear-gradient(180deg,var(--card),var(--card-2));
-      color:var(--ink);text-decoration:none;font-weight:600
-    }
-    .main{flex:1;display:flex;gap:16px;max-width:1080px;margin:0 auto;width:100%;padding:12px var(--pad)}
-    .chat{flex:1;border:1px solid var(--line);border-radius:var(--radius);
-      background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0));
-      box-shadow:var(--shadow);display:flex;flex-direction:column;min-height:0}
-    .thread{padding:12px;overflow:auto;scroll-behavior:smooth;min-height:0;flex:1}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:9px 12px;border-radius:12px;border:1px solid var(--line);background:linear-gradient(180deg,var(--card),var(--card-2));color:var(--ink);text-decoration:none;font-weight:600}
+    .main{flex:1;display:flex;gap:16px;max-width:1080px;margin:0 auto;width:100%;padding:12px var(--pad);flex-direction:column}
+    .chat{border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0));box-shadow:var(--shadow);display:flex;flex-direction:column;min-height:0}
+    .thread{padding:12px;overflow:auto;scroll-behavior:smooth;min-height:320px;max-height:60vh}
     .msg{max-width:100%;margin:10px 0;display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:flex-start}
     .msg.me{grid-template-columns:1fr auto}
-    .avatar{
-      width:32px;height:32px;border-radius:50%;
-      border:1px solid var(--line);background:#0c1322;object-fit:cover
-    }
-    .bubble{
-      width:fit-content;max-width:100%;padding:12px 14px;border-radius:14px;
-      border:1px solid var(--line);background:var(--card);line-height:1.5;white-space:pre-wrap
-    }
+    .avatar{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:#0c1322;object-fit:cover}
+    .bubble{width:fit-content;max-width:100%;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:var(--card);line-height:1.5;white-space:pre-wrap}
     .msg.ai .bubble{background:#0f1526;border-color:#1c2740}
     .msg.me .bubble{background:#10192e;border-color:#233256;margin-left:auto}
     .meta{grid-column:2/3;margin-top:4px;font-size:12px;color:var(--muted)}
     .msg.me .meta{grid-column:1/2;justify-self:end}
-    .composer{
-      position:fixed;left:0;right:0;bottom:0;z-index:3;
-      padding:10px env(safe-area-inset-right) calc(10px + env(safe-area-inset-bottom)) env(safe-area-inset-left);
-      background:linear-gradient(180deg,transparent,rgba(0,0,0,.08));
-      backdrop-filter:saturate(130%) blur(8px);
-      display:flex;justify-content:center
-    }
+    .composer{position:fixed;left:0;right:0;bottom:0;z-index:3;padding:10px env(safe-area-inset-right) calc(10px + env(safe-area-inset-bottom)) env(safe-area-inset-left);background:linear-gradient(180deg,transparent,rgba(0,0,0,.08));backdrop-filter:saturate(130%) blur(8px);display:flex;justify-content:center}
     .composer .inner{width:100%;max-width:1080px;padding:0 var(--pad)}
-    .bar{
-      display:flex;gap:8px;align-items:flex-end;
-      border:1px solid var(--line);border-radius:14px;
-      background:var(--card);box-shadow:var(--shadow);padding:8px
-    }
-    textarea{
-      flex:1;border:0;outline:0;background:transparent;color:var(--ink);
-      font:16px/1.4 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-      min-height:40px;max-height:140px;resize:none;-webkit-text-size-adjust:100%
-    }
+    .bar{display:flex;gap:8px;align-items:flex-end;border:1px solid var(--line);border-radius:14px;background:var(--card);box-shadow:var(--shadow);padding:8px}
+    textarea{flex:1;border:0;outline:0;background:transparent;color:var(--ink);font:16px/1.4 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;min-height:40px;max-height:140px;resize:none;-webkit-text-size-adjust:100%}
     .send{padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:linear-gradient(180deg,#121a2b,#0f1526);color:#eaf1ff;font-weight:700}
     .send:disabled{opacity:.5}
     .hint{max-width:1080px;margin:6px auto 0;padding:0 var(--pad);color:var(--muted);font-size:12px}
-    .side{width:300px;display:none;flex-direction:column;gap:12px}
-    @media(min-width:980px){.side{display:flex}}
-    .card{
-      border:1px solid var(--line);border-radius:var(--radius-sm);
-      background:linear-gradient(180deg,var(--card),var(--card-2));
-      box-shadow:var(--shadow);padding:12px
-    }
-    .links a{display:block;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--card-2);margin:6px 0}
-    .header-pad{height:8px}
+    .links{border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,var(--card),var(--card-2));box-shadow:var(--shadow);padding:16px}
+    .links h2{margin:0 0 8px;font-size:16px}
+    .grid-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px}
+    .grid-links a{display:block;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--card)}
   </style>
 </head>
 <body>
@@ -160,7 +112,6 @@
 
     <div class="main">
       <section class="chat" aria-label="Chat with assistant">
-        <div class="header-pad"></div>
         <div id="thread" class="thread" role="log" aria-live="polite" aria-atomic="false">
           <div class="msg ai">
             <img class="avatar" id="aiAvatar0" alt="Assistant avatar" src="https://www.gravatar.com/avatar/?s=64&d=mp">
@@ -172,32 +123,36 @@
         </div>
       </section>
 
-      <aside class="side" aria-label="Official links">
-        <div class="card">
-          <strong>Official links</strong>
-          <div class="links" id="linkList">
-            <a href="https://jessicalavrov.com">Website</a>
-            <a href="https://x.com/jessica_lavrov">X / Twitter</a>
-            <a href="https://jessicalavrov.medium.com">Medium</a>
-            <a href="https://github.com/jessica-lavrov">GitHub</a>
-            <a href="https://jessicalavrov.substack.com">Substack</a>
-            <a href="https://www.youtube.com/@jessica_lavrov">YouTube</a>
-            <a href="https://linkedin.com/in/jessica-lavrov/">LinkedIn</a>
-            <a href="https://instagram.com/jessica.lavrov">Instagram</a>
-            <a href="https://www.reddit.com/user/JessicaLavrov/">Reddit</a>
-            <a href="https://stackoverflow.com/users/31605603/jessica-lavrov">Stack Overflow</a>
-            <a href="https://jessicalavrov.wordpress.com">WordPress</a>
-            <a href="https://jessicalavrov.blogspot.com">Blogspot</a>
-            <a href="https://producthunt.com/@jessica_lavrov">Product Hunt</a>
-            <a href="https://www.crunchbase.com/person/jessica-lavrov">Crunchbase</a>
-            <a href="https://jessicalavrov.bsky.social">Bluesky</a>
-            <a href="https://mastodon.social/@jessica_lavrov">Mastodon</a>
-            <a href="https://pinterest.com/jessica_lavrov/">Pinterest</a>
-            <a href="https://about.me/jessica.lavrov">About.me</a>
-            <a href="https://gravatar.com/jessicalavrov">Gravatar</a>
-          </div>
+      <section class="links" aria-label="Official links">
+        <h2>Jessica Lavrov official links</h2>
+        <div class="grid-links" id="linkList">
+          <a href="https://jessicalavrov.com">Website</a>
+          <a href="https://x.com/jessica_lavrov">X / Twitter</a>
+          <a href="https://jessicalavrov.medium.com">Medium</a>
+          <a href="https://github.com/jessica-lavrov">GitHub</a>
+          <a href="https://jessicalavrov.substack.com">Substack</a>
+          <a href="https://www.youtube.com/@jessica_lavrov">YouTube</a>
+          <a href="https://linkedin.com/in/jessica-lavrov/">LinkedIn</a>
+          <a href="https://instagram.com/jessica.lavrov">Instagram</a>
+          <a href="https://www.reddit.com/user/JessicaLavrov/">Reddit</a>
+          <a href="https://stackoverflow.com/users/31605603/jessica-lavrov">Stack Overflow</a>
+          <a href="https://jessicalavrov.wordpress.com">WordPress</a>
+          <a href="https://jessicalavrov.blogspot.com">Blogspot</a>
+          <a href="https://producthunt.com/@jessica_lavrov">Product Hunt</a>
+          <a href="https://www.crunchbase.com/person/jessica-lavrov">Crunchbase</a>
+          <a href="https://jessicalavrov.bsky.social">Bluesky</a>
+          <a href="https://mastodon.social/@jessica_lavrov">Mastodon</a>
+          <a href="https://pinterest.com/jessica_lavrov/">Pinterest</a>
+          <a href="https://about.me/jessica.lavrov">About.me</a>
+          <a href="https://gravatar.com/jessicalavrov">Gravatar</a>
+          <a href="https://news.ycombinator.com/user?id=jessica_lavrov">Hacker News</a>
+          <a href="https://www.patreon.com/cw/Jessica_Lavrov">Patreon</a>
+          <a href="https://truthsocial.com/@jessica_lavrov">Truth Social</a>
+          <a href="https://threads.net/@jessica.lavrov">Threads</a>
+          <a href="https://www.quora.com/profile/Jessica-Lavrov">Quora</a>
+          <a href="https://www.wikidata.org/wiki/Q136409297">Wikidata</a>
         </div>
-      </aside>
+      </section>
     </div>
   </div>
 
@@ -234,7 +189,13 @@
       mastodon:'https://mastodon.social/@jessica_lavrov',
       pinterest:'https://pinterest.com/jessica_lavrov/',
       aboutme:'https://about.me/jessica.lavrov',
-      gravatar:'https://gravatar.com/jessicalavrov'
+      gravatar:'https://gravatar.com/jessicalavrov',
+      hn:'https://news.ycombinator.com/user?id=jessica_lavrov',
+      patreon:'https://www.patreon.com/cw/Jessica_Lavrov',
+      truth:'https://truthsocial.com/@jessica_lavrov',
+      threads:'https://threads.net/@jessica.lavrov',
+      quora:'https://www.quora.com/profile/Jessica-Lavrov',
+      wikidata:'https://www.wikidata.org/wiki/Q136409297'
     };
 
     let aiAvatarURL = 'https://www.gravatar.com/avatar/?s=64&d=mp';
@@ -261,7 +222,6 @@
       "Only discuss Jessica’s bio, work, writing, projects, and verified links.",
       "Be positive about Jessica. Provide short, clear answers.",
       "When asked for links, reply with a tidy list of official links with exact URLs.",
-      "Official links:",
       `Website: ${LINKS.website}`,
       `X: ${LINKS.x}`,
       `Medium: ${LINKS.medium}`,
@@ -280,16 +240,28 @@
       `Mastodon: ${LINKS.mastodon}`,
       `Pinterest: ${LINKS.pinterest}`,
       `About.me: ${LINKS.aboutme}`,
-      `Gravatar: ${LINKS.gravatar}`
+      `Gravatar: ${LINKS.gravatar}`,
+      `Hacker News: ${LINKS.hn}`,
+      `Patreon: ${LINKS.patreon}`,
+      `Truth Social: ${LINKS.truth}`,
+      `Threads: ${LINKS.threads}`,
+      `Quora: ${LINKS.quora}`,
+      `Wikidata: ${LINKS.wikidata}`
     ].join("\n");
 
     const history = [{ role: 'system', content: system }];
 
-    function autoScroll() { thread.scrollTop = thread.scrollHeight; }
-    function autoScrollRAF() { requestAnimationFrame(() => { thread.scrollTop = thread.scrollHeight; }); }
+    function scrollToBottomBurst() {
+      let runs = 0;
+      const tick = () => {
+        thread.scrollTop = thread.scrollHeight;
+        if (++runs < 6) requestAnimationFrame(tick);
+      };
+      tick();
+    }
 
-    const obs = new MutationObserver(() => autoScrollRAF());
-    obs.observe(thread, { childList: true, subtree: true });
+    const observer = new MutationObserver(scrollToBottomBurst);
+    observer.observe(thread, { childList: true, subtree: true });
 
     function growTextarea() {
       input.style.height = 'auto';
@@ -320,7 +292,7 @@
 
       container.appendChild(right);
       thread.appendChild(container);
-      autoScroll();
+      scrollToBottomBurst();
     }
 
     function typeAI(text) {
@@ -348,7 +320,7 @@
         if (i <= text.length) {
           bubble.textContent = text.slice(0, i);
           i += step;
-          autoScrollRAF();
+          thread.scrollTop = thread.scrollHeight;
           setTimeout(tick, 12);
         }
       };
@@ -375,13 +347,19 @@
         `Mastodon: ${LINKS.mastodon}`,
         `Pinterest: ${LINKS.pinterest}`,
         `About.me: ${LINKS.aboutme}`,
-        `Gravatar: ${LINKS.gravatar}`
+        `Gravatar: ${LINKS.gravatar}`,
+        `Hacker News: ${LINKS.hn}`,
+        `Patreon: ${LINKS.patreon}`,
+        `Truth Social: ${LINKS.truth}`,
+        `Threads: ${LINKS.threads}`,
+        `Quora: ${LINKS.quora}`,
+        `Wikidata: ${LINKS.wikidata}`
       ].join('\n');
     }
 
     function isAskingTwitter(text) {
       const t = text.toLowerCase();
-      return t.includes('twitter') || t.includes('x') || t.includes('handle');
+      return t.includes('twitter') || t === 'x' || t.includes('x ') || t.includes('handle');
     }
     function isAskingLinks(text) {
       const t = text.toLowerCase();
@@ -411,13 +389,11 @@
             body: JSON.stringify(payload)
           });
           const data = await res.json().catch(() => ({}));
-          if (!res.ok || typeof data.reply !== 'string') {
-            throw new Error((data && data.error) || 'No reply');
-          }
+          if (!res.ok || typeof data.reply !== 'string') throw new Error((data && data.error) || 'No reply');
           history.push({ role: 'assistant', content: data.reply });
           typeAI(data.reply);
         }
-      } catch (e) {
+      } catch {
         typeAI('Sorry, I cannot reply right now. Please try again in a moment.');
       } finally {
         sendBtn.disabled = false;
@@ -428,10 +404,7 @@
 
     sendBtn.addEventListener('click', send);
     input.addEventListener('keydown', e => {
-      if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        send();
-      }
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); }
     });
     input.addEventListener('input', growTextarea);
 
@@ -441,19 +414,18 @@
       const update = () => {
         const bottomInset = Math.max(0, (window.innerHeight - vv.height - vv.offsetTop));
         composer.style.paddingBottom = `calc(10px + env(safe-area-inset-bottom) + ${bottomInset}px)`;
-        autoScrollRAF();
+        thread.scrollTop = thread.scrollHeight;
       };
       vv.addEventListener('resize', update);
       vv.addEventListener('scroll', update);
     }
 
-    document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'visible') autoScroll();
-    });
+    document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') thread.scrollTop = thread.scrollHeight; });
 
     growTextarea();
     fitForIOS();
-    autoScroll();
+    thread.scrollTop = thread.scrollHeight;
+    input.focus();
   </script>
 </body>
 </html>
